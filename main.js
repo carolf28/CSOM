@@ -39,10 +39,9 @@ controls.enablePan = false;
 controls.minAzimuthAngle = -Infinity;
 controls.maxAzimuthAngle = Infinity;
 
-// 🔒 Vertical limits
-controls.minPolarAngle = THREE.MathUtils.degToRad(10);  // prevents going above / seeing bottom
-controls.maxPolarAngle = THREE.MathUtils.degToRad(70);  // allows looking down at the top
-
+// Vertical rotation limits
+controls.minPolarAngle = THREE.MathUtils.degToRad(10);  // cannot look above
+controls.maxPolarAngle = THREE.MathUtils.degToRad(70);  // can look down
 
 // ===============================
 // HDR ENVIRONMENT
@@ -56,40 +55,73 @@ new RGBELoader()
   });
 
 // ===============================
-// VERY SOFT SHAPE LIGHT
+// VERY SOFT LIGHT
 // ===============================
 const softDirectional = new THREE.DirectionalLight(0xffffff, 0.3);
 softDirectional.position.set(2, 3, 4);
 scene.add(softDirectional);
 
 // ===============================
-// LOAD & CENTER SYNTH
+// LOAD & CENTER SYNTH WITH PIVOT
 // ===============================
 const loader = new GLTFLoader();
+let pivot = new THREE.Group(); // pivot group for tilt animation
+scene.add(pivot);
+
 loader.load(
   'synthcsom.glb',
   (gltf) => {
     const synth = gltf.scene;
 
+    // Scale
     synth.scale.set(0.45, 0.45, 0.45);
 
+    // Auto-center model
     const box = new THREE.Box3().setFromObject(synth);
     const center = box.getCenter(new THREE.Vector3());
     synth.position.sub(center);
 
+    // Default horizontal rotation
     synth.rotation.y = THREE.MathUtils.degToRad(70);
 
+    // Enhance copper shine
     synth.traverse((child) => {
       if (child.isMesh && child.material) {
         child.material.envMapIntensity = 1.0;
       }
     });
 
-    scene.add(synth);
+    pivot.add(synth); // add synth to pivot for tilt animation
+    pivot.rotation.x = THREE.MathUtils.degToRad(0); // default tilt
   },
   undefined,
   (error) => console.error('Error loading synth:', error)
 );
+
+// ===============================
+// SLOWER INITIAL TILT ANIMATION
+// ===============================
+let tiltDirection = 1;
+let tiltAnimationActive = true;
+const tiltSpeed = 0.0007; // slower than before
+
+function updateTiltAnimation() {
+  if (!tiltAnimationActive || !pivot) return;
+
+  const maxTilt = THREE.MathUtils.degToRad(5);
+  const minTilt = THREE.MathUtils.degToRad(-5);
+
+  pivot.rotation.x += tiltSpeed * tiltDirection;
+
+  if (pivot.rotation.x > maxTilt || pivot.rotation.x < minTilt) {
+    tiltDirection *= -1;
+  }
+}
+
+// Stop tilt animation when user interacts
+controls.addEventListener('start', () => {
+  tiltAnimationActive = false;
+});
 
 // ===============================
 // Resize
@@ -105,7 +137,9 @@ window.addEventListener('resize', () => {
 // ===============================
 function animate() {
   requestAnimationFrame(animate);
+  updateTiltAnimation();
   controls.update();
   renderer.render(scene, camera);
 }
+
 animate();
