@@ -35,6 +35,15 @@ controls.enableDamping = true;
 controls.enableZoom = false;
 controls.enablePan = false;
 
+// Free horizontal rotation
+controls.minAzimuthAngle = -Infinity;
+controls.maxAzimuthAngle = Infinity;
+
+// 🔒 Vertical limits
+controls.minPolarAngle = THREE.MathUtils.degToRad(10);  // prevents going above / seeing bottom
+controls.maxPolarAngle = THREE.MathUtils.degToRad(70);  // allows looking down at the top
+
+
 // ===============================
 // HDR ENVIRONMENT
 // ===============================
@@ -62,18 +71,14 @@ loader.load(
   (gltf) => {
     const synth = gltf.scene;
 
-    // Scale
     synth.scale.set(0.45, 0.45, 0.45);
 
-    // Auto-center model
     const box = new THREE.Box3().setFromObject(synth);
     const center = box.getCenter(new THREE.Vector3());
     synth.position.sub(center);
 
-    // --- Keep Y position, rotate horizontally ---
-    synth.rotation.y = THREE.MathUtils.degToRad(70); // rotate 30° to the right
+    synth.rotation.y = THREE.MathUtils.degToRad(70);
 
-    // Enhance copper shine
     synth.traverse((child) => {
       if (child.isMesh && child.material) {
         child.material.envMapIntensity = 1.0;
