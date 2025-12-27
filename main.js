@@ -7,7 +7,6 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 // Scene & Camera
 // ===============================
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xffffff);
 
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -20,8 +19,13 @@ camera.position.set(2, 2, 5);
 // ===============================
 // Renderer
 // ===============================
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: true
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0); // transparent background
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.2;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -98,18 +102,18 @@ loader.load(
   (error) => console.error('Error loading synth:', error)
 );
 
-// ===============================
 // SLOWER INITIAL TILT ANIMATION
-// ===============================
+
 let tiltDirection = 1;
 let tiltAnimationActive = true;
-const tiltSpeed = 0.0007; // slower than before
+const tiltSpeed = 0.0009; // same as current
 
 function updateTiltAnimation() {
   if (!tiltAnimationActive || !pivot) return;
 
-  const maxTilt = THREE.MathUtils.degToRad(5);
-  const minTilt = THREE.MathUtils.degToRad(-5);
+  // Adjust tilt range: less upwards, more downwards
+  const maxTilt = THREE.MathUtils.degToRad(9);  // smaller upward tilt
+  const minTilt = THREE.MathUtils.degToRad(-0.005); // slightly more downward tilt
 
   pivot.rotation.x += tiltSpeed * tiltDirection;
 

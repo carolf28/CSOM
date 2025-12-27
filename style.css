@@ -1,8 +1,25 @@
 body {
-  margin: 0;
   overflow: hidden;
+  background-color: #fff; 
+  position: relative;
+}
+
+/* DOT GRID OVERLAY */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.08) 1px,
+    transparent 2px
+  );
+  background-size: 1.5em 1.5em; /* spacing between dots */
+  pointer-events: none;
+  z-index: 0;
 }
 
 canvas {
   display: block;
+  position: relative;
+  z-index: 1;
 }
