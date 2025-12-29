@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>CSOM Synth Viewer</title>
-  <link rel="stylesheet" href="style.css">
 
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js import map -->
   <script type="importmap">
   {
     "imports": {
@@ -14,7 +17,56 @@
   }
   </script>
 </head>
+
 <body>
+  <!-- UI overlay (above canvas) -->
+  <div id="ui">
+    <nav>
+     <div class="logo">CSOM</div> 
+      <ul class="nav-links">
+        <li><a href="#quem-somos">Quem Somos</a></li>
+        <li><a href="#actividades">Actividades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Side bar trigger -->
+  <div id="side-bar">
+    <span class="side-label">PRÓXIMOS EVENTOS</span>
+  </div>
+
+  <!-- Sliding panel -->
+  <div id="side-panel">
+    <button id="close-panel" aria-label="Close panel">×</button>
+    <h2>Próximos eventos</h2>
+    <ul>
+      <li>Live Performance — June 20</li>
+      <li>Workshop Modular — July 5</li>
+      <li>CSOM Jam Session — August 12</li>
+    </ul>
+  </div>
+
+    <!-- Botão Synth -->
+  <div id="start-overlay">
+  <p class="start-text">Prima o botão para começar</p>
+  <button id="start-button">[OFF]</button>
+  </div> 
+
+  <!-- Social Buttons -->
+<div id="social-buttons">
+  <a href="mailto:example@example.com" class="social-btn">
+    <img src="mail.png" alt="Mail">
+  </a>
+  <a href="https://instagram.com/yourprofile" class="social-btn" target="_blank">
+    <img src="instagram-logo.png" alt="Instagram">
+  </a>
+</div>
+
+  <!-- Three.js app -->
   <script type="module" src="main.js"></script>
+
+  <!-- UI / slide menu logic -->
+  <script src="styles.js"></script>
 </body>
 </html>

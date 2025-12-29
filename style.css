@@ -1,7 +1,28 @@
+/* Import OlapMetric-Four */
+@font-face {
+  font-family: 'OlapMetric';
+  src: url('fonts/OlapMetric-Four.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Import Ki-Regular */
+@font-face {
+  font-family: 'KiRegular';
+  src: url('fonts/Ki-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===============================
+   BODY & DOT GRID
+=============================== */
 body {
   overflow: hidden;
   background-color: #fff; 
   position: relative;
+  font-family: sans-serif;
+  margin: 0;
 }
 
 /* DOT GRID OVERLAY */
@@ -18,8 +39,252 @@ body::before {
   z-index: 0;
 }
 
+/* ===============================
+   THREE.JS CANVAS
+=============================== */
 canvas {
   display: block;
   position: relative;
   z-index: 1;
+}
+/* ===============================
+   UI / NAV OVERLAY
+=============================== */
+#ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+/* Nav bar */
+nav {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+background-color: #fff;
+}
+
+/* Logo — centered to the PAGE */
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'KiRegular';
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+
+  pointer-events: auto;
+}
+
+/* Navigation links — forced to the right */
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 1.8rem;
+  margin-right: 1rem;
+  font-family: 'KiRegular';
+  font-size: 1.1rem;
+  list-style: none;
+}
+
+/* Link buttons */
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 5.5em;
+  padding-left: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #000;
+
+  cursor: pointer;
+
+}
+
+.nav-links li a:hover {
+  color: #555;
+}
+
+
+
+/* =========================
+   LEFT YELLOW BAR
+========================= */
+#side-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2.5rem;          /* ⬅️ thicker bar (adjust if needed) */
+  height: 100vh;
+  background-color: #93FFAC;
+  cursor: pointer;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;    /* vertical centering */
+  justify-content: center;/* horizontal centering */
+}
+
+#side-bar:hover {
+  background: #85fca1;
+}
+
+/* Optional vertical text */
+.side-label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #000;
+  font-family: 'KiRegular';
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* =========================
+   SLIDING PANEL
+========================= */
+#side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  background: #93FFAC;
+  padding: 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 30;
+  overflow-y: auto;
+}
+
+#side-panel.open {
+  transform: translateX(0);
+}
+
+#side-panel h2 {
+  margin-top: 0;
+    font-family: 'KiRegular';
+}
+
+#side-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+#side-panel li {
+  margin-bottom: 1rem;
+}
+
+/* Close button */
+#close-panel {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* =========================
+  START BUTTON
+========================= */
+#start-overlay {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 20; /* on top of canvas and nav */
+  pointer-events: auto;
+}
+
+/* Main overlay text */
+.start-text {
+  font-size: 0.75rem;
+  font-family: 'KiRegular';
+  color: #000;
+  margin-bottom: 0.4rem;
+  opacity: 0; /* start invisible */
+  transition: opacity 1s ease-in-out;
+}
+
+/* Text-only button */
+#start-button {
+  font-size: 0.75rem;
+  font-family: 'KiRegular';
+  color: #FF1612;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+#start-button:hover {
+  color: #555; /* subtle hover effect */
+}
+
+
+/* =========================
+  SOCIAL BUTTON
+========================= */
+
+#social-buttons {
+  position: fixed;
+  bottom: 1rem; 
+  right: 1rem;  /* distance from right */
+  display: flex;
+  flex-direction: column; /* stacked vertically */
+  gap: 1rem; /* spacing between buttons */
+  z-index: 20; /* above canvas and nav */
+}
+
+.social-btn {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%; /* circular */
+  background-color: #ff93e2; /* pink */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.social-btn img {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+
+
+/* Responsive: stack nav on smaller screens */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
