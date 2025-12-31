@@ -2,12 +2,12 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { initSounds, playStripe01, unlockAudio } from './sounds.js';
 
 // ===============================
 // Scene & Camera
 // ===============================
 const scene = new THREE.Scene();
-
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -19,13 +19,9 @@ camera.position.set(2, 2, 5);
 // ===============================
 // Renderer
 // ===============================
-
-const renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  alpha: true
-});
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000, 0); // transparent background
+renderer.setClearColor(0x000000, 0);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.2;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -38,14 +34,10 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enableZoom = false;
 controls.enablePan = false;
-
-// Free horizontal rotation
 controls.minAzimuthAngle = -Infinity;
 controls.maxAzimuthAngle = Infinity;
-
-// Vertical rotation limits
-controls.minPolarAngle = THREE.MathUtils.degToRad(10);  // cannot look above
-controls.maxPolarAngle = THREE.MathUtils.degToRad(70);  // can look down
+controls.minPolarAngle = THREE.MathUtils.degToRad(10);
+controls.maxPolarAngle = THREE.MathUtils.degToRad(70);
 
 // ===============================
 // HDR ENVIRONMENT
@@ -69,60 +61,100 @@ scene.add(softDirectional);
 // LOAD & CENTER SYNTH WITH PIVOT
 // ===============================
 const loader = new GLTFLoader();
-let pivot = new THREE.Group(); // pivot group for tilt animation
+const pivot = new THREE.Group();
 scene.add(pivot);
+
+let synth = null;
 
 loader.load(
   'synthcsom.glb',
   (gltf) => {
-    const synth = gltf.scene;
-
-    // Scale
+    synth = gltf.scene;
     synth.scale.set(0.45, 0.45, 0.45);
 
-    // Auto-center model
     const box = new THREE.Box3().setFromObject(synth);
     const center = box.getCenter(new THREE.Vector3());
     synth.position.sub(center);
 
-    // Default horizontal rotation
     synth.rotation.y = THREE.MathUtils.degToRad(70);
 
-    // Enhance copper shine
     synth.traverse((child) => {
       if (child.isMesh && child.material) {
         child.material.envMapIntensity = 1.0;
       }
     });
 
-    pivot.add(synth); // add synth to pivot for tilt animation
-    pivot.rotation.x = THREE.MathUtils.degToRad(0); // default tilt
+    pivot.add(synth);
+    pivot.rotation.x = THREE.MathUtils.degToRad(0);
+
+    // ===============================
+    // LOG OBJECT TREE FOR DEBUG
+    // ===============================
+    console.log('--- GLTF Object Tree ---');
+    function logNode(node, depth = 0) {
+      console.log('  '.repeat(depth) + node.name || '(no name)');
+      node.children.forEach((child) => logNode(child, depth + 1));
+    }
+    logNode(synth);
+
+    // ===============================
+    // CLICKABLE STRIPE_01 WITH GLOW
+    // ===============================
+const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name from log
+    if (stripe01) {
+      stripe01.traverse((child) => {
+        if (child.isMesh && child.material) {
+          child.userData.clickable = true;
+
+          // Ensure emissive property exists
+          if (!child.material.emissive) child.material.emissive = new THREE.Color(0x000000);
+
+          child.userData.originalEmissive = child.material.emissive.clone();
+
+          child.onClick = () => {
+            console.log('Stripe clicked!'); // debug
+            unlockAudio();
+            playStripe01();
+
+            // Glow effect
+            child.material.emissive.setHex(0xffff00);
+            setTimeout(() => {
+              child.material.emissive.copy(child.userData.originalEmissive);
+            }, 300);
+          };
+        }
+      });
+    } else {
+      console.warn('⚠️ stripe_01 not found! Check the object name in console log above.');
+    }
   },
   undefined,
   (error) => console.error('Error loading synth:', error)
 );
 
-// SLOWER INITIAL TILT ANIMATION
+// ===============================
+// INIT SOUNDS
+// ===============================
+initSounds(camera);
 
+// ===============================
+// SLOW TILT ANIMATION
+// ===============================
 let tiltDirection = 1;
 let tiltAnimationActive = true;
-const tiltSpeed = 0.0009; // same as current
+const tiltSpeed = 0.0009;
 
 function updateTiltAnimation() {
-  if (!tiltAnimationActive || !pivot) return;
+  if (!tiltAnimationActive) return;
 
-  // Adjust tilt range: less upwards, more downwards
-  const maxTilt = THREE.MathUtils.degToRad(9);  // smaller upward tilt
-  const minTilt = THREE.MathUtils.degToRad(-0.005); // slightly more downward tilt
+  const maxTilt = THREE.MathUtils.degToRad(9);
+  const minTilt = THREE.MathUtils.degToRad(-0.005);
 
   pivot.rotation.x += tiltSpeed * tiltDirection;
 
-  if (pivot.rotation.x > maxTilt || pivot.rotation.x < minTilt) {
-    tiltDirection *= -1;
-  }
+  if (pivot.rotation.x > maxTilt || pivot.rotation.x < minTilt) tiltDirection *= -1;
 }
 
-// Stop tilt animation when user interacts
 controls.addEventListener('start', () => {
   tiltAnimationActive = false;
 });
@@ -145,5 +177,25 @@ function animate() {
   controls.update();
   renderer.render(scene, camera);
 }
-
 animate();
+
+// ===============================
+// RAYCASTER FOR CLICKING
+// ===============================
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+function onClick(event) {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(pivot.children, true);
+
+  if (intersects.length > 0) {
+    const obj = intersects[0].object;
+    if (obj.userData.clickable && obj.onClick) obj.onClick();
+  }
+}
+
+window.addEventListener('pointerdown', onClick);
