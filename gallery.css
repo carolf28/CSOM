@@ -1,0 +1,81 @@
+/* =========================
+  BODY & MAIN
+========================= */
+body.gallery {
+  overflow: auto;        /* allow scrolling */
+  min-height: 100vh;     /* ensure gradient shows at bottom */
+  background-color: #fff;
+  position: relative;    /* gradient will be positioned relative to body */
+  font-family: sans-serif;
+  margin: 0;
+ overflow-x: hidden;
+}
+
+main.galeria {
+  padding: 5rem 15rem 0;  /* top padding to not overlap nav */
+}
+
+/* =========================
+  GALLERY GRID
+========================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 15;
+}
+
+
+
+.blur-wrapper {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.blur-wrapper img {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+/* overlay blur around image */
+.blur-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 30px 15px rgba(237, 130, 209, 0.5); /* your pink color */
+  pointer-events: none;
+}
+
+/* =========================
+  SOCIAL BUTTONS
+========================= */
+.gallery .social-btn {
+  background-color: #CFFF45; /* updated color */
+}
+
+/* =========================
+  BOTTOM GRADIENT FADE
+========================= */
+.gallery-gradient {
+  width: 100%;
+  height:9rem;
+  background: linear-gradient(to top, #ED82D1, transparent);
+  pointer-events: none;
+  z-index: 5;
+  position: sticky;
+  bottom: 0;
+}
