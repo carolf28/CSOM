@@ -74,76 +74,116 @@ nav {
   font-size: 1.8rem;
   letter-spacing: 0.1em;
   pointer-events: auto;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 
-/* Menu button */
+/* =========================
+   NAV CONTAINER
+========================= */
+
+nav {
+  position: relative; /* positioning context */
+}
+
+/* =========================
+   MENU + LINKS WRAPPER
+========================= */
+
+.menu-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem; /* 🔥 exact spacing everywhere */
+  z-index: 25;
+}
+
+/* =========================
+   MENU BUTTON
+========================= */
 
 #menu-button {
-  position: absolute;      
-  top: 1rem;               
-  right: 1.5rem;
-  padding: 0 1.2em;     
-  border-radius: 50px;    
+  padding: 0 1.2em;
+  height: 3.4rem;
+  border-radius: 50px;
   background-color: #E8FD94;
-  display: inline-flex;   
+
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+
   cursor: pointer;
   font-family: 'KiRegular';
-  font-size: 1.4rem;        
-  line-height: 1;         
+  font-size: 1.4rem;
+  line-height: 1;
   text-transform: uppercase;
+  white-space: nowrap;
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 25;
-  white-space: nowrap;   
-  height: 3.4rem;   
 }
 
+#menu-button:hover {
+  transform: scale(1.05);
+}
 
+/* =========================
+   NAV LINKS WRAPPER
+========================= */
 
-/* Nav Links Wrapper */
 #nav-links-wrapper {
-  position: absolute;
-  top: 5.2rem;
-  right: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0.8rem;
+
   overflow: hidden;
-  max-height: 0;
-  z-index: 20;
+  max-height: 0; /* closed by default */
 }
 
-/* Nav buttons */
+/* Open state */
+nav.open #nav-links-wrapper {
+  max-height: 500px;
+}
+
+/* =========================
+   NAV BUTTONS
+========================= */
+
 .nav-btn {
-  padding: 0 1.2em;  
-  line-height: 1;
-  border-radius: 50px;    
+  padding: 0 1.2em;
+  height: 3.4rem;
+  border-radius: 50px;
   background-color: #E8FD94;
-  display: inline-flex;      
+
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-  opacity: 0;               
-  transform: translateY(-20px); 
-  white-space: nowrap;      
+
   font-family: 'KiRegular';
   font-size: 1.4rem;
-  height: 3.4rem;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #000;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
+    opacity 0.25s ease;
 }
 
-
-nav.open #nav-links-wrapper {
-  max-height: 500px; /* container expands */
+/* Visible when open */
+nav.open .nav-btn {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-
 
 
 
@@ -274,7 +314,7 @@ nav.open #nav-links-wrapper {
 
 #social-buttons {
   position: fixed;
-  bottom: 1rem; 
+  bottom: 1.5rem; 
   right: 1.5rem;  
   display: flex;
   flex-direction: column; 

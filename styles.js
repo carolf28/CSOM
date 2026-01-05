@@ -11,20 +11,16 @@
   });
 
   // START BUTTON 
+const startText = document.querySelector('.start-text');
 
-  const startText = document.querySelector('.start-text');
-let fadingIn = true;
+if (startText) { // only run if element exists
+  let fadingIn = true;
 
-function animateText() {
-  if (fadingIn) {
-    startText.style.opacity = 1;
-  } else {
-    startText.style.opacity = 0;
+  function animateText() {
+    startText.style.opacity = fadingIn ? 1 : 0;
+    fadingIn = !fadingIn;
+    setTimeout(animateText, 1000);
   }
-  fadingIn = !fadingIn;
-  setTimeout(animateText, 1000); // switch every 1 second
+
+  animateText();
 }
-
-// Start animation
-animateText();
-
