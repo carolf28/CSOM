@@ -10,7 +10,7 @@
     panel.classList.remove('open');
   });
 
-  // START BUTTON ANIMATION
+  // START BUTTON 
 
   const startText = document.querySelector('.start-text');
 let fadingIn = true;
@@ -27,3 +27,4 @@ function animateText() {
 
 // Start animation
 animateText();
+

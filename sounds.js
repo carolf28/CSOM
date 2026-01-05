@@ -4,7 +4,7 @@ let listener;
 let stripe01Sound;
 
 // ===============================
-// INIT AUDIO
+// AUDIO
 // ===============================
 export function initSounds(camera) {
   listener = new THREE.AudioListener();
@@ -14,7 +14,7 @@ export function initSounds(camera) {
 
   const audioLoader = new THREE.AudioLoader();
   audioLoader.load(
-    'sounds/sound1.wav', // make sure path is correct
+    'sounds/sound1.wav', 
     (buffer) => {
       stripe01Sound.setBuffer(buffer);
       stripe01Sound.setLoop(false);
@@ -22,7 +22,7 @@ export function initSounds(camera) {
       console.log('✅ Sound loaded: stripe_01');
     },
     undefined,
-    (err) => console.error('❌ Error loading sound:', err)
+    (err) => console.error('Error loading sound:', err)
   );
 }
 
@@ -34,7 +34,7 @@ export function unlockAudio() {
 
   const context = listener.context;
   if (context.state === 'suspended') {
-    context.resume().then(() => console.log('🔓 AudioContext resumed'));
+    context.resume().then(() => console.log('AudioContext resumed'));
   }
 }
 

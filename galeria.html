@@ -8,25 +8,31 @@
 </head>
 
 <body class="gallery">
-  <!-- UI overlay (above canvas) -->
   <div id="ui">
-    <nav>
-     <div class="logo">CSOM</div> 
-      <ul class="nav-links">
-        <li><a href="#quem-somos">Quem Somos</a></li>
-        <li><a href="#actividades">Actividades</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+<nav>
+  <div class="logo">CSOM</div>
+
+  <!-- Menu Button -->
+  <div id="menu-button">
+    Menu
   </div>
 
-    <!-- Side bar trigger -->
+  <!-- Nav Links -->
+  <div id="nav-links-wrapper">
+    <a href="#quem-somos" class="nav-btn">Quem Somos</a>
+    <a href="#actividades" class="nav-btn">Actividades</a>
+    <a href="galeria.html" class="nav-btn">Galeria</a>
+    <a href="#contacto" class="nav-btn">Contacto</a>
+  </div>
+</nav>
+  </div>
+
+    <!-- barra eventos -->
   <div id="side-bar">
     <span class="side-label">PRÓXIMOS EVENTOS</span>
   </div>
 
-  <!-- Sliding panel -->
+  <!-- barra eventos aberta  -->
   <div id="side-panel">
     <button id="close-panel" aria-label="Close panel">×</button>
     <h2>Próximos eventos</h2>
@@ -38,25 +44,24 @@
   </div>
 
 
-
-  <!-- GALERIA CONTENT -->
-  <main class="galeria">
+<!-- GALERIA  -->
+<main class="galeria">
     <h1>Galeria</h1>
 
     <div class="gallery-grid">
-      <img src="images/img2.jpg" />
-      <img src="images/img3.jpg" />
-      <img src="images/img4.jpg" />
-      <img src="images/img5.jpg" />
-      <img src="images/img6.jpg" />
-      <img src="images/img7.jpg" />
-      <img src="images/img1.jpg">
+      <img src="images/img2.jpg" class="grid-item item-1" alt="Image 1" />
+      <img src="images/img3.jpg" class="grid-item item-2" alt="Image 2" />
+      <img src="images/img4.jpg" class="grid-item item-3" alt="Image 3" />
+      <img src="images/img5.jpg" class="grid-item item-4" alt="Image 4" />
+      <img src="images/img6.jpg" class="grid-item item-5" alt="Image 5" />
+      <img src="images/img7.jpg" class="grid-item item-6" alt="Image 6" />
+      <img src="images/img1.jpg" class="grid-item item-7" alt="Image 7" />
     </div>
-  </main>
+</main>
 
 <div class="gallery-gradient"></div>
 
-      <!-- Social Buttons -->
+ <!-- Social Buttons -->
 <div id="social-buttons">
   <a href="mailto:example@example.com" class="social-btn">
     <img src="mail.png" alt="Mail">
@@ -68,8 +73,7 @@
 
 
 
-
+  <script src="styles.js"></script>
+    <script src="menu.js"></script>
 </body>
 
-  <!-- UI / slide menu logic -->
-  <script src="styles.js"></script>

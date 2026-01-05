@@ -70,7 +70,7 @@ loader.load(
   'synthcsom.glb',
   (gltf) => {
     synth = gltf.scene;
-    synth.scale.set(0.45, 0.45, 0.45);
+    synth.scale.set(0.50, 0.50, 0.50);
 
     const box = new THREE.Box3().setFromObject(synth);
     const center = box.getCenter(new THREE.Vector3());
@@ -98,7 +98,7 @@ loader.load(
     logNode(synth);
 
     // ===============================
-    // CLICKABLE STRIPE_01 WITH GLOW
+    // STRIPE_01 WITH GLOW
     // ===============================
 const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name from log
     if (stripe01) {
@@ -125,7 +125,7 @@ const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name f
         }
       });
     } else {
-      console.warn('⚠️ stripe_01 not found! Check the object name in console log above.');
+      console.warn('erroe stripe not found');
     }
   },
   undefined,

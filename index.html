@@ -19,17 +19,23 @@
 </head>
 
 <body>
-  <!-- UI overlay (above canvas) -->
   <div id="ui">
-    <nav>
-     <div class="logo">CSOM</div> 
-      <ul class="nav-links">
-        <li><a href="#quem-somos">Quem Somos</a></li>
-        <li><a href="#actividades">Actividades</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+<nav>
+  <div class="logo">CSOM</div>
+
+  <!-- Menu Button -->
+  <div id="menu-button">
+    Menu
+  </div>
+
+  <!-- Nav Links -->
+  <div id="nav-links-wrapper">
+    <a href="#quem-somos" class="nav-btn">Quem Somos</a>
+    <a href="#actividades" class="nav-btn">Actividades</a>
+    <a href="galeria.html" class="nav-btn">Galeria</a>
+    <a href="#contacto" class="nav-btn">Contacto</a>
+  </div>
+</nav>
   </div>
 
   <!-- Side bar trigger -->
@@ -69,6 +75,7 @@
 
   <!-- UI / slide menu logic -->
   <script src="styles.js"></script>
+    <script src="menu.js"></script>
 
 </body>
 </html>
