@@ -279,23 +279,23 @@ nav.open .nav-btn {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 20; /* on top of canvas and nav */
+  z-index: 20; 
   pointer-events: auto;
 }
 
 /* Main overlay text */
 .start-text {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-family: 'KiRegular';
   color: #000;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
   opacity: 0; /* start invisible */
   transition: opacity 1s ease-in-out;
 }
 
 /* Text-only button */
 #start-button {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-family: 'KiRegular';
   color: #FF1612;
   background: none;
