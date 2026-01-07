@@ -1,14 +1,32 @@
-  const bar = document.getElementById('side-bar');
-  const panel = document.getElementById('side-panel');
-  const closeBtn = document.getElementById('close-panel');
+const bar = document.getElementById('side-bar');
+const panel = document.getElementById('side-panel');
+const closeBtn = document.getElementById('close-panel');
 
-  bar.addEventListener('click', () => {
-    panel.classList.add('open');
-  });
+// Open panel when sidebar clicked
+bar.addEventListener('click', (e) => {
+  panel.classList.add('open');
+  e.stopPropagation(); // prevent this click from closing immediately
+});
 
-  closeBtn.addEventListener('click', () => {
+// Close panel when X button clicked
+closeBtn.addEventListener('click', () => {
+  panel.classList.remove('open');
+});
+
+// Close panel when clicking outside
+document.addEventListener('click', (e) => {
+  // Check if the click was NOT inside the panel or the sidebar
+  if (!panel.contains(e.target) && !bar.contains(e.target)) {
     panel.classList.remove('open');
-  });
+  }
+});
+
+// Optional: close panel on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    panel.classList.remove('open');
+  }
+});
 
   // START BUTTON 
 const startText = document.querySelector('.start-text');
