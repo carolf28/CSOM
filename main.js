@@ -92,7 +92,7 @@ loader.load(
     // ===============================
     console.log('--- GLTF Object Tree ---');
     function logNode(node, depth = 0) {
-      console.log('  '.repeat(depth) + node.name || '(no name)');
+      console.log('  '.repeat(depth) + (node.name || '(no name)'));
       node.children.forEach((child) => logNode(child, depth + 1));
     }
     logNode(synth);
@@ -100,23 +100,21 @@ loader.load(
     // ===============================
     // STRIPE_01 WITH GLOW
     // ===============================
-const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name from log
+    const stripe01 = synth.getObjectByName('Stripe_01'); // replace with exact name from log
     if (stripe01) {
       stripe01.traverse((child) => {
         if (child.isMesh && child.material) {
           child.userData.clickable = true;
 
-          // Ensure emissive property exists
           if (!child.material.emissive) child.material.emissive = new THREE.Color(0x000000);
-
           child.userData.originalEmissive = child.material.emissive.clone();
 
-          child.onClick = () => {
-            console.log('Stripe clicked!'); // debug
+          // store action in userData
+          child.userData.action = () => {
+            console.log('Stripe clicked!');
             unlockAudio();
             playStripe01();
 
-            // Glow effect
             child.material.emissive.setHex(0xffff00);
             setTimeout(() => {
               child.material.emissive.copy(child.userData.originalEmissive);
@@ -125,7 +123,7 @@ const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name f
         }
       });
     } else {
-      console.warn('error');
+      console.warn('Stripe_01 not found in GLTF');
     }
   },
   undefined,
@@ -138,25 +136,39 @@ const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name f
 initSounds(camera);
 
 // ===============================
-// SLOW TILT ANIMATION
+// SUBTLE SLOW TILT ANIMATION
 // ===============================
 let tiltDirection = 1;
 let tiltAnimationActive = true;
-const tiltSpeed = 0.0009;
+
+// subtle tilt settings
+const maxTilt = THREE.MathUtils.degToRad(5);    // max tilt angle
+const minTilt = THREE.MathUtils.degToRad(-0.002); // min tilt angle
+const tiltSpeed = 0.0005;                       // slower, more subtle
 
 function updateTiltAnimation() {
   if (!tiltAnimationActive) return;
-
-  const maxTilt = THREE.MathUtils.degToRad(9);
-  const minTilt = THREE.MathUtils.degToRad(-0.005);
 
   pivot.rotation.x += tiltSpeed * tiltDirection;
 
   if (pivot.rotation.x > maxTilt || pivot.rotation.x < minTilt) tiltDirection *= -1;
 }
 
+// ===============================
+// STOP TILT ONLY ON DRAG
+// ===============================
+let isDragging = false;
+
 controls.addEventListener('start', () => {
-  tiltAnimationActive = false;
+  isDragging = false; // reset
+});
+
+controls.addEventListener('change', () => {
+  isDragging = true; // user moved camera → it's a drag
+});
+
+controls.addEventListener('end', () => {
+  if (isDragging) tiltAnimationActive = false;
 });
 
 // ===============================
@@ -194,7 +206,7 @@ function onClick(event) {
 
   if (intersects.length > 0) {
     const obj = intersects[0].object;
-    if (obj.userData.clickable && obj.onClick) obj.onClick();
+    if (obj.userData.clickable && obj.userData.action) obj.userData.action();
   }
 }
 
