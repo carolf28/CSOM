@@ -125,7 +125,7 @@ const stripe01 = synth.getObjectByName('Stripe_01');// replace with exact name f
         }
       });
     } else {
-      console.warn('erroe stripe not found');
+      console.warn('error');
     }
   },
   undefined,

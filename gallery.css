@@ -55,18 +55,19 @@ main.galeria {
 /* Image base */
 .grid-item {
   width: 100%;
-  max-width: 280px;
+  max-width: 380px;
   height: auto;
   object-fit: cover;
   display: block;
   position: relative;
   z-index: 20;
   transition: transform 0.35s ease, z-index 0.2s ease;
+    opacity: 80%;
 }
 
 /* Subtle lift on hover */
 .grid-item:hover {
-  transform: scale(1.03);
+  opacity: 100%;
 }
 
 /* Editorial placements */
@@ -75,8 +76,8 @@ main.galeria {
 .item-3 { grid-column: 10 / span 3; grid-row: 3 / span 4; }
 .item-4 { grid-column: 5 / span 3; grid-row: 6 / span 3; }
 .item-5 { grid-column: 2 / span 2; grid-row: 7 / span 3; }
-.item-6 { grid-column: 7 / span 3; grid-row: 9 / span 3; }
-.item-7 { grid-column: 10 / span 2; grid-row: 10 / span 3; }
+.item-6 { grid-column: 9 / span 3; grid-row: 8 / span 3; }
+.item-7 { grid-column: 6 / span 2; grid-row: 11 / span 3; }
 
 
 
