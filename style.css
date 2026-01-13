@@ -30,19 +30,26 @@ body {
 
 }
 
-/* dots */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    rgba(56, 56, 56, 0.08) 1px,
-    transparent 2px
-  );
-  background-size: 1.5em 1.5em; 
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(180, 240, 255, 0.45) 0%,
+      rgba(190, 245, 235, 0.3) 25%,
+      rgba(200, 250, 230, 0.18) 45%,
+      rgba(210, 255, 240, 0.08) 60%,
+      rgba(210, 255, 240, 0) 78%
+    ),
+    radial-gradient(
+      rgba(56, 56, 56, 0.08) 1px,
+      transparent 2px
+    );
+  background-size: cover, 1.5em 1.5em;
   pointer-events: none;
   z-index: 0;
-  margin: 1rem;
 }
 
 /* ===============================
@@ -196,6 +203,10 @@ nav.open .nav-btn {
 /* =========================
    BARRA DOS EVENTOS
 ========================= */
+#side-bar:hover {
+  background: #85fca1;
+}
+
 #side-bar {
   position: fixed;
   top: 0;
@@ -205,26 +216,30 @@ nav.open .nav-btn {
   background-color: #93FFAC;
   cursor: pointer;
   z-index: 20;
+
   display: flex;
-  align-items: center;
+  justify-content: center; 
+  align-items: center;     
+}
+
+.side-label-wrapper {
+  transform: rotate(-90deg) translateY(0.02em);
+  transform-origin: center center;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
-
-#side-bar:hover {
-  background: #85fca1;
-}
-
 .side-label {
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: #000;
   font-family: 'KiRegular';
-  transform: rotate(-90deg);
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
 }
+
 
 /* =========================
    SLIDING PANEL
@@ -265,11 +280,11 @@ nav.open .nav-btn {
    PANEL HEADER
 ========================= */
 #side-panel h2 {
-  font-size: 2rem;
-  text-transform: uppercase;
+  font-size: 1.75rem;
+
   margin-top: 0.1rem;
   margin-bottom: 1rem;
-
+ font-family: 'KiBold';
 }
 
 /* Divider under h2 
@@ -354,7 +369,7 @@ nav.open .nav-btn {
 .event-title {
   font-family: 'KiBold';
   font-size: 1.1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 /* =========================
@@ -366,7 +381,7 @@ nav.open .nav-btn {
   overflow: hidden;
   background: #000;
   border: solid 1px #000;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .event-image img {
