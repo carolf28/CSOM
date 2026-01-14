@@ -132,7 +132,9 @@ nav {
   cursor: pointer;
   font-family: 'KiRegular';
   font-size: 1.4rem;
-  line-height: 1;
+  line-height: normal;     /* let font breathe */
+  padding-top: 0.1em;      /* optical centering */
+
   text-transform: uppercase;
   white-space: nowrap;
 
