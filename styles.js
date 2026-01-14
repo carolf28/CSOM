@@ -42,3 +42,6 @@ if (startText) { // only run if element exists
 
   animateText();
 }
+
+
+

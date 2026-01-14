@@ -178,7 +178,8 @@ nav.open #nav-links-wrapper {
 
   font-family: 'KiRegular';
   font-size: 1.4rem;
-  line-height: 1;
+  line-height: normal;      
+  padding-top: 0.1em;          
   text-transform: uppercase;
   white-space: nowrap;
   text-decoration: none;

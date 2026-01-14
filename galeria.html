@@ -110,17 +110,26 @@ Tem uma memória não volátil, que significa que se o desligares e voltares a l
 
 <!-- GALERIA  -->
 <main class="galeria">
-    <h1>Galeria</h1>
-
-    <div class="gallery-grid">
-      <img src="images/img2.jpg" class="grid-item item-1" alt="Image 1" />
-      <img src="images/img3.jpg" class="grid-item item-2" alt="Image 2" />
-      <img src="images/img4.jpg" class="grid-item item-3" alt="Image 3" />
-      <img src="images/img5.jpg" class="grid-item item-4" alt="Image 4" />
-      <img src="images/img6.jpg" class="grid-item item-5" alt="Image 5" />
-      <img src="images/img7.jpg" class="grid-item item-6" alt="Image 6" />
-      <img src="images/img1.jpg" class="grid-item item-7" alt="Image 7" />
+  <div class="carousel-wrapper">
+  <button class="arrow left">
+    <img src="left-arrow.png" alt="Previous">
+  </button>
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="images/img2.jpg" class="carousel-item" alt="Image 1">
+        <img src="images/img3.jpg" class="carousel-item" alt="Image 2">
+        <img src="images/img4.jpg" class="carousel-item" alt="Image 3">
+        <img src="images/img5.jpg" class="carousel-item" alt="Image 4">
+        <img src="images/img6.jpg" class="carousel-item" alt="Image 5">
+        <img src="images/img7.jpg" class="carousel-item" alt="Image 6">
+        <img src="images/img1.jpg" class="carousel-item" alt="Image 7">
+      </div>
     </div>
+
+  <button class="arrow right">
+    <img src="right-arrow.png" alt="Next">
+  </button>
+  </div>
 </main>
 
 <div class="gallery-gradient"></div>
@@ -139,5 +148,6 @@ Tem uma memória não volátil, que significa que se o desligares e voltares a l
 
   <script src="styles.js"></script>
     <script src="menu.js"></script>
+    <script src="gallery.js"></script>
 </body>
 
