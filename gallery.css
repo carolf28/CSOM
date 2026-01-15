@@ -1,15 +1,14 @@
+/* =========================
+  FONTS
+========================= */
 @font-face {
   font-family: 'KiRegular';
   src: url('fonts/Ki-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
   font-family: 'KiBold';
   src: url('fonts/Ki-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 /* =========================
@@ -31,12 +30,10 @@ body.gallery::before {
   background-size: 1.5em 1.5em;
   pointer-events: none;
   z-index: 0;
-  margin: 1rem;
 }
 
 main.galeria {
   height: 100%;
-  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,19 +41,6 @@ main.galeria {
   position: relative;
 }
 
-
-/*.gallery h1 {
-  font-family: 'KiRegular';
-  font-size: 2.3rem;
-  line-height: 1;
-  color: #000;
-  margin-bottom: 2rem;
-  z-index: 1;
-}*/
-
-/* =========================
-  CAROUSEL
-========================= */
 .carousel-wrapper {
   display: flex;
   align-items: center;
@@ -67,46 +51,43 @@ main.galeria {
 }
 
 .carousel {
-  overflow: hidden; /* hide extra images */
+  overflow: hidden;
   flex: 1;
+  cursor: grab;
+}
+
+.carousel:active {
+  cursor: grabbing;
 }
 
 .carousel-track {
   display: flex;
+  gap: 1rem;
   transition: transform 0.5s ease;
 }
 
 .carousel-item {
-  width: calc((100% - 2rem) / 3); /* 3 images visible */
-  margin-right: 1rem; /* gap */
-  height: 550px; /* increase this value to make images taller */
+  width: calc((100% - 2rem) / 3);
+  height: 550px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 1.2rem;
   flex-shrink: 0;
+  user-drag: none;
+  -webkit-user-drag: none;
 }
 
-/* Remove margin for last item */
-.carousel-item:last-child {
-  margin-right: 0;
-}
-/* =========================
-  ARROWS
-========================= */
 .arrow {
   width: 3.4rem;
   height: 3.4rem;
   border-radius: 50%;
-  background-color: #9EDBF9; /* Pantone 2905 C approx */
+  background-color: #9EDBF9;
   border: none;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   cursor: pointer;
   margin: 0 1rem;
   flex-shrink: 0;
-
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -117,14 +98,35 @@ main.galeria {
 .arrow img {
   width: 1.8rem;
   height: 1.8rem;
-  display: block;
 }
+
 
 /* =========================
   SOCIAL BUTTONS
 ========================= */
-.gallery .social-btn {
+#social-buttons {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.social-btn {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
   background-color: #E8FD94;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-btn img {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* =========================
@@ -141,26 +143,21 @@ main.galeria {
 }
 
 /* =========================
-  KEYFRAMES
-========================= */
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* =========================
   RESPONSIVE
 ========================= */
-@media (max-width: 1200px) {
-  .carousel-item { width: calc((100% - 1rem)/2); height: 450px; }
-}
-
 @media (max-width: 900px) {
-  .carousel-item { width: calc((100% - 1rem)/2); height: 400px; }
-  .arrow { font-size: 2.5rem; width: 3rem; height: 3rem; }
-}
+  .glide__slide {
+    flex: 0 0 calc((100% - 1rem) / 2);
+    height: 400px;
+  }
 
-@media (max-width: 600px) {
-  .carousel-item { width: 100%; height: 350px; }
-  .arrow { font-size: 2rem; width: 2.5rem; height: 2.5rem; }
+  .arrow {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .arrow img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
