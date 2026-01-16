@@ -11,12 +11,17 @@
   src: url('fonts/Ki-Bold.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'eternal';
+  src: url('fonts/ARK-ES-SolidRegular.otf') format('truetype');
+}
+
 /* =========================
   BODY & MAIN
 ========================= */
 body.gallery {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;      /* allow scrolling */
+  overflow-y: auto;
   position: relative;
   margin: 0;
   background-color: #fff;
@@ -33,74 +38,54 @@ body.gallery::before {
 }
 
 main.galeria {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
+  z-index: 1;
+  padding: 4rem 6%;  /* more padding top/bottom and sides */
 }
 
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 85%;
+/* =========================
+  GRID GALLERY (3 columns, tilted, taller portrait images)
+========================= */
+.grid-gallery {
+  width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2rem;          /* 3rem vertical gap, 2rem horizontal */
+  justify-items: center;
 }
 
-.carousel {
-  overflow: hidden;
-  flex: 1;
-  cursor: grab;
-}
-
-.carousel:active {
-  cursor: grabbing;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 1rem;
-  transition: transform 0.5s ease;
-}
-
-.carousel-item {
-  width: calc((100% - 2rem) / 3);
-  height: 550px;
+.grid-gallery img {
+  width: 100%;
+  max-width: 300px;        /* keep chunky size */
   object-fit: cover;
   border-radius: 1.2rem;
-  flex-shrink: 0;
-  user-drag: none;
-  -webkit-user-drag: none;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.arrow {
-  width: 3.4rem;
-  height: 3.4rem;
-  border-radius: 50%;
-  background-color: #9EDBF9;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin: 0 1rem;
-  flex-shrink: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Portrait heights with tilt */
+.grid-gallery img:nth-child(1) { height: 320px; transform: rotate(-3deg); }
+.grid-gallery img:nth-child(2) { height: 400px; transform: rotate(4deg); }
+.grid-gallery img:nth-child(3) { height: 360px; transform: rotate(-5deg); }
+.grid-gallery img:nth-child(4) { height: 380px; transform: rotate(3deg); }
+.grid-gallery img:nth-child(5) { height: 340px; transform: rotate(-4deg); }
+.grid-gallery img:nth-child(6) { height: 420px; transform: rotate(5deg); }
+.grid-gallery img:nth-child(7) { height: 360px; transform: rotate(-2deg); }
+
+/* Hover effect: straighten and scale */
+.grid-gallery img:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  z-index: 10;
 }
 
-.arrow:hover {
-  transform: scale(1.08);
-}
-
-.arrow img {
-  width: 1.8rem;
-  height: 1.8rem;
-}
-
-
+/* ========
 /* =========================
   SOCIAL BUTTONS
 ========================= */
@@ -133,31 +118,42 @@ main.galeria {
   GRADIENT
 ========================= */
 .gallery-gradient {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 9rem;
   background: linear-gradient(to top, #ff93e2, transparent);
   pointer-events: none;
   z-index: 5;
-  position: sticky;
-  bottom: 0;
 }
 
 /* =========================
   RESPONSIVE
 ========================= */
-@media (max-width: 900px) {
-  .glide__slide {
-    flex: 0 0 calc((100% - 1rem) / 2);
-    height: 400px;
+@media (max-width: 1200px) {
+  .grid-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 1.5rem;     /* vertical/horizontal */
   }
 
-  .arrow {
-    width: 3rem;
-    height: 3rem;
+  .grid-gallery img:nth-child(1) { height: 300px; }
+  .grid-gallery img:nth-child(2) { height: 360px; }
+  .grid-gallery img:nth-child(3) { height: 320px; }
+  .grid-gallery img:nth-child(4) { height: 340px; }
+  .grid-gallery img:nth-child(5) { height: 300px; }
+  .grid-gallery img:nth-child(6) { height: 380px; }
+  .grid-gallery img:nth-child(7) { height: 320px; }
+}
+
+@media (max-width: 700px) {
+  .grid-gallery {
+    grid-template-columns: 1fr;
+    gap: 2rem;            /* more vertical space on mobile */
   }
 
-  .arrow img {
-    width: 1.5rem;
-    height: 1.5rem;
+  .grid-gallery img {
+    max-width: 100%;
+    height: auto;
   }
 }
