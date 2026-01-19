@@ -1,7 +1,7 @@
 /* FONTS */
 @font-face {
-  font-family: 'OffBit';
-  src: url('fonts/OffBit-101Bold.ttf') format('opentype');
+  font-family: 'Myrtille';
+  src: url('fonts/myrtille-pixel.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,7 +38,7 @@ body::before {
   background-image: radial-gradient(rgba(56, 56, 56, 0.08) 1px, transparent 2px);
   background-size: 1.5em 1.5em;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 

@@ -1,0 +1,38 @@
+/* =========================
+  FONTS
+========================= */
+@font-face {
+  font-family: 'KiRegular';
+  src: url('fonts/Ki-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'KiBold';
+  src: url('fonts/Ki-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'eternal';
+  src: url('fonts/ARK-ES-SolidRegular.otf') format('truetype');
+}
+
+/* =========================
+  BODY & MAIN
+========================= */
+body.quemsomos {
+  min-height: 100vh;      /* allow scrolling */
+  overflow-y: auto;
+  position: relative;
+  margin: 0;
+  background-color: #fff;
+}
+
+body.quemsomos::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(56, 56, 56, 0.08) 1px, transparent 2px);
+  background-size: 1.5em 1.5em;
+  pointer-events: none;
+  z-index: -1;
+}
