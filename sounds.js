@@ -1,55 +1,76 @@
 import * as THREE from 'three';
 
 let listener;
-let stripe01Sound;
+const stripeSounds = {};
 
 // ===============================
-// AUDIO
+// AUDIO INIT
 // ===============================
 export function initSounds(camera) {
   listener = new THREE.AudioListener();
   camera.add(listener);
 
-  stripe01Sound = new THREE.Audio(listener);
-
   const audioLoader = new THREE.AudioLoader();
-  audioLoader.load(
-    'sounds/sound1.wav', 
-    (buffer) => {
-      stripe01Sound.setBuffer(buffer);
-      stripe01Sound.setLoop(false);
-      stripe01Sound.setVolume(0.8);
-      console.log('✅ Sound loaded: stripe_01');
-    },
-    undefined,
-    (err) => console.error('Error loading sound:', err)
-  );
+
+  for (let i = 1; i <= 22; i++) {
+    const sound = new THREE.Audio(listener);
+    const path = `csounds/csom${i}.wav`;
+
+    audioLoader.load(
+      path,
+      (buffer) => {
+        sound.setBuffer(buffer);
+        sound.setLoop(true);   // 🔁 loop while pressed
+        sound.setVolume(0.8);
+        stripeSounds[`Stripe_${String(i).padStart(2, '0')}`] = sound;
+        console.log(`✅ Loaded: ${path}`);
+      },
+      undefined,
+      (err) => console.error(`❌ Error loading ${path}`, err)
+    );
+  }
 }
 
 // ===============================
-// UNLOCK AUDIO CONTEXT (required by browsers)
+// UNLOCK AUDIO CONTEXT
 // ===============================
 export function unlockAudio() {
   if (!listener) return;
 
   const context = listener.context;
   if (context.state === 'suspended') {
-    context.resume().then(() => console.log('AudioContext resumed'));
+    context.resume().then(() => console.log('🔓 AudioContext resumed'));
   }
 }
 
 // ===============================
-// PLAY SOUND
+// PLAY STRIPE SOUND (on press)
 // ===============================
-export function playStripe01() {
-  if (!stripe01Sound || !stripe01Sound.buffer) {
-    console.warn('⚠️ Sound not ready');
+export function playStripe(name) {
+  const sound = stripeSounds[name];
+
+  if (!sound || !sound.buffer) {
+    console.warn(`⚠️ Sound not ready for ${name}`);
     return;
   }
 
-  // Resume AudioContext just in case
   unlockAudio();
 
-  if (stripe01Sound.isPlaying) stripe01Sound.stop();
-  stripe01Sound.play();
+  // Only start if it's not already playing
+  if (!sound.isPlaying) {
+    sound.play();
+  }
+}
+
+// ===============================
+// STOP STRIPE SOUND (on release)
+// ===============================
+export function stopStripe(name) {
+  const sound = stripeSounds[name];
+
+  if (!sound) return;
+
+  if (sound.isPlaying) {
+    sound.stop();
+  }
 }

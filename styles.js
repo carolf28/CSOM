@@ -44,4 +44,20 @@ if (startText) { // only run if element exists
 }
 
 
+    // GALLERY FADE IN 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".grid-item");
+
+  items.forEach((item, i) => {
+
+    item.style.transitionDelay = `${i * 0.08}s`;
+
+
+    requestAnimationFrame(() => {
+      item.style.opacity = "0.9";
+      item.style.transform = "translateY(0)";
+    });
+  });
+});
 

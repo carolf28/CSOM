@@ -36,3 +36,121 @@ body.quemsomos::before {
   pointer-events: none;
   z-index: -1;
 }
+
+
+
+
+
+
+
+
+/* Main container - same padding as gallery */
+.quemsomos-main {
+  padding: 8rem 6rem 2rem;
+  max-width: 1000px; 
+  margin: 0 auto;
+  position: relative;
+  text-align: center; /* center all content */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* spacing between sections */
+}
+
+/* Intro text - larger and centered */
+.about-intro p {
+  font-family: 'KiRegular';
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: #000;
+  margin: 0 auto;
+}
+
+/* Image styling */
+.about-image img {
+  width: 80%;
+
+  border-radius: 1.2rem;
+  box-shadow: 0 0 25px rgba(0,0,0,0.05);
+  display: block;
+  margin: 0 auto; /* center image */
+  height: auto;
+  object-fit: cover;
+}
+
+/* History / more text */
+.about-history p {
+  font-family: 'KiRegular';
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: #000;
+  margin: 0 auto;
+}
+
+/* Contacts box */
+.about-contact {
+  color: #000;
+  font-family: 'KiRegular';
+    margin-bottom: 4rem;
+}
+
+.about-contact h2 {
+  font-family: 'KiBold';
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.7;
+}
+
+.about-contact a {
+  color: #000;
+  text-decoration: underline;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+  GRADIENT
+========================= */
+.quemsomos-gradient {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 9rem;
+  background: linear-gradient(to top, #7cd3f9, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* =========================
+  SOCIAL BUTTONS
+========================= */
+.social-btn {
+  background-color: #E8FD94;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .quemsomos-main {
+    padding: 6rem 3rem 2rem;
+  }
+
+  .about-intro p {
+    font-size: 1.4rem;
+  }
+
+  .about-history p {
+    font-size: 1.2rem;
+  }
+
+  .about-contact h2 {
+    font-size: 1.4rem;
+  }
+
+  .about-image img {
+    max-width: 100%;
+  }
+}
+

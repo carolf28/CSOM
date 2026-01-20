@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { initSounds, playStripe01, unlockAudio } from './sounds.js';
+import { initSounds, playStripe, stopStripe, unlockAudio } from './sounds.js';
 
 // ===============================
 // Scene & Camera
@@ -66,6 +66,13 @@ scene.add(pivot);
 
 let synth = null;
 
+const stripeNames = [
+  'Stripe_01','Stripe_02','Stripe_03','Stripe_04','Stripe_05','Stripe_06',
+  'Stripe_07','Stripe_08','Stripe_09','Stripe_10','Stripe_11','Stripe_12',
+  'Stripe_13','Stripe_14','Stripe_15','Stripe_16','Stripe_17','Stripe_18',
+  'Stripe_19','Stripe_20','Stripe_21','Stripe_22'
+];
+
 loader.load(
   'synthcsom.glb',
   (gltf) => {
@@ -87,9 +94,6 @@ loader.load(
     pivot.add(synth);
     pivot.rotation.x = THREE.MathUtils.degToRad(0);
 
-    // ===============================
-    // LOG OBJECT TREE FOR DEBUG
-    // ===============================
     console.log('--- GLTF Object Tree ---');
     function logNode(node, depth = 0) {
       console.log('  '.repeat(depth) + (node.name || '(no name)'));
@@ -98,33 +102,40 @@ loader.load(
     logNode(synth);
 
     // ===============================
-    // STRIPE_01 WITH GLOW
+    // SETUP STRIPES (PRESS = PLAY, RELEASE = STOP)
     // ===============================
-    const stripe01 = synth.getObjectByName('Stripe_01'); // replace with exact name from log
-    if (stripe01) {
-      stripe01.traverse((child) => {
+    stripeNames.forEach((name) => {
+      const stripe = synth.getObjectByName(name);
+
+      if (!stripe) {
+        console.warn(`Stripe not found: ${name}`);
+        return;
+      }
+
+      stripe.traverse((child) => {
         if (child.isMesh && child.material) {
           child.userData.clickable = true;
 
-          if (!child.material.emissive) child.material.emissive = new THREE.Color(0x000000);
-          child.userData.originalEmissive = child.material.emissive.clone();
+          if (!child.material.emissive) {
+            child.material.emissive = new THREE.Color(0x000000);
+          }
 
-          // store action in userData
-          child.userData.action = () => {
-            console.log('Stripe clicked!');
+          child.userData.originalEmissive =
+            child.material.emissive.clone();
+
+          child.userData.onPress = () => {
             unlockAudio();
-            playStripe01();
-
+            playStripe(name);
             child.material.emissive.setHex(0xffff00);
-            setTimeout(() => {
-              child.material.emissive.copy(child.userData.originalEmissive);
-            }, 300);
+          };
+
+          child.userData.onRelease = () => {
+            stopStripe(name);
+            child.material.emissive.copy(child.userData.originalEmissive);
           };
         }
       });
-    } else {
-      console.warn('Stripe_01 not found in GLTF');
-    }
+    });
   },
   undefined,
   (error) => console.error('Error loading synth:', error)
@@ -141,17 +152,18 @@ initSounds(camera);
 let tiltDirection = 1;
 let tiltAnimationActive = true;
 
-// subtle tilt settings
-const maxTilt = THREE.MathUtils.degToRad(5);    // max tilt angle
-const minTilt = THREE.MathUtils.degToRad(-0.002); // min tilt angle
-const tiltSpeed = 0.0005;                       // slower, more subtle
+const maxTilt = THREE.MathUtils.degToRad(5);
+const minTilt = THREE.MathUtils.degToRad(-0.002);
+const tiltSpeed = 0.0005;
 
 function updateTiltAnimation() {
   if (!tiltAnimationActive) return;
 
   pivot.rotation.x += tiltSpeed * tiltDirection;
 
-  if (pivot.rotation.x > maxTilt || pivot.rotation.x < minTilt) tiltDirection *= -1;
+  if (pivot.rotation.x > maxTilt || pivot.rotation.x < minTilt) {
+    tiltDirection *= -1;
+  }
 }
 
 // ===============================
@@ -160,11 +172,11 @@ function updateTiltAnimation() {
 let isDragging = false;
 
 controls.addEventListener('start', () => {
-  isDragging = false; // reset
+  isDragging = false;
 });
 
 controls.addEventListener('change', () => {
-  isDragging = true; // user moved camera → it's a drag
+  isDragging = true;
 });
 
 controls.addEventListener('end', () => {
@@ -192,12 +204,13 @@ function animate() {
 animate();
 
 // ===============================
-// RAYCASTER FOR CLICKING
+// RAYCASTER – PRESS / RELEASE
 // ===============================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
+let pressedObject = null;
 
-function onClick(event) {
+function onPointerDown(event) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -206,8 +219,19 @@ function onClick(event) {
 
   if (intersects.length > 0) {
     const obj = intersects[0].object;
-    if (obj.userData.clickable && obj.userData.action) obj.userData.action();
+    if (obj.userData.clickable && obj.userData.onPress) {
+      pressedObject = obj;
+      obj.userData.onPress();
+    }
   }
 }
 
-window.addEventListener('pointerdown', onClick);
+function onPointerUp() {
+  if (pressedObject && pressedObject.userData.onRelease) {
+    pressedObject.userData.onRelease();
+    pressedObject = null;
+  }
+}
+
+window.addEventListener('pointerdown', onPointerDown);
+window.addEventListener('pointerup', onPointerUp);
