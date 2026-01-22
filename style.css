@@ -204,7 +204,7 @@ nav.open .nav-btn {
   position: fixed;
   top: 0;
   left: 0;
-  width: 2.5rem;
+  width: 3rem;
   height: 100vh;
   background-color: #93FFAC;
   cursor: pointer;
@@ -223,7 +223,7 @@ nav.open .nav-btn {
   align-items: center;
 }
 .side-label {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: #000;
@@ -241,7 +241,7 @@ nav.open .nav-btn {
   position: fixed;
   top: 0;
   left: 0;
-  width: 22%;
+  width: 25%;
   height: 100vh;
   background: #93FFAC;
   padding: 2rem 1.5rem 4rem;
@@ -274,27 +274,11 @@ nav.open .nav-btn {
 ========================= */
 #side-panel h2 {
   font-size: 1.75rem;
-
   margin-top: 0.1rem;
-  margin-bottom: 0.11rem;
+  margin-bottom: 1.5rem;
  font-family: 'KiBold';
 }
 
-/* Divider under h2 
-#side-panel h2::after {
-  content: "";
-  display: block;
-  margin-top: 1rem;
-  width: 100%;
-  height: 1px;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(0,0,0,0.35) 0,
-    rgba(0,0,0,0.35) 4px,
-    transparent 4px,
-    transparent 12px
-  );
-}*/
 
 /* =========================
    CLOSE BUTTON
@@ -362,7 +346,7 @@ nav.open .nav-btn {
 .event-title {
   font-family: 'KiBold';
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+ margin-bottom: 1.2rem;
 }
 
 /* =========================
@@ -373,7 +357,7 @@ nav.open .nav-btn {
   aspect-ratio: 1 / 1.1;
   overflow: hidden;
   background: #000;
-  border: solid 1px #000;
+  border-radius: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -392,7 +376,7 @@ nav.open .nav-btn {
   justify-content: space-between;
   font-family: 'KiBold';
   font-size: 0.9rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
   opacity: 0.75;
 }
 

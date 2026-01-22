@@ -20,7 +20,7 @@ export function initSounds(camera) {
       path,
       (buffer) => {
         sound.setBuffer(buffer);
-        sound.setLoop(true);   // 🔁 loop while pressed
+        sound.setLoop(true);   // loop while pressed
         sound.setVolume(0.8);
         stripeSounds[`Stripe_${String(i).padStart(2, '0')}`] = sound;
         console.log(`✅ Loaded: ${path}`);
@@ -44,13 +44,13 @@ export function unlockAudio() {
 }
 
 // ===============================
-// PLAY STRIPE SOUND (on press)
+// PLAY STRIPE SOUND 
 // ===============================
 export function playStripe(name) {
   const sound = stripeSounds[name];
 
   if (!sound || !sound.buffer) {
-    console.warn(`⚠️ Sound not ready for ${name}`);
+    console.warn(`Sound not ready for ${name}`);
     return;
   }
 
@@ -63,7 +63,7 @@ export function playStripe(name) {
 }
 
 // ===============================
-// STOP STRIPE SOUND (on release)
+// STOP STRIPE SOUND 
 // ===============================
 export function stopStripe(name) {
   const sound = stripeSounds[name];
