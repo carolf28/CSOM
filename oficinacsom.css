@@ -1,0 +1,228 @@
+/* =========================
+  FONTS
+========================= */
+@font-face {
+  font-family: 'KiRegular';
+  src: url('fonts/Ki-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'KiBold';
+  src: url('fonts/Ki-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Myrtille';
+  src: url('fonts/myrtille-pixel.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================
+  BODY & MAIN
+========================= */
+body.oficina {
+  min-height: 100vh;      
+  overflow-y: auto;
+  position: relative;
+  margin: 0;
+  background-color: #fff;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(56, 56, 56, 0.08) 1px, transparent 2px);
+  background-size: 1.5em 1.5em;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.oficina-main {
+  padding: 8rem 6rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* =========================
+   GRID ITEM
+========================= */
+.oficina-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem;
+  align-items: start;
+}
+
+
+.oficina-page-title {
+  font-family: 'KiRegular';
+  font-size: 2.8rem;     
+  text-transform: uppercase;
+
+  color: #000;
+  padding: 0.4rem 0.4rem;  /* some spacing around text */
+  display: inline-block; /* fits text only */
+  border-radius: 0.6rem; /* optional rounded corners */
+  margin-bottom: 3rem;  
+}
+
+/* =========================
+   CARTAZ CONTAINER
+========================= */
+.oficina-cartaz {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;  
+  border-radius: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* fallback */
+}
+
+/* blurred background */
+.oficina-cartaz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.7);
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+/* poster image inside */
+.oficina-cartaz img {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  height: 85%;         
+  object-fit: contain;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================
+   TEXT (RIGHT)
+========================= */
+.oficina-title {
+  font-family: 'KiBold';
+}
+
+.oficina-title h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.oficina-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+    font-family: 'KiRegular';
+
+      
+}
+
+.oficina-credits {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  opacity: 0.5;
+  font-family: 'KiRegular';
+        
+}
+
+/* =========================
+   DIVIDER
+========================= */
+.oficina-divider {
+  margin: 4rem 0;
+  height: 1px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(0,0,0,0.3) 0,
+    rgba(0,0,0,0.3) 4px,
+    transparent 4px,
+    transparent 12px
+  );
+}
+
+
+
+
+
+/* =========================
+   ARROWS INSIDE CARTAZ
+========================= */
+
+.oficina-cartaz {
+  position: relative; /* needed for absolute arrows */
+}
+
+/* Arrow buttons */
+.oficina-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 3;
+  opacity: 0.9;          /* slightly more visible */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.oficina-arrow:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Left and Right positioning */
+.left-arrow { left: 1rem; }
+.right-arrow { right: 1rem; }
+
+/* Inline SVG styling */
+.oficina-arrow svg {
+  width: 3rem;      /* bigger arrows */
+  height: 3rem;
+  display: block;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.85);  /* slightly darker than pure white */
+  stroke-width: 3;   /* thicker lines */
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
