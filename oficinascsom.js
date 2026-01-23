@@ -1,52 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".oficina-slider img");
-  const prevBtn = document.querySelector(".left-arrow");
-  const nextBtn = document.querySelector(".right-arrow");
+  const sliders = document.querySelectorAll(".oficina-slider");
 
-  let currentIndex = 0;
-  let autoSlideInterval = null;
-  const AUTO_SLIDE_DELAY = 4000; // 4 seconds
+  sliders.forEach((slider) => {
+    const slides = slider.querySelectorAll("img");
+    const prevBtn = slider.parentElement.querySelector(".left-arrow");
+    const nextBtn = slider.parentElement.querySelector(".right-arrow");
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("show", i === index);
-    });
-  }
+    let currentIndex = 0;
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function prevSlide() {
-    currentIndex =
-      (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, AUTO_SLIDE_DELAY);
-  }
-
-  function stopAutoSlide() {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("show", i === index);
+      });
     }
-  }
 
-  // Initial state
-  showSlide(currentIndex);
-  startAutoSlide();
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
 
-  // Arrow controls
-  nextBtn.addEventListener("click", () => {
-    stopAutoSlide();
-    nextSlide();
-  });
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
 
-  prevBtn.addEventListener("click", () => {
-    stopAutoSlide();
-    prevSlide();
+    // Initial state
+    showSlide(currentIndex);
+
+    // Arrow controls
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
   });
 });
