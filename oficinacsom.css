@@ -11,12 +11,7 @@
   src: url('fonts/Ki-Bold.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: 'Myrtille';
-  src: url('fonts/myrtille-pixel.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 
 
@@ -45,6 +40,38 @@ body::before {
 
 
 
+body.oficina .page-title {
+  position: absolute; 
+  top: 1.5rem;
+  left: 1.5rem;
+
+  height: 2.4rem;
+  padding: 0 0.5em;
+
+  background-color: #85fca1;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'KiRegular';
+  font-size: 1.4rem;
+  line-height: normal;
+  padding-top: 0.1em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+
+body.oficina .page-title span {
+  display: block;
+  transform: translateY(1px); 
+  line-height: 1.2rem;
+}
 
 
 /* =========================
@@ -177,7 +204,6 @@ body::before {
   position: relative; 
 }
 
-/* Arrow buttons */
 .oficina-arrow {
   position: absolute;
   top: 50%;
@@ -201,7 +227,6 @@ body::before {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Hover effect */
 .oficina-arrow:hover {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
