@@ -73,21 +73,20 @@ nav {
 
 
 .logo {
-  position: absolute;           /* keeps it positioned like before */
-  left: 50%;                    /* center horizontally */
-  transform: translateX(-50%);  /* center adjustment */
-  margin-top: 8rem;             /* original vertical spacing from top */
+  position: absolute;          
+  left: 50%;                    
+  transform: translateX(-50%); 
+  margin-top: 8rem;            
 
-  width: 250px;                 /* size of 3D logo */
+  width: 250px;                 
   height: 250px;
-  overflow: visible;            /* allow canvas to render fully */
+  overflow: visible;            
 
-  font-family: 'KiRegular';     /* keep in case you still want text fallback */
+  font-family: 'KiRegular';   
   font-size: 1.8rem;
   letter-spacing: 0.1em;
   pointer-events: auto;
 }
-
 
 
 /* =========================
@@ -95,7 +94,7 @@ nav {
 ========================= */
 
 nav {
-  position: relative; /* positioning context */
+  position: relative; 
 }
 
 /* =========================

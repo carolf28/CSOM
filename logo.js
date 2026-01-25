@@ -19,31 +19,36 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 0, 5);
 
 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // improve quality
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setClearColor(0x000000, 0);
+
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.5; // brighter overall
+renderer.toneMappingExposure = 1.15; // 🔥 slightly darker, more contrast
 renderer.outputColorSpace = THREE.SRGBColorSpace;
+
 container.appendChild(renderer.domElement);
 
 // ====================
-// Lighting (brighter synth-style)
+// Lighting (more shadows)
 // ====================
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6); // brighter
-directionalLight.position.set(2, 3, 4);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9); // key light
+directionalLight.position.set(3, 4, 5);
 scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // brighter fill
+// ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
 scene.add(ambientLight);
 
-// Optional HDR environment
+// ====================
+// HDR Environment (controlled)
+// ====================
 new RGBELoader()
   .setPath('hdr/')
   .load('christmas_photo_studio_06_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
-    scene.environmentIntensity = 1.2; // more reflective
+    scene.environmentIntensity = 0.95; 
   });
 
 // ====================
@@ -71,10 +76,10 @@ loader.load(
 
     logo.traverse((child) => {
       if (child.isMesh && child.material) {
-        child.material.envMapIntensity = 1.2; // reflect HDR more
+        child.material.envMapIntensity = 1.0;
+        if (child.material.roughness !== undefined) child.material.roughness = 0.35; // helps shadow breakup
+        if (child.material.metalness !== undefined) child.material.metalness = 0.4;
         child.material.needsUpdate = true;
-        if (child.material.roughness !== undefined) child.material.roughness = 0.3;
-        if (child.material.metalness !== undefined) child.material.metalness = 0.3;
       }
     });
 
@@ -85,29 +90,27 @@ loader.load(
 );
 
 // ====================
-// Mouse Tilt (horizontal only)
+// Mouse Tilt 
 // ====================
 let mouseX = 0;
 
 window.addEventListener('mousemove', (event) => {
-  // normalize (-1 → 1)
   mouseX = (event.clientX / window.innerWidth) * 2 - 1;
 });
 
 // ====================
-// Animate loop with smooth horizontal tilt only
+// Animate loop
 // ====================
 let currentX = 0;
-const tiltAmount = 0.35; // stronger horizontal tilt (~20°)
-const ease = 0.05;       // smoothness factor
+const tiltAmount = 0.35;
+const ease = 0.05;
 
 function animate() {
   requestAnimationFrame(animate);
 
   if (logo) {
-    // Smoothly interpolate tilt horizontally
     currentX += (mouseX - currentX) * ease;
-    logo.rotation.y = currentX * tiltAmount; // horizontal tilt
+    logo.rotation.y = currentX * tiltAmount;
   }
 
   renderer.render(scene, camera);
