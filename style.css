@@ -35,12 +35,14 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(56, 56, 56, 0.08) 1px, transparent 2px);
+  background-image: radial-gradient(
+    rgba(175, 140, 190, 0.18) 1px,
+    transparent 2px
+  );
   background-size: 1.5em 1.5em;
   pointer-events: none;
   z-index: -1;
 }
-
 
 /* ===============================
    THREE.JS CANVAS
@@ -69,17 +71,24 @@ nav {
   align-items: center;
 }
 
-/* Logo */
+
 .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'KiRegular';
+  position: absolute;           /* keeps it positioned like before */
+  left: 50%;                    /* center horizontally */
+  transform: translateX(-50%);  /* center adjustment */
+  margin-top: 8rem;             /* original vertical spacing from top */
+
+  width: 250px;                 /* size of 3D logo */
+  height: 250px;
+  overflow: visible;            /* allow canvas to render fully */
+
+  font-family: 'KiRegular';     /* keep in case you still want text fallback */
   font-size: 1.8rem;
   letter-spacing: 0.1em;
   pointer-events: auto;
-  margin-top: 6rem;
 }
+
+
 
 /* =========================
    NAV CONTAINER

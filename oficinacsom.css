@@ -12,9 +12,6 @@
 }
 
 
-
-
-
 /* =========================
   BODY & MAIN
 ========================= */
@@ -24,17 +21,6 @@ body.oficina {
   position: relative;
   margin: 0;
   background-color: #fff;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(56, 56, 56, 0.08) 1px, transparent 2px);
-  background-size: 1.5em 1.5em;
-  pointer-events: none;
-  z-index: -1;
-    pointer-events: none;
 }
 
 
@@ -160,6 +146,8 @@ body.oficina .page-title span {
 .oficina-slider img.show {
   opacity: 1;
 }
+
+
 /* =========================
    TEXTO + DESCRIÇAO
 ========================= */
