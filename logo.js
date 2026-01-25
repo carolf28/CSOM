@@ -2,9 +2,11 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
-// 1️⃣ Scene, camera, renderer
+// ====================
+// Scene, Camera, Renderer
+// ====================
 const scene = new THREE.Scene();
-scene.background = null; // true transparency
+scene.background = null;
 
 const container = document.getElementById('logo-container');
 
@@ -14,87 +16,110 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(0, 0, 5); 
+camera.position.set(0, 0, 5);
 
 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // improve quality
 renderer.setSize(container.clientWidth, container.clientHeight);
-renderer.setClearColor(0x000000, 0); // fully transparent
+renderer.setClearColor(0x000000, 0);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.2;
+renderer.toneMappingExposure = 1.5; // brighter overall
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 container.appendChild(renderer.domElement);
 
-// 2️⃣ Lighting (match synth scene)
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3); // soft
+// ====================
+// Lighting (brighter synth-style)
+// ====================
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6); // brighter
 directionalLight.position.set(2, 3, 4);
 scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // brighter fill
 scene.add(ambientLight);
 
-// 3️⃣ Optional HDR environment (if you have HDR file)
-// Comment this out if you don't have an HDR
+// Optional HDR environment
 new RGBELoader()
-  .setPath('hdr/') 
+  .setPath('hdr/')
   .load('christmas_photo_studio_06_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
-    scene.environmentIntensity = 1.0;
+    scene.environmentIntensity = 1.2; // more reflective
   });
 
-// 4️⃣ Load GLB logo
+// ====================
+// Load GLB logo
+// ====================
 const loader = new GLTFLoader();
 let logo;
 
 loader.load(
-  './logo.glb', // keep path as is
-  function (gltf) {
+  './logo.glb',
+  (gltf) => {
     logo = gltf.scene;
 
-    // Keep your current scale (no changes)
     const box = new THREE.Box3().setFromObject(logo);
     const size = new THREE.Vector3();
     box.getSize(size);
     const maxDim = Math.max(size.x, size.y, size.z);
 
-    const scale = 2.5 / maxDim; // keep your current scale
+    const scale = 2.5 / maxDim;
     logo.scale.set(scale, scale, scale);
 
-    // Center (keep position)
     const center = new THREE.Vector3();
     box.getCenter(center);
     logo.position.sub(center.multiplyScalar(scale));
 
-    // Make materials reflect environment
     logo.traverse((child) => {
       if (child.isMesh && child.material) {
-        child.material.envMapIntensity = 1.0;
+        child.material.envMapIntensity = 1.2; // reflect HDR more
         child.material.needsUpdate = true;
+        if (child.material.roughness !== undefined) child.material.roughness = 0.3;
+        if (child.material.metalness !== undefined) child.material.metalness = 0.3;
       }
     });
 
     scene.add(logo);
   },
   undefined,
-  function (error) {
-    console.error('Error loading GLB:', error);
-  }
+  (error) => console.error('Error loading GLB:', error)
 );
 
-// 5️⃣ Handle window resize
-window.addEventListener('resize', () => {
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  camera.aspect = container.clientWidth / container.clientHeight;
-  camera.updateProjectionMatrix();
+// ====================
+// Mouse Tilt (horizontal only)
+// ====================
+let mouseX = 0;
+
+window.addEventListener('mousemove', (event) => {
+  // normalize (-1 → 1)
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
 });
 
-// 6️⃣ Animation loop
+// ====================
+// Animate loop with smooth horizontal tilt only
+// ====================
+let currentX = 0;
+const tiltAmount = 0.35; // stronger horizontal tilt (~20°)
+const ease = 0.05;       // smoothness factor
+
 function animate() {
   requestAnimationFrame(animate);
 
-  if (logo) logo.rotation.y += 0.005; // keep rotation
+  if (logo) {
+    // Smoothly interpolate tilt horizontally
+    currentX += (mouseX - currentX) * ease;
+    logo.rotation.y = currentX * tiltAmount; // horizontal tilt
+  }
 
   renderer.render(scene, camera);
 }
 
 animate();
+
+// ====================
+// Handle Resize
+// ====================
+window.addEventListener('resize', () => {
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  camera.aspect = container.clientWidth / container.clientHeight;
+  camera.updateProjectionMatrix();
+});
