@@ -93,6 +93,8 @@ body.oficina .page-title span {
   margin-bottom: 3rem;  
 }
 
+
+
 /* =========================
    CARTAZ CONTAINER
 ========================= */
@@ -249,5 +251,20 @@ body.oficina .page-title span {
 
 
 
+/* Fade in + slide up animation */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-
+.oficina-item {
+  opacity: 0; /* start hidden */
+  transform: translateY(20px);
+  animation-fill-mode: forwards; /* keep final state after animation */
+}

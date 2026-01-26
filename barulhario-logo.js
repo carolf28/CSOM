@@ -2,13 +2,14 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
+const container = document.getElementById('logo-container'); // same div as Oficina
+if (!container) throw new Error("Logo container not found");
+
 // ====================
 // Scene, Camera, Renderer
 // ====================
 const scene = new THREE.Scene();
 scene.background = null;
-
-const container = document.getElementById('logo-container');
 
 const camera = new THREE.PerspectiveCamera(
   45,
@@ -19,11 +20,9 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 0, 5);
 
 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(container.clientWidth, container.clientHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setClearColor(0x000000, 0);
-
-// tone mapping → brighter but contrasty
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.3;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -31,7 +30,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 container.appendChild(renderer.domElement);
 
 // ====================
-// Lighting
+// Lights
 // ====================
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.15);
 directionalLight.position.set(4, 5, 6);
@@ -52,24 +51,22 @@ new RGBELoader()
   });
 
 // ====================
-// Load GLB logo
+// Load Barulhário logo
 // ====================
 const loader = new GLTFLoader();
 let logo;
 
 loader.load(
-  './logo.glb',
+  './logometal.glb', // ← load the metal logo
   (gltf) => {
     logo = gltf.scene;
 
-    // normalize size
+    // normalize size like Oficina
     const box = new THREE.Box3().setFromObject(logo);
     const size = new THREE.Vector3();
     box.getSize(size);
     const maxDim = Math.max(size.x, size.y, size.z);
-
-    // slightly smaller
-    const scale = 2.2 / maxDim;
+    const scale = 2.2 / maxDim; // same size as Oficina logo
     logo.scale.set(scale, scale, scale);
 
     const center = new THREE.Vector3();
@@ -97,32 +94,29 @@ loader.load(
 // ====================
 let mouseX = 0;
 let currentX = 0;
+const tiltAmount = 0.35;
+const ease = 0.05;
 
 window.addEventListener('mousemove', (event) => {
   mouseX = (event.clientX / window.innerWidth) * 2 - 1;
 });
-
-const tiltAmount = 0.35;
-const ease = 0.05;
 
 // ====================
 // Animate
 // ====================
 function animate() {
   requestAnimationFrame(animate);
-
   if (logo) {
     currentX += (mouseX - currentX) * ease;
     logo.rotation.y = currentX * tiltAmount;
   }
-
   renderer.render(scene, camera);
 }
 
 animate();
 
 // ====================
-// Resize
+// Handle resize
 // ====================
 window.addEventListener('resize', () => {
   renderer.setSize(container.clientWidth, container.clientHeight);

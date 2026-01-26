@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const sliders = document.querySelectorAll(".oficina-slider");
+  const items = document.querySelectorAll(".oficina-item");
 
+  // Slide show logic (your existing code)
   sliders.forEach((slider) => {
     const slides = slider.querySelectorAll("img");
     const prevBtn = slider.parentElement.querySelector(".left-arrow");
@@ -24,11 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       showSlide(currentIndex);
     }
 
-    // Initial state
     showSlide(currentIndex);
 
-    // Arrow controls
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.addEventListener("click", prevSlide);
+  });
+
+  // Animate oficina items
+  items.forEach((item, index) => {
+    item.style.animation = `fadeSlideUp 0.6s ease forwards ${index * 0.15}s`;
   });
 });
