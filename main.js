@@ -77,8 +77,9 @@ loader.load(
   'synthcsom.glb',
   (gltf) => {
     synth = gltf.scene;
-    synth.scale.set(0.50, 0.50, 0.50);
+    synth.scale.set(0.50, 0.50, 0.50); // keep EXACT original scale
 
+    // center model
     const box = new THREE.Box3().setFromObject(synth);
     const center = box.getCenter(new THREE.Vector3());
     synth.position.sub(center);
@@ -94,16 +95,37 @@ loader.load(
     pivot.add(synth);
     pivot.rotation.x = THREE.MathUtils.degToRad(0);
 
-    console.log('--- GLTF Object Tree ---');
-    function logNode(node, depth = 0) {
-      console.log('  '.repeat(depth) + (node.name || '(no name)'));
-      node.children.forEach((child) => logNode(child, depth + 1));
-    }
-    logNode(synth);
+    // ------------------------------------------------------------
+    // INTRO ANIMATION (KEEPING ORIGINAL SCALE & POSITION)
+    // ------------------------------------------------------------
+// Original synth scale
+const originalScale = 0.5; 
+const startScale = originalScale * 0.8; // 80% of original
 
-    // ===============================
-    // SETUP STRIPES (PRESS = PLAY, RELEASE = STOP)
-    // ===============================
+if (synth) {
+  synth.scale.setScalar(startScale); // start slightly smaller
+
+  let introStart = performance.now();
+  const introDuration = 1300; // 2.5 seconds
+
+  function introAnim() {
+    let elapsed = (performance.now() - introStart) / introDuration;
+    let t = Math.min(elapsed, 1);
+
+    // cubic ease-out for smooth scaling
+    let ease = 1 - Math.pow(1 - t, 3);
+
+    // Scale smoothly to original scale
+    synth.scale.setScalar(startScale + ease * (originalScale - startScale));
+
+    if (t < 1) requestAnimationFrame(introAnim);
+  }
+
+  introAnim();
+}
+    // ------------------------------------------------------------
+
+    // ========== STRIPE SETUP ==========
     stripeNames.forEach((name) => {
       const stripe = synth.getObjectByName(name);
 
@@ -112,17 +134,13 @@ loader.load(
         return;
       }
 
-      // mark the entire stripe group as clickable
       stripe.userData.clickable = true;
 
-      // find all meshes inside the stripe
       stripe.traverse((child) => {
         if (child.isMesh && child.material) {
-
           if (!child.material.emissive) {
             child.material.emissive = new THREE.Color(0x000000);
           }
-
           child.userData.originalEmissive = child.material.emissive.clone();
         }
       });
@@ -131,7 +149,6 @@ loader.load(
         unlockAudio();
         playStripe(name);
 
-        // emissive highlight for entire stripe
         stripe.traverse((child) => {
           if (child.isMesh && child.material) {
             child.material.emissive.setHex(0xffff00);
@@ -142,7 +159,6 @@ loader.load(
       stripe.userData.onRelease = () => {
         stopStripe(name);
 
-        // restore original emissive
         stripe.traverse((child) => {
           if (child.isMesh && child.material) {
             child.material.emissive.copy(child.userData.originalEmissive);
@@ -181,7 +197,7 @@ function updateTiltAnimation() {
 }
 
 // ===============================
-// STOP TILT 
+// STOP TILT ONLY ON DRAG
 // ===============================
 let isDragging = false;
 
@@ -218,7 +234,7 @@ function animate() {
 animate();
 
 // ===============================
-// RAYCASTER
+// RAYCASTER – PRESS / RELEASE (FIXED)
 // ===============================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -242,7 +258,6 @@ function onPointerDown(event) {
   if (intersects.length > 0) {
     let obj = intersects[0].object;
 
-    
     const clickable = findClickableParent(obj);
 
     if (clickable && clickable.userData.onPress) {
