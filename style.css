@@ -1,12 +1,5 @@
 /* FONTS */
 @font-face {
-  font-family: 'Myrtille';
-  src: url('fonts/myrtille-pixel.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'KiRegular';
   src: url('fonts/Ki-Regular.ttf') format('truetype');
   font-weight: normal;
@@ -43,7 +36,7 @@ body::before {
 }
 
 /* ===============================
-   THREE.JS CANVAS
+   CANVAS
 =============================== */
 canvas {
   display: block;
@@ -70,7 +63,7 @@ nav {
 }
 
 
-.logo {
+#logo-container {
   position: fixed;          
   left: 50%;                    
   transform: translateX(-50%); 
@@ -86,19 +79,17 @@ nav {
   pointer-events: auto;
 }
 
+#logo-container {
+  transition: transform 0.3s ease;
+}
 
-
-
-/* =========================
-   NAV CONTAINER
-========================= */
 
 nav {
   position: relative; 
 }
 
 /* =========================
-   MENU + LINKS WRAPPER
+   MENU 
 ========================= */
 
 .menu-wrapper {
@@ -109,7 +100,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.8rem; /* 🔥 exact spacing everywhere */
+  gap: 0.8rem; 
   z-index: 25;
 }
 
@@ -130,11 +121,12 @@ nav {
   cursor: pointer;
   font-family: 'KiRegular';
   font-size: 1.4rem;
-  line-height: normal;     /* let font breathe */
-  padding-top: 0.1em;      /* optical centering */
+  line-height: normal;     
+  padding-top: 0.1em;     
 
   text-transform: uppercase;
   white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -186,7 +178,7 @@ nav.open #nav-links-wrapper {
   color: #000;
 
   cursor: pointer;
-
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   opacity: 0;
   transform: translateY(-20px);
   transition:
@@ -349,7 +341,7 @@ nav.open .nav-btn {
 }
 
 /* =========================
-   EVENT TITLE
+   EVENTO TITULO
 ========================= */
 .event-title {
   font-family: 'KiBold';
@@ -358,7 +350,7 @@ nav.open .nav-btn {
 }
 
 /* =========================
-   EVENT IMAGE
+   EVENTO IMAGEM
 ========================= */
 .event-image {
   width: 100%;
@@ -460,7 +452,7 @@ strong {
   font-family: 'KiRegular';
   color: #000;
   margin-bottom: 0.5rem;
-  opacity: 0; /* start invisible */
+  opacity: 0; 
   transition: opacity 1s ease-in-out;
 }
 
@@ -503,8 +495,12 @@ strong {
   align-items: center;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.social-btn:hover {
+  transform: scale(1.05);
+}
 
 
 .social-btn img {

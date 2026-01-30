@@ -5,7 +5,7 @@ const closeBtn = document.getElementById('close-panel');
 // Open panel when sidebar clicked
 bar.addEventListener('click', (e) => {
   panel.classList.add('open');
-  e.stopPropagation(); // prevent this click from closing immediately
+  e.stopPropagation(); 
 });
 
 // Close panel when X button clicked
@@ -15,7 +15,7 @@ closeBtn.addEventListener('click', () => {
 
 // Close panel when clicking outside
 document.addEventListener('click', (e) => {
-  // Check if the click was NOT inside the panel or the sidebar
+  
   if (!panel.contains(e.target) && !bar.contains(e.target)) {
     panel.classList.remove('open');
   }
@@ -31,7 +31,7 @@ document.addEventListener('keydown', (e) => {
   // START BUTTON 
 const startText = document.querySelector('.start-text');
 
-if (startText) { // only run if element exists
+if (startText) { 
   let fadingIn = true;
 
   function animateText() {
@@ -42,22 +42,4 @@ if (startText) { // only run if element exists
 
   animateText();
 }
-
-
-    // GALLERY FADE IN 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".grid-item");
-
-  items.forEach((item, i) => {
-
-    item.style.transitionDelay = `${i * 0.08}s`;
-
-
-    requestAnimationFrame(() => {
-      item.style.opacity = "0.9";
-      item.style.transform = "translateY(0)";
-    });
-  });
-});
 

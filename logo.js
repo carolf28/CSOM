@@ -23,7 +23,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setClearColor(0x000000, 0);
 
-// tone mapping → brighter but contrasty
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.3;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -68,7 +67,6 @@ loader.load(
     box.getSize(size);
     const maxDim = Math.max(size.x, size.y, size.z);
 
-    // slightly smaller
     const scale = 2.2 / maxDim;
     logo.scale.set(scale, scale, scale);
 
@@ -104,6 +102,20 @@ window.addEventListener('mousemove', (event) => {
 
 const tiltAmount = 0.35;
 const ease = 0.05;
+
+// ====================
+// Scroll-based slide-up effect
+// ====================
+const logoDiv = document.getElementById('logo-container');
+const maxScroll = 150; // px to move fully up
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  // Slide up only (negative translateY moves it upward)
+  const translateY = Math.max(-maxScroll, -scrollY);
+  logoDiv.style.transform = `translateX(-50%) translateY(${translateY}px)`;
+});
 
 // ====================
 // Animate

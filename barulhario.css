@@ -24,7 +24,19 @@ body.barulhario::before {
   z-index: -1;
 }
 
+.page-title img {
+  position: absolute; 
+  top: 1.5rem;
+  left: 1.5rem;
 
+  height: 4rem;
+  padding: 0 0.5em;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 
 /* =========================
@@ -41,16 +53,3 @@ body.barulhario::before {
 
 
 
-.barulhario-container {
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center;     /* center vertically if container has height */
-  flex-direction: column;/
-}
-
-.barulhario-title {
-  max-width: 90%;          /* responsive width */
-  height: auto;            /* maintain aspect ratio */
-  display: block;
-  margin: 0 auto;
-}
