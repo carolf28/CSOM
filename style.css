@@ -149,6 +149,7 @@ nav {
   max-height: 0; 
 }
 
+
 /* Open state */
 nav.open #nav-links-wrapper {
   max-height: 500px;
@@ -185,6 +186,8 @@ nav.open #nav-links-wrapper {
     transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
     opacity 0.25s ease;
 }
+
+
 
 
 nav.open .nav-btn {

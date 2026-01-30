@@ -58,6 +58,7 @@ body.quemsomos .page-title {
   white-space: nowrap;
 
   pointer-events: none;
+    border-radius: 8px; 
 }
 
 /* =========================

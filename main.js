@@ -100,13 +100,13 @@ loader.load(
     // ------------------------------------------------------------
 // Original synth scale
 const originalScale = 0.5; 
-const startScale = originalScale * 0.8; // 80% of original
+const startScale = originalScale * 0.8; 
 
 if (synth) {
   synth.scale.setScalar(startScale); // start slightly smaller
 
   let introStart = performance.now();
-  const introDuration = 1300; // 2.5 seconds
+  const introDuration = 1300; //  seconds
 
   function introAnim() {
     let elapsed = (performance.now() - introStart) / introDuration;

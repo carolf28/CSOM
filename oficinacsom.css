@@ -50,6 +50,7 @@ body.oficina .page-title {
   white-space: nowrap;
 
   pointer-events: none;
+    border-radius: 8px; 
 }
 
 
