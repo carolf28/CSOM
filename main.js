@@ -112,29 +112,43 @@ loader.load(
         return;
       }
 
+      // mark the entire stripe group as clickable
+      stripe.userData.clickable = true;
+
+      // find all meshes inside the stripe
       stripe.traverse((child) => {
         if (child.isMesh && child.material) {
-          child.userData.clickable = true;
 
           if (!child.material.emissive) {
             child.material.emissive = new THREE.Color(0x000000);
           }
 
-          child.userData.originalEmissive =
-            child.material.emissive.clone();
-
-          child.userData.onPress = () => {
-            unlockAudio();
-            playStripe(name);
-            child.material.emissive.setHex(0xffff00);
-          };
-
-          child.userData.onRelease = () => {
-            stopStripe(name);
-            child.material.emissive.copy(child.userData.originalEmissive);
-          };
+          child.userData.originalEmissive = child.material.emissive.clone();
         }
       });
+
+      stripe.userData.onPress = () => {
+        unlockAudio();
+        playStripe(name);
+
+        // emissive highlight for entire stripe
+        stripe.traverse((child) => {
+          if (child.isMesh && child.material) {
+            child.material.emissive.setHex(0xffff00);
+          }
+        });
+      };
+
+      stripe.userData.onRelease = () => {
+        stopStripe(name);
+
+        // restore original emissive
+        stripe.traverse((child) => {
+          if (child.isMesh && child.material) {
+            child.material.emissive.copy(child.userData.originalEmissive);
+          }
+        });
+      };
     });
   },
   undefined,
@@ -167,7 +181,7 @@ function updateTiltAnimation() {
 }
 
 // ===============================
-// STOP TILT ONLY ON DRAG
+// STOP TILT 
 // ===============================
 let isDragging = false;
 
@@ -204,11 +218,19 @@ function animate() {
 animate();
 
 // ===============================
-// RAYCASTER – PRESS / RELEASE
+// RAYCASTER
 // ===============================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let pressedObject = null;
+
+function findClickableParent(obj) {
+  while (obj) {
+    if (obj.userData.clickable) return obj;
+    obj = obj.parent;
+  }
+  return null;
+}
 
 function onPointerDown(event) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -218,10 +240,14 @@ function onPointerDown(event) {
   const intersects = raycaster.intersectObjects(pivot.children, true);
 
   if (intersects.length > 0) {
-    const obj = intersects[0].object;
-    if (obj.userData.clickable && obj.userData.onPress) {
-      pressedObject = obj;
-      obj.userData.onPress();
+    let obj = intersects[0].object;
+
+    
+    const clickable = findClickableParent(obj);
+
+    if (clickable && clickable.userData.onPress) {
+      pressedObject = clickable;
+      clickable.userData.onPress();
     }
   }
 }
@@ -229,8 +255,8 @@ function onPointerDown(event) {
 function onPointerUp() {
   if (pressedObject && pressedObject.userData.onRelease) {
     pressedObject.userData.onRelease();
-    pressedObject = null;
   }
+  pressedObject = null;
 }
 
 window.addEventListener('pointerdown', onPointerDown);
