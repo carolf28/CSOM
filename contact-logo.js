@@ -3,12 +3,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 // ====================
-// Scene, Camera, Renderer
+// Container & Scene
 // ====================
+const container = document.getElementById('logo-container-3d');
 const scene = new THREE.Scene();
-scene.background = null;
-
-const container = document.getElementById('logo-container');
+scene.background = null; // fully transparent
 
 const camera = new THREE.PerspectiveCamera(
   45,
@@ -16,19 +15,21 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(0, 0, 5);
 
+// We'll position the camera farther back to avoid clipping
+camera.position.set(0, 0, 6);
+
+// ====================
+// Renderer
+// ====================
 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(container.clientWidth, container.clientHeight);
-renderer.setClearColor(0x000000, 0);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.3;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.setClearColor(0x000000, 0); // fully transparent
 container.appendChild(renderer.domElement);
 
 // ====================
-// Lighting
+// Lighting (same as top logo)
 // ====================
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.15);
 directionalLight.position.set(4, 5, 6);
@@ -37,9 +38,6 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
 scene.add(ambientLight);
 
-// ====================
-// HDR Environment
-// ====================
 new RGBELoader()
   .setPath('hdr/')
   .load('christmas_photo_studio_06_1k.hdr', (texture) => {
@@ -52,94 +50,60 @@ new RGBELoader()
 // Load GLB logo
 // ====================
 const loader = new GLTFLoader();
-let logo;
-
 loader.load(
   './logo.glb',
   (gltf) => {
-    logo = gltf.scene;
+    const logo = gltf.scene;
 
-    // normalize size
-    const box = new THREE.Box3().setFromObject(logo);
-    const size = new THREE.Vector3();
-    box.getSize(size);
-    const maxDim = Math.max(size.x, size.y, size.z);
-
-    const scale = 2.2 / maxDim;
-    logo.scale.set(scale, scale, scale);
-
-    const center = new THREE.Vector3();
-    box.getCenter(center);
-    logo.position.sub(center.multiplyScalar(scale));
-
-    // material tuning
+    // Remove any possible background objects (white planes/cubes)
     logo.traverse((child) => {
       if (child.isMesh && child.material) {
         child.material.envMapIntensity = 1.3;
         if (child.material.roughness !== undefined) child.material.roughness = 0.28;
         if (child.material.metalness !== undefined) child.material.metalness = 0.45;
+        child.material.transparent = true;
         child.material.needsUpdate = true;
+      }
+      // Remove any unintended background meshes
+      if (child.isMesh && child.name.toLowerCase().includes('background')) {
+        child.visible = false;
       }
     });
 
+    // Normalize and double size
+    const box = new THREE.Box3().setFromObject(logo);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    const maxDim = Math.max(size.x, size.y, size.z);
+
+    const scale = 4.4 / maxDim; // double the previous scale
+    logo.scale.set(scale, scale, scale);
+
+    // Center the logo
+    const center = new THREE.Vector3();
+    box.getCenter(center);
+    logo.position.sub(center.multiplyScalar(scale));
+
     scene.add(logo);
+
+    renderer.render(scene, camera);
   },
   undefined,
   (error) => console.error('Error loading GLB:', error)
 );
 
 // ====================
-// Mouse rotation (desktop only)
-// ====================
-let mouseX = 0;
-let currentX = 0;
-const tiltAmount = 0.35;
-const ease = 0.05;
-
-// Only enable mouse tilt on desktop
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-if (!isMobile) {
-  window.addEventListener('mousemove', (event) => {
-    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  });
-}
-
-// ====================
-// Scroll slide-up
-// ====================
-const logoDiv = document.getElementById('logo-container');
-const maxScroll = 150; // px
-let targetY = 0;
-let currentY = 0;
-const scrollEase = 0.35; // faster follow
-
-window.addEventListener('scroll', () => {
-  targetY = Math.max(-maxScroll, -window.scrollY);
-});
-
-// ====================
-// Animate
+// Animate / Render
 // ====================
 function animate() {
   requestAnimationFrame(animate);
-
-  // logo rotation (desktop only)
-  if (logo && !isMobile) {
-    currentX += (mouseX - currentX) * ease;
-    logo.rotation.y = currentX * tiltAmount;
-  }
-
-  // logo slide-up (fast & lightweight)
-  currentY += (targetY - currentY) * scrollEase;
-  logoDiv.style.transform = `translateX(-50%) translateY(${currentY}px)`;
-
   renderer.render(scene, camera);
 }
 
 animate();
 
 // ====================
-// Resize
+// Resize handling
 // ====================
 window.addEventListener('resize', () => {
   camera.aspect = container.clientWidth / container.clientHeight;

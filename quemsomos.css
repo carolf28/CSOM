@@ -70,7 +70,7 @@ body.quemsomos .page-title {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 6rem;
 }
 
 /* =========================
@@ -98,9 +98,6 @@ body.quemsomos .page-title {
   background-color: #85fca1;
 }
 
-/* =========================
-  IMAGE
-========================= */
 .quemsomos-image {
   position: relative;
   width: 100%;
@@ -145,3 +142,115 @@ body.quemsomos .page-title {
 }
 
 
+
+/* =========================
+CONTACTO
+========================= */
+
+.contact-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* keep two columns */
+  gap: 3rem;
+  max-width: 1400px;
+  padding: 3rem;
+  min-height: 80vh; /* desired height */
+  background-color: #FFA756; /* nice orange background */
+  border-radius: 1.2rem; /* rounded corners */
+  align-items: start; /* top align content */
+  box-sizing: border-box;
+    align-items: center;
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.contact-logo {
+  width: 250px;
+  height: 250px;
+  background-color: #f0f0f0;
+}
+
+.contact-title {
+  font-family: 'KiRegular';
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.contact-email {
+  font-family: 'KiRegular';
+  font-size: 1.2rem;
+  color: #000;
+  text-decoration: underline;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-arrow {
+  font-size: 1.2rem;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem 1rem;
+  font-family: 'KiRegular';
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button {
+  width: 8rem;
+  padding: 0.8rem 1rem;
+  font-family: 'KiRegular';
+  font-size: 1rem;
+  background-color: #E8FD94;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    height: auto;
+  }
+  .contact-left {
+    align-items: center;
+    text-align: center;
+  }
+  .contact-logo {
+    margin: 0 auto;
+  }
+  .contact-links {
+    justify-content: center;
+  }
+}
