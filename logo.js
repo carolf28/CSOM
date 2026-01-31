@@ -111,11 +111,15 @@ const logoDiv = document.getElementById('logo-container');
 const maxScroll = 150; // px
 let targetY = 0;
 let currentY = 0;
-const scrollEase = 0.35; // faster follow
+
+
+// Set scrollEase based on device
+const scrollEase = isMobile ? 0.3 : 1;
 
 window.addEventListener('scroll', () => {
   targetY = Math.max(-maxScroll, -window.scrollY);
 });
+
 
 // ====================
 // Animate

@@ -169,9 +169,9 @@ CONTACTO
 }
 
 .contact-logo {
-  width: 250px;
-  height: 250px;
-  background-color: #f0f0f0;
+  width: auto;       /* width determined by content / logo */
+  height: 250px;     /* or adjust height as needed */
+  max-width: 100%;   /* prevent overflowing the container */
 }
 
 .contact-title {
