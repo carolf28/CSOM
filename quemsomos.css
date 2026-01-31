@@ -153,10 +153,10 @@ CONTACTO
   gap: 3rem;
   max-width: 1400px;
   padding: 3rem;
-  min-height: 80vh; /* desired height */
-  background-color: #FFA756; /* nice orange background */
-  border-radius: 1.2rem; /* rounded corners */
-  align-items: start; /* top align content */
+  min-height: 80vh; 
+  background-color: #000; 
+  border-radius: 1.2rem; 
+  align-items: start; 
   box-sizing: border-box;
     align-items: center;
 }
@@ -165,13 +165,14 @@ CONTACTO
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  justify-content: center;
+  justify-content: flex-start; /* top-align */
+  align-items: flex-start;     /* left-align items inside flex */
 }
 
 .contact-logo {
-  width: auto;       /* width determined by content / logo */
-  height: 250px;     /* or adjust height as needed */
-  max-width: 100%;   /* prevent overflowing the container */
+  width: 100%;   /* keep big */
+  height: 250px;
+  margin: 0;      /* prevent auto-centering */
 }
 
 .contact-title {
@@ -179,12 +180,13 @@ CONTACTO
   font-size: 2rem;
   text-transform: uppercase;
   margin: 0;
+    color: #fff;
 }
 
 .contact-email {
   font-family: 'KiRegular';
   font-size: 1.2rem;
-  color: #000;
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -194,9 +196,7 @@ CONTACTO
   gap: 1rem;
 }
 
-.contact-arrow {
-  font-size: 1.2rem;
-}
+
 
 .contact-right {
   display: flex;

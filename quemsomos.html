@@ -75,22 +75,30 @@
   <!-- CONTACT SECTION -->
   <section class="contact-section">
     <div class="contact-left">
-      <div class="contact-logo" id="logo-container-3d"></div>
       <h2 class="contact-title">Contact</h2>
-      <a href="mailto:csom@riseup.net" class="contact-email">csom@riseup.net</a>
+      <p class="contact-email">csom@riseup.net</p>
       <div class="contact-links">
         <a href="https://instagram.com/yourprofile" target="_blank" class="contact-instagram">Instagram</a>
-        <span class="contact-arrow">↗</span>
       </div>
+      <div class="contact-logo" id="logo-container-3d"></div>
     </div>
 
     <div class="contact-right">
-      <form class="contact-form">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" rows="5" required></textarea>
-        <button type="submit">Send</button>
-      </form>
+  <form class="contact-form" action="https://formsubmit.co/csom@riseup.net" method="POST">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Message" rows="5" required></textarea>
+  <button type="submit">Send</button>
+
+  
+  <input type="hidden" name="_redirect" value="thanks.html">
+  </form>
+
+<div id="thankyou-message" style="display:none; color:#fff; margin-top:1rem;">
+  Obrigada!
+</div>
+
+
     </div>
   </section>
 </main>
@@ -115,5 +123,6 @@
 <script type="module" src="logo-contact.js"></script>
 <script src="styles.js"></script>
 <script src="menu.js"></script>
+<script src="quemsomos.js"></script>
 </body>
 
