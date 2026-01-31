@@ -1,56 +1,102 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.criaçoescsom {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; /* enable vertical scroll */
+  position: relative;
+  margin: 0;
+}
 #bg-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* cover entire screen while keeping aspect ratio */
-  z-index: -1;       /* behind all other content */
-  pointer-events: none; /* so clicks pass through */
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
 }
 
 body.criaçoescsom .page-title {
-  position: absolute; 
+  position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-
   height: 2.4rem;
   padding: 0 0.5em;
-
-  background-color: rgba(255, 255, 255, 0.205); 
-  backdrop-filter: blur(15px);               
-  -webkit-backdrop-filter: blur(15px);        
-
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
   font-family: 'KiRegular';
   font-size: 1.4rem;
   line-height: normal;
-  padding-top: 0.1em;
-
   text-transform: uppercase;
   white-space: nowrap;
-
   pointer-events: none;
-  color: #000; 
-
-  border-radius: 8px; 
+  color: #000;
+  border-radius: 8px;
 }
-
-
 
 body.criaçoescsom .page-title span {
   display: block;
-  transform: translateY(1px); 
+  transform: translateY(1px);
   line-height: 1.2rem;
 }
 
 #menu-button,
 .nav-btn,
 .social-btn {
-      background-color: rgba(255, 255, 255, 0.205); /* semi-transparent white */
-  backdrop-filter: blur(15px);                /* blur the background strongly */
-  -webkit-backdrop-filter: blur(15px);  
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+main.criaçoescsom {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding-top: 12rem;
+  box-sizing: border-box;
+}
+
+.content-container {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 6rem 6rem; 
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 image per row */
+  gap: 2rem;
+  justify-items: center; /* center images horizontally */
+}
+
+.image-grid img {
+  width: 100%;
+  max-width: 550px; /* limit image size */
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .content-container {
+    padding: 0 2rem 3rem;
+  }
+
+  .image-grid img {
+    max-width: 90%; /* smaller on mobile */
+  }
 }
