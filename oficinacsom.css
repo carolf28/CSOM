@@ -12,6 +12,25 @@
 }
 
 
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.oficina-item {
+  opacity: 0; 
+  transform: translateY(20px);
+  animation-fill-mode: forwards; 
+}
+
+
+
 /* =========================
   BODY & MAIN
 ========================= */
@@ -82,32 +101,42 @@ body.oficina .page-title span {
    SOBRE SECTION
 ========================= */
 
-
+.oficina-sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; 
+  align-items: center;
+}
 
 .sobre-title {
-  height: 3rem;
-  padding: 0 0.5em;
+  padding: 0.5rem 0.8rem;  
 
-  background-color: #c2ccff;
+  background-color: #D3D7FF;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
   font-family: 'KiBold';
-  font-size: 1.8rem;
-  line-height: normal;
-  padding-top: 0.1em;
-
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  line-height: 1.2;        /* adjust so multiple lines are nicely spaced */
   text-transform: uppercase;
-  white-space: nowrap;
-
+  white-space: normal;      /* allow wrapping */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   pointer-events: none;
-    border-radius: 8px; 
+  border-radius: 8px;
 
   width: fit-content;
-
+  max-width: 100%;          /* keeps it inside the column */
 }
+
+.sobre-title span {
+  display: inline-block;
+  padding-top: 0.1em; /* nudges text down slightly */
+}
+
+
+
 
 /* RIGHT COLUMN TEXT */
 .sobre-description {
@@ -297,22 +326,3 @@ body.oficina .page-title span {
 }
 
 
-
-
-/* Fade in + slide up animation */
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.oficina-item {
-  opacity: 0; /* start hidden */
-  transform: translateY(20px);
-  animation-fill-mode: forwards; /* keep final state after animation */
-}
