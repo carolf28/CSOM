@@ -2,9 +2,6 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
-// ====================
-// Scene, Camera, Renderer
-// ====================
 const container = document.getElementById('logo-container-3d');
 const scene = new THREE.Scene();
 scene.background = null;
@@ -26,7 +23,6 @@ renderer.toneMappingExposure = 1.3;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 container.appendChild(renderer.domElement);
 
-
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.15);
 directionalLight.position.set(4, 5, 6);
 scene.add(directionalLight);
@@ -34,15 +30,13 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
 scene.add(ambientLight);
 
-
 new RGBELoader()
   .setPath('hdr/')
-  .load('christmas_photo_studio_06_1k.hdr', (texture) => {
+  .load('hdr/christmas_photo_studio_06_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
     scene.environmentIntensity = 0.95;
   });
-
 
 const loader = new GLTFLoader();
 let logo;
@@ -51,20 +45,7 @@ loader.load(
   './logo.glb',
   (gltf) => {
     logo = gltf.scene;
-
-
-    const box = new THREE.Box3().setFromObject(logo);
-    const size = new THREE.Vector3();
-    box.getSize(size);
-    const maxDim = Math.max(size.x, size.y, size.z);
-    const scale = 5 / maxDim; // bigger than top logo
-    logo.scale.set(scale, scale, scale);
-
-
-    const center = new THREE.Vector3();
-    box.getCenter(center);
-    logo.position.sub(center.multiplyScalar(scale));
-
+    scene.add(logo);
 
     logo.traverse((child) => {
       if (child.isMesh && child.material) {
@@ -75,12 +56,35 @@ loader.load(
       }
     });
 
-    scene.add(logo);
+    resizeLogo();
   },
   undefined,
   (error) => console.error('Error loading GLB:', error)
 );
 
+function resizeLogo() {
+  if (!logo) return;
+
+  const box = new THREE.Box3().setFromObject(logo);
+  const size = new THREE.Vector3();
+  box.getSize(size);
+
+  // Base scale for desktop
+  let baseScale = 4;
+
+  // Responsive adjustment based on container width
+  const containerWidth = container.clientWidth;
+  const responsiveScale = containerWidth / 1400; // shrink proportionally on smaller screens
+  let scale = baseScale * responsiveScale;
+
+  // Prevent it from getting too big
+  scale = Math.min(scale, baseScale);
+
+  logo.scale.set(scale, scale, scale);
+
+  // Center logo
+  logo.position.set(0, 0, 0);
+}
 
 function animate() {
   requestAnimationFrame(animate);
@@ -89,9 +93,9 @@ function animate() {
 
 animate();
 
-
 window.addEventListener('resize', () => {
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(container.clientWidth, container.clientHeight);
+  resizeLogo();
 });

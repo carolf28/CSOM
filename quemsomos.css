@@ -115,7 +115,7 @@ body.quemsomos .page-title {
   grid-template-columns: minmax(300px, 1fr) 1fr;
   gap: 3rem;
   max-width: 1400px;
-  padding: 3rem;
+  padding: 4rem;
   min-height: 80vh;
   background-color: #000;
   border-radius: 1.2rem;
@@ -164,6 +164,22 @@ body.quemsomos .page-title {
   justify-content: center;
 }
 
+.contact-form-title {
+  font-family: 'KiBold';
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+}
+
+.contact-form-subtitle {
+  font-family: 'KiRegular';
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -207,30 +223,48 @@ body.quemsomos .page-title {
   }
 
   .contact-left {
-    order: 1; 
     width: 100%;
     align-items: center;
     text-align: center;
+    order: 1;
   }
 
   .contact-right {
-    order: 2; 
     width: 100%;
+    order: 2;
   }
 
   .contact-form {
-    grid-template-columns: 1fr !important; /* single column */
-    width: 100%; 
+    grid-template-columns: 1fr;
+    width: 100%;
     gap: 1rem;
   }
 
   .contact-form input,
   .contact-form textarea {
-    width: 100%;   /* full width on mobile */
+    width: 100%;
   }
 
   .contact-form textarea,
   .contact-form button {
-    grid-column: span 1;  /* reset spanning */
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-section {
+    padding: 2rem;
+  }
+
+  .contact-form-title {
+    font-size: 1.6rem;
+  }
+
+  .contact-form-subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-form button {
+    width: 100%;
   }
 }

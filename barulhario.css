@@ -81,13 +81,13 @@ body.barulhario .page-title {
   z-index: 0;
 }
 
-/* Hero image on top */
+
 .barulhario-hero img {
   max-width: 50%;
   max-height: 80%;
   object-fit: contain;
   position: relative;
-  z-index: 1; /* above scattered images */
+  z-index: 1;
 }
 
 /* =========================
@@ -96,7 +96,7 @@ body.barulhario .page-title {
 .barulhario-grid {
   position: absolute;
   inset: 0;
-  z-index: 0; /* behind hero content */
+  z-index: 0; 
   pointer-events: none;
 }
 
