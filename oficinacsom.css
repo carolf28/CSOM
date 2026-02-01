@@ -67,10 +67,57 @@ body.oficina .page-title span {
 ========================= */
 
 .oficina-main {
-  padding: 12rem 6rem 3rem;
+  padding: 
+    clamp(13rem, 10vw, 13rem)  
+    clamp(2rem, 4vw, 6rem)     
+    clamp(3rem, 5vw, 6rem);    
   max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+    gap: clamp(6rem, 5vw, 6rem);
 }
+
+/* =========================
+   SOBRE SECTION
+========================= */
+
+
+
+.sobre-title {
+  height: 3rem;
+  padding: 0 0.5em;
+
+  background-color: #c2ccff;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'KiBold';
+  font-size: 1.8rem;
+  line-height: normal;
+  padding-top: 0.1em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  pointer-events: none;
+    border-radius: 8px; 
+
+  width: fit-content;
+
+}
+
+/* RIGHT COLUMN TEXT */
+.sobre-description {
+  font-family: 'KiRegular';
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 100%;
+  margin-top: 0;
+}
+
 /* =========================
    GRID 
 ========================= */
@@ -109,7 +156,7 @@ body.oficina .page-title span {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0; 
-  margin-bottom: 5rem;
+
 }
 
 

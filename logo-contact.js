@@ -86,12 +86,29 @@ function resizeLogo() {
   logo.position.set(0, 0, 0);
 }
 
+let mouse = { x: 0, y: 0 };
+
+window.addEventListener('mousemove', (e) => {
+  const rect = container.getBoundingClientRect();
+  // Normalized mouse coordinates from -0.5 to 0.5
+  mouse.x = ((e.clientX - rect.left) / rect.width - 0.5);
+  mouse.y = ((e.clientY - rect.top) / rect.height - 0.5);
+});
+
 function animate() {
   requestAnimationFrame(animate);
+
+  if (logo) {
+    // Subtle tilt
+    logo.rotation.y = mouse.x * 0.15; // subtle left-right
+    logo.rotation.x = mouse.y * 0.08; // subtle up-down
+  }
+
   renderer.render(scene, camera);
 }
 
 animate();
+
 
 window.addEventListener('resize', () => {
   camera.aspect = container.clientWidth / container.clientHeight;

@@ -63,14 +63,14 @@ body.quemsomos .page-title {
 
 .quemsomos-main {
   padding: 
-    clamp(12rem, 10vw, 12rem)   /* top padding: min 8rem, max 12rem */
-    clamp(2rem, 4vw, 6rem)     /* left/right padding: min 2rem, max 6rem */
-    clamp(3rem, 5vw, 6rem);    /* bottom padding: min 3rem, max 6rem */
+    clamp(13rem, 10vw, 13rem)  
+    clamp(2rem, 4vw, 6rem)     
+    clamp(3rem, 5vw, 6rem);    
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 5vw, 6rem); /* gap between sections */
+  gap: clamp(10rem, 5vw, 12rem);
 }
 
 .quemsomos-container {
@@ -128,14 +128,17 @@ body.quemsomos .page-title {
   color: #000;
 }
 
+/*CONTACTOS*/
+
+
 .contact-section {
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) 1fr;
+  grid-template-columns: 1fr 1fr; 
   gap: 3rem;
   max-width: 1400px;
   padding: 4rem;
-  min-height: 80vh;
-  background-color: #000;
+  min-height: 90vh;
+  background-color: #767676;
   border-radius: 1.2rem;
   align-items: center;
   box-sizing: border-box;
@@ -144,7 +147,7 @@ body.quemsomos .page-title {
 .contact-left {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
 }
@@ -155,19 +158,21 @@ body.quemsomos .page-title {
   margin: 0;
 }
 
+
 .contact-title {
   font-family: 'KiBold';
   font-size: 1.8rem;
   line-height: 1.5;
   color: #fff;
   margin-bottom: 0rem;
+    margin-top: 0rem;
 
 }
 
 .contact-email {
   font-family: 'KiRegular';
   font-size: 1.2rem;
-  color: #fff;
+  color: #E8FD94;
   text-decoration: underline;
   margin-top: 0;
   margin-bottom: 0;
@@ -176,18 +181,22 @@ body.quemsomos .page-title {
 .contact-links {
   font-family: 'KiRegular';
   font-size: 1.2rem;
+  margin-bottom: 3.5rem;
 }
 
 .contact-links a {
-  color: #fff;
+  color: #E8FD94;
   text-decoration: none;
 }
+
 
 .contact-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* this will center everything horizontally */
 }
+
 
 .contact-form-title {
   font-family: 'KiBold';
@@ -202,7 +211,8 @@ body.quemsomos .page-title {
   font-family: 'KiRegular';
   font-size: 1.2rem;
   color: #fff;
-  margin-bottom: 1.5rem;
+  margin-top: 0;
+    margin-bottom: 0rem;
 }
 
 .contact-form {
@@ -239,6 +249,14 @@ body.quemsomos .page-title {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
   grid-column: span 2;
+  text-transform: uppercase;
+}
+
+
+#thankyou-message {
+  display: none;
+  color: #fff;
+  margin-top: 1rem;
 }
 
 @media (max-width: 900px) {
