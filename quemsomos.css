@@ -8,6 +8,21 @@
   src: url('fonts/Ki-Bold.ttf') format('truetype');
 }
 
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quemsomos-main {
+  opacity: 0; /* start hidden */
+}
+
 body.quemsomos {
   min-height: 100vh;
   margin: 0;
@@ -47,12 +62,15 @@ body.quemsomos .page-title {
 }
 
 .quemsomos-main {
-  padding: 12rem 6rem 3rem;
+  padding: 
+    clamp(12rem, 10vw, 12rem)   /* top padding: min 8rem, max 12rem */
+    clamp(2rem, 4vw, 6rem)     /* left/right padding: min 2rem, max 6rem */
+    clamp(3rem, 5vw, 6rem);    /* bottom padding: min 3rem, max 6rem */
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: clamp(3rem, 5vw, 6rem); /* gap between sections */
 }
 
 .quemsomos-container {
@@ -126,23 +144,24 @@ body.quemsomos .page-title {
 .contact-left {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
 .contact-logo {
   width: 100%;
-  height: 250px;
+  height: 280px;
   margin: 0;
 }
 
 .contact-title {
-  font-family: 'KiRegular';
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin: 0;
+  font-family: 'KiBold';
+  font-size: 1.8rem;
+  line-height: 1.5;
   color: #fff;
+  margin-bottom: 0rem;
+
 }
 
 .contact-email {
@@ -150,12 +169,18 @@ body.quemsomos .page-title {
   font-size: 1.2rem;
   color: #fff;
   text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .contact-links {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  font-family: 'KiRegular';
+  font-size: 1.2rem;
+}
+
+.contact-links a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .contact-right {

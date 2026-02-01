@@ -19,23 +19,26 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setClearColor(0x000000, 0);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.3;
+renderer.toneMappingExposure = 1.6; // brighter tone mapping
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 container.appendChild(renderer.domElement);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.15);
+// ---- LIGHTING BOOST ----
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.65); // brighter
 directionalLight.position.set(4, 5, 6);
 scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.75); // brighter
 scene.add(ambientLight);
+// -------------------------
 
 new RGBELoader()
   .setPath('hdr/')
   .load('hdr/christmas_photo_studio_06_1k.hdr', (texture) => {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
-    scene.environmentIntensity = 0.95;
+
+    scene.environmentIntensity = 1.35; // brighter reflections
   });
 
 const loader = new GLTFLoader();
@@ -49,9 +52,13 @@ loader.load(
 
     logo.traverse((child) => {
       if (child.isMesh && child.material) {
-        child.material.envMapIntensity = 1.3;
-        if (child.material.roughness !== undefined) child.material.roughness = 0.28;
+
+        // add more brightness in reflections
+        child.material.envMapIntensity = 2.0;
+
+        if (child.material.roughness !== undefined) child.material.roughness = 0.22;
         if (child.material.metalness !== undefined) child.material.metalness = 0.45;
+
         child.material.needsUpdate = true;
       }
     });
@@ -69,20 +76,13 @@ function resizeLogo() {
   const size = new THREE.Vector3();
   box.getSize(size);
 
-  // Base scale for desktop
-  let baseScale = 4;
-
-  // Responsive adjustment based on container width
+  let baseScale = 3.5;
   const containerWidth = container.clientWidth;
-  const responsiveScale = containerWidth / 1400; // shrink proportionally on smaller screens
+  const responsiveScale = containerWidth / 1400;
   let scale = baseScale * responsiveScale;
-
-  // Prevent it from getting too big
   scale = Math.min(scale, baseScale);
 
   logo.scale.set(scale, scale, scale);
-
-  // Center logo
   logo.position.set(0, 0, 0);
 }
 
