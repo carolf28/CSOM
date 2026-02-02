@@ -145,16 +145,18 @@ if (synth) {
         }
       });
 
-      stripe.userData.onPress = () => {
-        unlockAudio();
-        playStripe(name);
+stripe.userData.onPress = () => {
+  unlockAudio();
+  playStripe(name);
 
-        stripe.traverse((child) => {
-          if (child.isMesh && child.material) {
-            child.material.emissive.setHex(0xffff00);
-          }
-        });
-      };
+  stripe.traverse((child) => {
+    if (child.isMesh && child.material) {
+      // Softer, less intense glow
+      child.material.emissive.setHex(0xffee88); // pale yellow
+      child.material.emissiveIntensity = 0.5;  // optional if material supports it
+    }
+  });
+};
 
       stripe.userData.onRelease = () => {
         stopStripe(name);
