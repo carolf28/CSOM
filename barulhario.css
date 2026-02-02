@@ -11,6 +11,27 @@
   src: url('fonts/Ki-Bold.ttf') format('truetype');
 }
 
+/* Fade Slide Up animation */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Slide Up initial state for all barulhario items */
+.barulhario-item,
+.barulhario-sobre,
+.barulhario-window {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards; /* keeps the final state */
+}
+
 /* =========================
   BODY
 ========================= */
@@ -61,95 +82,348 @@ body.barulhario .page-title {
   border-radius: 8px; 
 }
 
-/* =========================
-  HERO SECTION
-========================= */
-.barulhario-hero {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(
-    to bottom,
-    #E0C7EC 0%,      
-    #E0C7EC 85%,     
-    rgba(247, 216, 229, 0) 100%  
-  );
-  overflow: hidden; /* ensures scattered images don't break layout */
-  z-index: 0;
-}
 
-
-.barulhario-hero img {
-  max-width: 50%;
-  max-height: 80%;
-  object-fit: contain;
-  position: relative;
-  z-index: 1;
-}
-
-/* =========================
-  SCATTERED IMAGE GRID
-========================= */
-.barulhario-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 0; 
-  pointer-events: none;
-}
-
-.barulhario-grid img {
-  position: absolute;
-  object-fit: cover;
-}
-
-/* Random positions and sizes for editorial effect */
-.barulhario-grid img:nth-child(1) { width: 120px; top: 20%; left: 6%; }
-.barulhario-grid img:nth-child(2) { width: 100px; top: 60%; left: 15%; }
-.barulhario-grid img:nth-child(3) { width: 140px; top: 20%; left: 40%; }
-.barulhario-grid img:nth-child(4) { width: 90px;  top: 70%; left: 50%; }
-.barulhario-grid img:nth-child(5) { width: 110px; top: 15%; left: 70%; }
-.barulhario-grid img:nth-child(6) { width: 130px; top: 55%; left: 70%; }
-.barulhario-grid img:nth-child(7) { width: 100px; top: 30%; left: 20%; }
-.barulhario-grid img:nth-child(8) { width: 120px; top: 40%; left: 85%; }
-.barulhario-grid img:nth-child(9) { width: 90px;  top: 65%; left: 35%; }
-
-/* =========================
-  MAIN CONTENT
-========================= */
 .barulhario-main {
-  padding: 12rem 6rem 3rem;
+  padding: 
+    clamp(13rem, 10vw, 13rem)  
+    clamp(2rem, 4vw, 6rem)     
+    clamp(3rem, 5vw, 6rem);    
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+    gap: clamp(6rem, 5vw, 6rem);
+}
+
+/* Barulhário letters */
+.barulhario-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.barulhario-sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* SOBRE title with purple background */
+.sobre-title {
+  padding: 0.5rem 0.8rem;  
+
+  background-color: #D3D7FF;
+
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: 2rem;
-  z-index: 1;
-  position: relative;
-}
 
-/* =========================
-  BARULHARIO INFO TEXT
-========================= */
-.barulhario-headline {
   font-family: 'KiBold';
-  font-size: 2rem;
-  line-height: 1.3;
-  color: #000;
-  position: relative;
-  z-index: 1;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  line-height: 1.2;       
+  text-transform: uppercase;
+  white-space: normal;     
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  border-radius: 8px;
+
+  width: fit-content;
+  max-width: 100%; 
 }
 
-.barulhario-features p {
+.sobre-title span {
+  display: inline-block;
+  padding-top: 0.1em; 
+}
+
+
+.sobre-description {
   font-family: 'KiRegular';
   font-size: 1.2rem;
   line-height: 1.5;
-  opacity: 0.5;
-  margin: 0.5rem 0;
+  opacity: 0.9;
+  margin: 0;
+}
+
+
+/* janela barulhario */
+
+.barulhario-window::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 400px;            
+  height: 400px;
+  border-radius: 50%;      
+  
+  background-color: rgba(255, 250, 180, 0.95); /* almost opaque pastel yellow */
+  filter: blur(120px);     
+  
+  box-shadow: 0 0 100px rgba(255, 250, 180, 0.6), 
+              0 0 180px rgba(255, 250, 180, 0.4); /* strong glow */
+  
+  z-index: -1;             
+  pointer-events: none;    
+}
+
+.barulhario-window {
+  box-sizing: border-box;   
+  width: 100%;
+  height: 100vh;
+  
+  display: flex;
+  flex-direction: column;      
+  justify-content: flex-start; 
+  align-items: center;         
+  
+  padding: clamp(1rem, 2vw, 2rem);  
   position: relative;
+}
+
+.barulhario-window-letters {
+  width: clamp(300px, 50%, 700px); 
+  height: auto;
+  display: block;
+  margin-top: 0;  
+  z-index: 2;                
+}
+
+/* CENTERED TEXT OVERLAY */
+.barulhario-text {
+  position: absolute;
+  top: 50%;           
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  color: #000;
+  text-align: center;
+  font-family: 'KiRegular';
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.barulhario-text p {
+  margin: 0.2em 0;
+  font-family: 'KiRegular';
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+
+
+.barulhario-window-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* apply blur TO EACH IMAGE instead */
+.barulhario-window-grid img {
+  position: absolute;
+  object-fit: cover;
+  transition: filter 0.1s ease, transform 0.1s ease;
+  pointer-events: auto;
+
+  filter: blur(2px) saturate(0.5); /* moved here */
+}
+
+.barulhario-window-grid img:hover {
+  filter: none; /* now works */
+}
+
+/* random editorial positions (same vibe as homepage) */
+.barulhario-window-grid img:nth-child(1) { width: 100px; top: 10%; left: 5%; }
+.barulhario-window-grid img:nth-child(2) { width: 90px; top: 60%; left: 15%; }
+.barulhario-window-grid img:nth-child(3) { width: 130px; top: 20%; left: 40%; }
+.barulhario-window-grid img:nth-child(4) { width: 80px; top: 75%; left: 55%; }
+.barulhario-window-grid img:nth-child(5) { width: 120px; top: 15%; left: 75%; }
+.barulhario-window-grid img:nth-child(6) { width: 110px; top: 55%; left: 72%; }
+.barulhario-window-grid img:nth-child(7) { width: 90px; top: 35%; left: 22%; }
+.barulhario-window-grid img:nth-child(8) { width: 100px; top: 45%; left: 88%; }
+.barulhario-window-grid img:nth-child(9) { width: 85px; top: 70%; left: 38%; }
+
+
+/* =========================
+   GRID 
+========================= */
+.barulhario-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem;
+  align-items: start;
+}
+
+
+.barulhario-page-title {
+  font-family: 'KiRegular';
+  font-size: 2.8rem;     
+  text-transform: uppercase;
+
+  color: #000;
+  padding: 0.4rem 0.4rem;  
+  display: inline-block; 
+  border-radius: 0.6rem; 
+  margin-bottom: 3rem;  
+}
+
+
+
+/* =========================
+   CARTAZ CONTAINER
+========================= */
+.barulhario-cartaz {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;  
+  border-radius: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; 
+}
+
+
+.barulhario-cartaz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.7);
   z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+
+.barulhario-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+
+.barulhario-slider img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 85%;
+  object-fit: cover;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.barulhario-slider img.show {
+  opacity: 1;
+}
+
+
+/* =========================
+   TEXTO + DESCRIÇAO
+========================= */
+.barulhario-title {
+  font-family: 'KiBold';
+}
+
+.barulhario-title h1,
+.barulhario-title h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.barulhario-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  font-family: 'KiRegular';
+}
+
+.barulhario-credits {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  opacity: 0.5;
+  font-family: 'KiRegular';
+}
+    
+
+
+
+
+
+
+/* =========================
+   ARROWS INSIDE CARTAZ
+========================= */
+
+.barulhario-cartaz {
+  position: relative; 
+}
+
+.barulhario-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 3;
+  opacity: 0.9;          
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.barulhario-arrow:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+.left-arrow { left: 1rem; }
+.right-arrow { right: 1rem; }
+
+
+.barulhario-arrow svg {
+  width: 3rem;      
+  height: 3rem;
+  display: block;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.85);  
+  stroke-width: 3;  
+  pointer-events: none;
+}
+
+
+.barulhario-slider {
+  pointer-events: none;
+}
+
+
+.barulhario-slider img {
+  pointer-events: auto;
 }

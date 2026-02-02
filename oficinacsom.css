@@ -43,9 +43,6 @@ body.oficina {
 }
 
 
-
-
-
 body.oficina .page-title {
   position: absolute; 
   top: 1.5rem;
@@ -119,20 +116,20 @@ body.oficina .page-title span {
 
   font-family: 'KiBold';
   font-size: clamp(1.2rem, 3vw, 1.8rem);
-  line-height: 1.2;        /* adjust so multiple lines are nicely spaced */
+  line-height: 1.2;       
   text-transform: uppercase;
-  white-space: normal;      /* allow wrapping */
+  white-space: normal;     
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   pointer-events: none;
   border-radius: 8px;
 
   width: fit-content;
-  max-width: 100%;          /* keeps it inside the column */
+  max-width: 100%;         
 }
 
 .sobre-title span {
   display: inline-block;
-  padding-top: 0.1em; /* nudges text down slightly */
+  padding-top: 0.1em; 
 }
 
 
