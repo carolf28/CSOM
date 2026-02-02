@@ -43,6 +43,9 @@ canvas {
   position: relative;
   z-index: 1;
 }
+
+
+
 /* ===============================
    NAVEGAÇÃO
 =============================== */
@@ -84,23 +87,19 @@ nav {
 }
 
 
-nav {
-  position: relative; 
-}
-
 /* =========================
    MENU 
 ========================= */
 
 .menu-wrapper {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: clamp(1.2rem, 3vw, 1.5rem);
+  right: clamp(1.2rem, 3vw, 1.5rem);
 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.8rem; 
+  gap: clamp(0.4rem, 1.5vw, 0.8rem);  
   z-index: 25;
 }
 
@@ -109,8 +108,8 @@ nav {
 ========================= */
 
 #menu-button {
-  padding: 0 1.2em;
-  height: 3.4rem;
+   padding: 0 clamp(0.9em, 3vw, 1.2em); 
+  height: clamp(2.4rem, 6vw, 3.4rem);   
   border-radius: 50px;
   background-color: #E8FD94;
 
@@ -120,9 +119,9 @@ nav {
 
   cursor: pointer;
   font-family: 'KiRegular';
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
   line-height: normal;     
-  padding-top: 0.1em;     
+  padding-top: clamp(0.05em, 0.5vw, 0.2em);     
 
   text-transform: uppercase;
   white-space: nowrap;
@@ -142,7 +141,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.8rem;
+  gap: clamp(0.4rem, 1.5vw, 0.8rem); 
   pointer-events: auto;
   overflow: hidden;
   max-height: 0; 
@@ -159,15 +158,15 @@ nav.open #nav-links-wrapper {
 ========================= */
 
 .nav-btn {
-  padding: 0 1.2em;
-  height: 3.4rem;
+   padding: 0 clamp(0.9em, 3vw, 1.2em); 
+  height: clamp(2.4rem, 6vw, 3.4rem); 
   border-radius: 50px;
   background-color: #E8FD94;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-family: 'KiRegular';
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
   line-height: normal;      
   padding-top: 0.1em;          
   text-transform: uppercase;
@@ -190,7 +189,7 @@ nav.open .nav-btn {
 }
 
 #nav-links-wrapper .nav-btn {
-  padding-top: 0.2em; 
+  padding-top: clamp(0.05em, 0.5vw, 0.2em);
 }
 
 
@@ -205,7 +204,7 @@ nav.open .nav-btn {
   position: fixed;
   top: 0;
   left: 0;
-  width: 3rem;
+  width: clamp(2.5rem, 4vw, 3rem); 
   height: 100vh;
   background-color: #93FFAC;
   cursor: pointer;
@@ -213,7 +212,7 @@ nav.open .nav-btn {
 
   display: flex;
   justify-content: center; 
-  align-items: center;     
+  align-items: center;   
 }
 
 .side-label-wrapper {
@@ -224,7 +223,7 @@ nav.open .nav-btn {
   align-items: center;
 }
 .side-label {
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
   font-weight: 600;
   letter-spacing: 0.15em;
   color: #000;
@@ -513,3 +512,49 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 
 
+
+
+
+
+/* =========================
+   RESPONSIVE SIDE BAR
+========================= */
+@media (max-width: 700px) {
+  /* Move the side bar to bottom */
+  #side-bar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(2.8rem, 3.5vw, 3rem);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .side-label-wrapper {
+    transform: none; /* remove rotation */
+    flex-direction: row;
+  }
+
+  /* Make label smaller if needed */
+  .side-label {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Side panel slides from bottom instead of left */
+  #side-panel {
+    width: 100%;
+    height: 40%; /* you can adjust */
+    bottom: 0;
+    top: auto;
+    left: 0;
+    transform: translateY(100%);
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  #side-panel.open {
+    transform: translateY(0);
+  }
+}

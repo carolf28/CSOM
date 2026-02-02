@@ -123,51 +123,70 @@ if (synth) {
 
   introAnim();
 }
-    // ------------------------------------------------------------
 
-    // ========== STRIPE SETUP ==========
-    stripeNames.forEach((name) => {
-      const stripe = synth.getObjectByName(name);
 
-      if (!stripe) {
-        console.warn(`Stripe not found: ${name}`);
-        return;
-      }
 
-      stripe.userData.clickable = true;
+// ------------------------------------------------------------
+// ========== STRIPE SETUP WITH MOBILE-ONLY BIGGER HITBOX ==========
+stripeNames.forEach((name) => {
+  const stripe = synth.getObjectByName(name);
 
-      stripe.traverse((child) => {
-        if (child.isMesh && child.material) {
-          if (!child.material.emissive) {
-            child.material.emissive = new THREE.Color(0x000000);
-          }
-          child.userData.originalEmissive = child.material.emissive.clone();
-        }
-      });
+  if (!stripe) {
+    console.warn(`Stripe not found: ${name}`);
+    return;
+  }
 
-stripe.userData.onPress = () => {
-  unlockAudio();
-  playStripe(name);
+  stripe.userData.clickable = true;
 
+  // ------------------------------------------------------------
+  // 📱 Add invisible larger hitbox ONLY on small screens (<500px)
+  // ------------------------------------------------------------
+  if (window.innerWidth < 700) {
+    const hitBox = new THREE.Mesh(
+      new THREE.BoxGeometry(1.3, 1.3, 1.3), // same size you had
+      new THREE.MeshBasicMaterial({ visible: false })
+    );
+    stripe.add(hitBox);
+    hitBox.userData.parentStripe = stripe;
+  }
+  // ------------------------------------------------------------
+
+  // Save original emissive colors
   stripe.traverse((child) => {
     if (child.isMesh && child.material) {
-      // Softer, less intense glow
-      child.material.emissive.setHex(0xffee88); // pale yellow
-      child.material.emissiveIntensity = 0.5;  // optional if material supports it
+      if (!child.material.emissive) {
+        child.material.emissive = new THREE.Color(0x000000);
+      }
+      child.userData.originalEmissive = child.material.emissive.clone();
     }
   });
-};
 
-      stripe.userData.onRelease = () => {
-        stopStripe(name);
+  // Press
+  stripe.userData.onPress = () => {
+    unlockAudio();
+    playStripe(name);
 
-        stripe.traverse((child) => {
-          if (child.isMesh && child.material) {
-            child.material.emissive.copy(child.userData.originalEmissive);
-          }
-        });
-      };
+    stripe.traverse((child) => {
+      if (child.isMesh && child.material) {
+        child.material.emissive.setHex(0xffee88);
+        child.material.emissiveIntensity = 0.5;
+      }
     });
+  };
+
+  // Release
+  stripe.userData.onRelease = () => {
+    stopStripe(name);
+
+    stripe.traverse((child) => {
+      if (child.isMesh && child.material) {
+        child.material.emissive.copy(child.userData.originalEmissive);
+      }
+    });
+  };
+});
+
+
   },
   undefined,
   (error) => console.error('Error loading synth:', error)
@@ -224,6 +243,46 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+
+
+function onResize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  camera.aspect = width / height;
+  camera.position.x = 2;
+  camera.position.y = 2;
+
+  // NEW BREAKPOINT (under 350)
+  if (width < 380) {
+    camera.position.z = 11;   // ← choose any value you want!
+    pivot.position.x = 0.2;
+  }
+  else if (width < 400) {
+    camera.position.z = 9.35;
+    pivot.position.x = 0.1;
+  } 
+  else if (width < 600) {
+    camera.position.z = 8.2;
+    pivot.position.x = 0.2;
+  } 
+  else if (width < 1000) {
+    camera.position.z = 6.5;
+    pivot.position.x = 0.5;
+  } 
+  else {
+    camera.position.z = 5;
+    pivot.position.x = 0;
+  }
+
+  camera.updateProjectionMatrix();
+  camera.lookAt(pivot.position);
+  renderer.setSize(width, height);
+}
+
+onResize();
+window.addEventListener('resize', onResize);
+
 // ===============================
 // Animate
 // ===============================
@@ -236,12 +295,17 @@ function animate() {
 animate();
 
 // ===============================
-// RAYCASTER – PRESS / RELEASE (FIXED)
+// RAYCASTER – PRESS / RELEASE (MOBILE-FRIENDLY)
 // ===============================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let pressedObject = null;
 
+const canvas = renderer.domElement;
+canvas.style.touchAction = 'none';
+canvas.style.userSelect = 'none';
+
+// Helper to find clickable stripe parent
 function findClickableParent(obj) {
   while (obj) {
     if (obj.userData.clickable) return obj;
@@ -250,18 +314,42 @@ function findClickableParent(obj) {
   return null;
 }
 
-function onPointerDown(event) {
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+// Handle down events
+function handlePointerDown(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  let clientX, clientY;
+  if (event.touches && event.touches.length > 0) {
+    clientX = event.touches[0].clientX;
+    clientY = event.touches[0].clientY;
+  } else {
+    clientX = event.clientX;
+    clientY = event.clientY;
+  }
+
+  mouse.x = (clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
+
+  // Increase mobile hit detection slightly
   const intersects = raycaster.intersectObjects(pivot.children, true);
 
   if (intersects.length > 0) {
     let obj = intersects[0].object;
 
-    const clickable = findClickableParent(obj);
+    if (window.innerWidth < 800) { // mobile: pick closest clickable intersect
+      for (const inter of intersects) {
+        const clickableCandidate = findClickableParent(inter.object);
+        if (clickableCandidate) {
+          obj = clickableCandidate;
+          break;
+        }
+      }
+    }
 
+    const clickable = findClickableParent(obj);
     if (clickable && clickable.userData.onPress) {
       pressedObject = clickable;
       clickable.userData.onPress();
@@ -269,12 +357,21 @@ function onPointerDown(event) {
   }
 }
 
-function onPointerUp() {
+// Handle up events
+function handlePointerUp(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
   if (pressedObject && pressedObject.userData.onRelease) {
     pressedObject.userData.onRelease();
   }
   pressedObject = null;
 }
 
-window.addEventListener('pointerdown', onPointerDown);
-window.addEventListener('pointerup', onPointerUp);
+// Attach events
+['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
+  canvas.addEventListener(evt, handlePointerDown, { passive: false });
+});
+['pointerup', 'touchend', 'mouseup'].forEach(evt => {
+  canvas.addEventListener(evt, handlePointerUp, { passive: false });
+});
