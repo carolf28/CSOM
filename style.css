@@ -245,7 +245,7 @@ font-family: 'KiRegular';
   position: fixed;
   top: 0;
   left: 0;
-  width: 25%;
+  width: 25vw;
   height: 100vh;
   background: #93FFAC;
   padding: 2rem 1.5rem 4rem;
@@ -518,48 +518,109 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 
 
-
 /* =========================
-   RESPONSIVE SIDE BAR
+   RESPONSIVE SIDE BAR & PANEL
 ========================= */
 @media (max-width: 700px) {
-  /* Move the side bar to bottom */
+
+  /* -------------------------
+     Move side bar to bottom
+  ------------------------- */
   #side-bar {
-    top: auto;
+    position: fixed;
     bottom: 0;
+    top: auto;
     left: 0;
     width: 100%;
-    height: clamp(2.7rem, 5vw, 3rem);
+    height: clamp(2.7rem, 5vw, 3rem); /* responsive height */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+  }
+
+  /* Remove rotation of the label */
+  .side-label-wrapper {
+    transform: none;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
 
-  .side-label-wrapper {
-    transform: none; /* remove rotation */
-    flex-direction: row;
-  }
-
-  /* Make label smaller if needed */
+  /* Adjust side label for mobile */
   .side-label {
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem); /* smooth scaling */
     padding-top: 0.2em;
     letter-spacing: 0.1em;
   }
 
-  /* Side panel slides from bottom instead of left */
+  /* -------------------------
+     Sliding panel from bottom
+  ------------------------- */
   #side-panel {
-    width: 100%;
-    height: 40%; /* you can adjust */
+    position: fixed;
     bottom: 0;
     top: auto;
     left: 0;
+    width: 100vw;       
+    max-width: 100vw;
+    height: 70vh;         
     transform: translateY(100%);
-    padding: 1rem 1.5rem 2rem;
+    padding: 3rem 1.5rem 1.5rem; /* top padding for close button + bottom */
+    box-sizing: border-box;
+    overflow-y: auto;      /* scrollable content */
+    overflow-x: hidden;    /* prevent horizontal scroll */
+    background: #93FFAC;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.5s ease;
+    font-family: 'KiRegular';
+    z-index: 30;
   }
 
+  /* -------------------------
+     Open state
+  ------------------------- */
   #side-panel.open {
     transform: translateY(0);
   }
+
+  /* -------------------------
+     Keep close button at top-right
+  ------------------------- */
+  #close-panel {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 50;
+  }
+
+  #close-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+    /* Scrollable content wrapper inside panel */
+  #side-panel .panel-content {
+    flex: 1;                  /* take remaining height */
+    overflow-y: auto;         /* vertical scroll */
+    padding: 3rem 1.5rem 1.5rem; /* absolute padding inside scrollable content */
+    box-sizing: border-box;
+  }
+
+
+
+
+  /* -------------------------
+     Hide social buttons on mobile
+  ------------------------- */
   .social-btn {
     display: none;
   }
