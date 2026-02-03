@@ -2,7 +2,20 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { initSounds, playStripe, stopStripe, unlockAudio } from './sounds.js';
+import { initSounds, playStripe, stopStripe, unlockAudio, listener } from './sounds.js';
+
+function unlockAudioContext() {
+  if (!listener) return;
+  const ctx = listener.context;
+  if (ctx.state === 'suspended') {
+    ctx.resume().then(() => console.log('🔓 AudioContext unlocked'));
+  }
+}
+
+// Any user gesture
+['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
+  window.addEventListener(evt, unlockAudioContext, { once: true });
+});
 
 // ===============================
 // Scene & Camera

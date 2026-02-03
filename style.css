@@ -128,9 +128,12 @@ nav {
 /* =========================
 THIS CAN SAVE YOU 
 ========================= */
+
 #nav-links-wrapper {
   transform: translateX(0.2rem);
 }
+
+
 
 #menu-button:hover {
   transform: scale(1.05);
@@ -145,13 +148,14 @@ THIS CAN SAVE YOU
   align-items: flex-end;
   gap: 0.8rem;
   overflow: visible;
-  pointer-events: auto;
-  max-height: 0;          /* collapsed by default */
+  pointer-events: none;   /* block clicks when collapsed */
+  max-height: 0; 
 }
 
 /* Open state */
 nav.open #nav-links-wrapper {
-  max-height: 500px;      /* expand when nav is open */
+  max-height: 500px;     
+    pointer-events: auto;  
 }
 
 /* =========================
@@ -553,5 +557,8 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
   #side-panel.open {
     transform: translateY(0);
+  }
+  .social-btn {
+    display: none;
   }
 }

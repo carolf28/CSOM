@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-let listener;
+export let listener;
 const stripeSounds = {};
 
 // ===============================
