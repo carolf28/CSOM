@@ -6,34 +6,28 @@
   <title>CSOM Synth Viewer</title>
   <link rel="stylesheet" href="style.css" />
 
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/"
-    }
-  }
-  </script>
+
 </head>
 
 <body>
-  <div id="ui">
 <nav>
-    <div class="logo" id="logo-container"></div>
+  <!-- Logo -->
+  <div id="logo-container">
+    <img src="logoimage.png" alt="CSOM Logo" id="logo-image">
+  </div>
 
+  <!-- Menu -->
   <div class="menu-wrapper">
     <div id="menu-button">Menu</div>
-
     <div id="nav-links-wrapper">
       <a href="quemsomos.html" class="nav-btn">Quem Somos</a>
-        <a href="barulhario.html" class="nav-btn">Barulhario</a>
+      <a href="barulhario.html" class="nav-btn">Barulhario</a>
       <a href="oficinacsom.html" class="nav-btn">Oficina Csom</a>
       <a href="criaçoescsom.html" class="nav-btn">Criações Csom</a>
       <a class="nav-btn">Contacto</a>
     </div>
   </div>
 </nav>
-  </div>
 
   <!-- Side bar trigger -->
 <div id="side-bar">
@@ -48,7 +42,7 @@
 <button id="close-panel" aria-label="Close panel">
   <img src="close-button.png" alt="Close" />
 </button>
-
+  <div class="panel-content">
 
 
   <div class="events-list">
@@ -115,6 +109,7 @@ Tem uma memória não volátil, que significa que se o desligares e voltares a l
 
     </article>
 
+  </div>
   </div>
 </div>
 

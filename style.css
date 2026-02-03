@@ -47,44 +47,42 @@ canvas {
 
 
 /* ===============================
-   NAVEGAÇÃO
+   NAVIGATION
 =============================== */
-#ui {
-  position: fixed;
+
+/* Nav bar container */
+nav {
+  position: fixed;       
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: 10;
-}
-
-/* Nav bar */
-nav {
-  position: relative;
-  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between; 
+  padding-top: clamp(1.5rem, 2vw, 1.5rem); /* match menu top */
+  z-index: 10;
+  box-sizing: border-box;
+  background: transparent; 
 }
 
-
+/* Logo container */
 #logo-container {
-  position: fixed;          
-  left: 50%;                    
-  transform: translateX(-50%); 
-  margin-top: 7.3rem;           
-
-  width: clamp(200px, 20vw, 250px);
-  height: clamp(200px, 20vw, 250px);
-  overflow: visible;            
-
-  font-family: 'KiRegular';   
-  font-size: 1.8rem;
-  letter-spacing: 0.1em;
+  position: relative;             
+  width: clamp(100px, 18vw, 150px);
+  height: auto;                   
   pointer-events: auto;
+  z-index: 15;
+  margin: 0 auto;               
 }
 
-#logo-container {
-  transition: transform 0.3s ease;
+/* Logo image */
+#logo-container img {
+  width: 100%;             
+  height: auto;          
+  display: block;
+  object-fit: contain;      
 }
+
 
 /* =========================
    MENU WRAPPER
@@ -122,16 +120,6 @@ nav {
   font-size: clamp(1rem, 3.5vw, 1.4rem); 
 }
 
-/* =========================
-lil padding fix
-========================= */
-
-#nav-links-wrapper {
-  transform: translateX(0.2rem);
-}
-
-
-
 #menu-button:hover {
   transform: scale(1.05);
 }
@@ -147,6 +135,7 @@ lil padding fix
   overflow: visible;
   pointer-events: none;  
   max-height: 0; 
+  transform: translateX(0.2rem); /* minor padding fix */
 }
 
 /* Open state */
@@ -159,16 +148,13 @@ nav.open #nav-links-wrapper {
    NAV BUTTONS
 ========================= */
 .nav-btn {
-
   border-radius: 50px;
   background-color: #E8FD94;
   display: flex;           
   justify-content: center;
   align-items: center;
-
   font-family: 'KiRegular';
   line-height: normal;    
-
   text-transform: uppercase;
   white-space: nowrap;
   text-decoration: none;
@@ -179,13 +165,12 @@ nav.open #nav-links-wrapper {
   opacity: 0;
   transform: translateY(-20px);
   transition: transform 0.25s ease, opacity 0.25s ease;
+
   /* Responsive size */
   height: clamp(2.4rem, 6vw, 3.4rem);       
   padding: 0 clamp(0.6em, 4vw, 1.2em);  
   font-size: clamp(1rem, 3.5vw, 1.4rem); 
 }
-
-
 
 
 
@@ -517,14 +502,13 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 
 
-
 /* =========================
    RESPONSIVE SIDE BAR & PANEL
 ========================= */
 @media (max-width: 700px) {
 
   /* -------------------------
-     Move side bar to bottom
+     Side bar at bottom
   ------------------------- */
   #side-bar {
     position: fixed;
@@ -539,15 +523,16 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     z-index: 20;
   }
 
-  /* Remove rotation of the label */
+  /* -------------------------
+     Side label adjustments
+  ------------------------- */
   .side-label-wrapper {
-    transform: none;
+    transform: none; /* remove rotation */
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
 
-  /* Adjust side label for mobile */
   .side-label {
     font-size: clamp(0.8rem, 2.5vw, 1.2rem); /* smooth scaling */
     padding-top: 0.2em;
@@ -562,19 +547,20 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     bottom: 0;
     top: auto;
     left: 0;
-    width: 100vw;       
+    width: 100vw;       /* full width */
     max-width: 100vw;
-    height: 70vh;         
-    transform: translateY(100%);
-    padding: 3rem 1.5rem 1.5rem; /* top padding for close button + bottom */
+    height: 70vh;       /* occupy most of the screen */
+    transform: translateY(100%); /* start hidden */
+    padding: 0;         /* remove padding from panel itself */
     box-sizing: border-box;
-    overflow-y: auto;      /* scrollable content */
-    overflow-x: hidden;    /* prevent horizontal scroll */
+    overflow: hidden;   /* hide overflow for panel itself */
     background: #93FFAC;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
     transition: transform 0.5s ease;
     font-family: 'KiRegular';
     z-index: 30;
+    display: flex;
+    flex-direction: column;
   }
 
   /* -------------------------
@@ -585,7 +571,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   /* -------------------------
-     Keep close button at top-right
+     Close button fixed
   ------------------------- */
   #close-panel {
     position: absolute;
@@ -606,20 +592,18 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     object-fit: contain;
   }
 
-
-    /* Scrollable content wrapper inside panel */
+  /* -------------------------
+     Scrollable content inside panel
+  ------------------------- */
   #side-panel .panel-content {
     flex: 1;                  /* take remaining height */
     overflow-y: auto;         /* vertical scroll */
-    padding: 3rem 1.5rem 1.5rem; /* absolute padding inside scrollable content */
+    padding: 3rem 1.5rem 1.5rem; /* keep padding fixed inside scroll */
     box-sizing: border-box;
   }
 
-
-
-
   /* -------------------------
-     Hide social buttons on mobile
+     Hide social buttons
   ------------------------- */
   .social-btn {
     display: none;
