@@ -72,9 +72,8 @@ nav {
   transform: translateX(-50%); 
   margin-top: 7.3rem;           
 
-  /* smooth responsive size using clamp(min, preferred, max) */
-  width: clamp(180px, 20vw, 250px);
-  height: clamp(180px, 20vw, 250px);
+  width: clamp(200px, 20vw, 250px);
+  height: clamp(200px, 20vw, 250px);
   overflow: visible;            
 
   font-family: 'KiRegular';   
@@ -92,12 +91,12 @@ nav {
 ========================= */
 .menu-wrapper {
   position: fixed;
-  top: 1.5rem;       /* consistent top position */
-  right: 1.5rem;     /* consistent right position */
+  top: clamp(1.5rem, 2vw, 1.5rem);
+  right: clamp(1rem, 2vw, 1.5rem);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.8rem;
+  gap: clamp(0.5rem, 1vw, 0.8rem);
   z-index: 25;
 }
 
@@ -105,24 +104,22 @@ nav {
    MENU BUTTON
 ========================= */
 #menu-button {
-  padding: 0 1.2em;       /* horizontal padding only */
-  height: 3.4rem;         /* fixed height */
-  border-radius: 50px;
-  background-color: #E8FD94;
-
-  display: flex;           /* flex centers content perfectly */
+  display: flex;
   justify-content: center;
   align-items: center;
-
+  border-radius: 50px;
+  background-color: #E8FD94;
   cursor: pointer;
   font-family: 'KiRegular';
-  font-size: 1.4rem;
-  line-height: normal;     /* use flex centering instead of manual padding */
-
   text-transform: uppercase;
   white-space: nowrap;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Responsive size */
+  height: clamp(2.6rem, 6vw, 3.4rem);       
+  padding: 0 clamp(0.8em, 5vw, 1.2em);     
+  font-size: clamp(1.2rem, 4vw, 1.4rem);  
 }
 
 /* =========================
@@ -146,7 +143,7 @@ THIS CAN SAVE YOU
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.8rem;
+  gap: clamp(0.5rem, 1vw, 0.8rem);
   overflow: visible;
   pointer-events: none;   /* block clicks when collapsed */
   max-height: 0; 
@@ -162,17 +159,15 @@ nav.open #nav-links-wrapper {
    NAV BUTTONS
 ========================= */
 .nav-btn {
-  padding: 0 1.2em;       /* horizontal padding only */
-  height: 3.4rem;         /* same as menu-button */
+
   border-radius: 50px;
   background-color: #E8FD94;
-  display: flex;           /* flex centers content perfectly */
+  display: flex;           
   justify-content: center;
   align-items: center;
 
   font-family: 'KiRegular';
-  font-size: 1.4rem;      /* same as menu-button */
-  line-height: normal;     /* flex handles vertical centering */
+  line-height: normal;    
 
   text-transform: uppercase;
   white-space: nowrap;
@@ -184,15 +179,21 @@ nav.open #nav-links-wrapper {
   opacity: 0;
   transform: translateY(-20px);
   transition: transform 0.25s ease, opacity 0.25s ease;
+  height: clamp(2.6rem, 6vw, 3.4rem);       
+  padding: 0 clamp(0.8em, 5vw, 1.2em);     
+  font-size: clamp(1.2rem, 4vw, 1.4rem); 
 }
 
 
 
 
-#nav-links-wrapper .nav-btn,
-#menu-button {
-  padding-top: 0.2em;
-}
+
+
+  #nav-links-wrapper .nav-btn,
+  #menu-button {
+    padding-top: clamp(0em, 0.6vw, 0.2em);
+  }
+
 
 
 /* =========================
@@ -541,6 +542,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   /* Make label smaller if needed */
   .side-label {
     font-size: 1rem;
+    padding-top: 0.2em;
     letter-spacing: 0.1em;
   }
 

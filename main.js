@@ -268,7 +268,7 @@ function onResize() {
 
   // NEW BREAKPOINT (under 350)
   if (width < 380) {
-    camera.position.z = 11;   // ← choose any value you want!
+    camera.position.z = 11;   
     pivot.position.x = 0.2;
   }
   else if (width < 400) {
@@ -318,7 +318,7 @@ const canvas = renderer.domElement;
 canvas.style.touchAction = 'none';
 canvas.style.userSelect = 'none';
 
-// Helper to find clickable stripe parent
+
 function findClickableParent(obj) {
   while (obj) {
     if (obj.userData.clickable) return obj;
@@ -346,13 +346,13 @@ function handlePointerDown(event) {
 
   raycaster.setFromCamera(mouse, camera);
 
-  // Increase mobile hit detection slightly
+  
   const intersects = raycaster.intersectObjects(pivot.children, true);
 
   if (intersects.length > 0) {
     let obj = intersects[0].object;
 
-    if (window.innerWidth < 800) { // mobile: pick closest clickable intersect
+    if (window.innerWidth < 800) { 
       for (const inter of intersects) {
         const clickableCandidate = findClickableParent(inter.object);
         if (clickableCandidate) {
