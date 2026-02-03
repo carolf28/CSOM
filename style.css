@@ -427,18 +427,19 @@ strong {
 ========================= */
 #start-overlay {
   position: absolute;
-  bottom: 5em;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1; 
   pointer-events: auto;
+    background-color: #D3D7FF;
+    bottom: 12%;
 }
 
 
 
 .start-text {
-  font-size: clamp(0.5rem, 2.5vw, 0.8rem);
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
   font-family: 'KiRegular';
   color: #000;
   background: none;
@@ -446,27 +447,10 @@ strong {
   cursor: pointer;
   padding: 0;
  margin: 0;
-  opacity: 0; /* start hidden */
-  animation: fadeInOut 2s ease-in-out infinite; 
     bottom: 5em;
-
 }
 
-/* Fade in/out animation */
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+
 
 
 /* =========================
@@ -521,11 +505,12 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     top: clamp(1.5rem, 2vw, 1.5rem);
     z-index: 25;
   }
+
+  #start-overlay {
+    bottom: 20vh;
+}
 }
 
-#start-overlay {
-  bottom: 15vh;
-}
 
 
 
@@ -549,7 +534,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     top: auto;
     left: 0;
     width: 100%;
-    height: clamp(3rem, 5vw, 3rem); 
+    height: clamp(3.2rem, 5vw, 3.2rem); 
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -567,7 +552,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .side-label {
-    font-size: clamp(1rem, 2.5vw, 1.2rem); 
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem); 
     padding-top: 0.2em;
     letter-spacing: 0.1em;
   }
