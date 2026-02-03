@@ -117,13 +117,13 @@ nav {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   /* Responsive size */
-  height: clamp(2.6rem, 6vw, 3.4rem);       
-  padding: 0 clamp(0.8em, 5vw, 1.2em);     
-  font-size: clamp(1.2rem, 4vw, 1.4rem);  
+  height: clamp(2.4rem, 6vw, 3.4rem);       
+  padding: 0 clamp(0.6em, 4vw, 1.2em);  
+  font-size: clamp(1rem, 3.5vw, 1.4rem); 
 }
 
 /* =========================
-THIS CAN SAVE YOU 
+lil padding fix
 ========================= */
 
 #nav-links-wrapper {
@@ -145,14 +145,14 @@ THIS CAN SAVE YOU
   align-items: flex-end;
   gap: clamp(0.5rem, 1vw, 0.8rem);
   overflow: visible;
-  pointer-events: none;   /* block clicks when collapsed */
+  pointer-events: none;  
   max-height: 0; 
 }
 
 /* Open state */
 nav.open #nav-links-wrapper {
   max-height: 500px;     
-    pointer-events: auto;  
+  pointer-events: auto;  
 }
 
 /* =========================
@@ -179,9 +179,10 @@ nav.open #nav-links-wrapper {
   opacity: 0;
   transform: translateY(-20px);
   transition: transform 0.25s ease, opacity 0.25s ease;
-  height: clamp(2.6rem, 6vw, 3.4rem);       
-  padding: 0 clamp(0.8em, 5vw, 1.2em);     
-  font-size: clamp(1.2rem, 4vw, 1.4rem); 
+  /* Responsive size */
+  height: clamp(2.4rem, 6vw, 3.4rem);       
+  padding: 0 clamp(0.6em, 4vw, 1.2em);  
+  font-size: clamp(1rem, 3.5vw, 1.4rem); 
 }
 
 
@@ -207,7 +208,7 @@ nav.open #nav-links-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: clamp(2.5rem, 4vw, 3rem); 
+  width: clamp(2.5rem, 3.5vw, 3rem);
   height: 100vh;
   background-color: #93FFAC;
   cursor: pointer;
@@ -226,11 +227,11 @@ nav.open #nav-links-wrapper {
   align-items: center;
 }
 .side-label {
-  font-size: clamp(0.9rem, 2vw, 1.2rem);
+font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+font-family: 'KiRegular';
   font-weight: 600;
   letter-spacing: 0.15em;
   color: #000;
-  font-family: 'KiRegular';
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
@@ -528,7 +529,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     bottom: 0;
     left: 0;
     width: 100%;
-    height: clamp(2.8rem, 3.5vw, 3rem);
+    height: clamp(2.7rem, 5vw, 3rem);
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -541,7 +542,6 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
   /* Make label smaller if needed */
   .side-label {
-    font-size: 1rem;
     padding-top: 0.2em;
     letter-spacing: 0.1em;
   }
