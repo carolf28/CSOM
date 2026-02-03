@@ -28,18 +28,3 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-  // START BUTTON 
-const startText = document.querySelector('.start-text');
-
-if (startText) { 
-  let fadingIn = true;
-
-  function animateText() {
-    startText.style.opacity = fadingIn ? 1 : 0;
-    fadingIn = !fadingIn;
-    setTimeout(animateText, 1000);
-  }
-
-  animateText();
-}
-

@@ -26,7 +26,7 @@
 body.quemsomos {
   min-height: 100vh;
   margin: 0;
-  background-color: #fff;
+  background-color: #f7f7f7; 
   position: relative;
   overflow-y: auto;
 }
@@ -43,8 +43,8 @@ body.quemsomos::before {
 
 body.quemsomos .page-title {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
+    top: clamp(1.5rem, 2vw, 1.5rem);
+  left: clamp(1rem, 2vw, 1.5rem);
   height: 2.4rem;
   padding: 0 0.5em;
   background-color: #85fca1;

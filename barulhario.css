@@ -42,7 +42,7 @@ html, body {
 
 body.barulhario {
   font-family: sans-serif;
-  background-color: #FFF;
+  background-color: #f7f7f7; 
   overflow: auto !important; /* enable scrolling */
 }
 

@@ -16,7 +16,7 @@
 
 body {
   overflow: hidden;
-  background-color: #FFFFFF; 
+  background-color: #f7f7f7; 
   position: relative;
   font-family: sans-serif;
   margin: 0;
@@ -68,11 +68,11 @@ nav {
 /* Logo container */
 #logo-container {
   position: relative;             
-  width: clamp(100px, 18vw, 150px);
+  width: clamp(120px, 18vw, 150px);
   height: auto;                   
   pointer-events: auto;
   z-index: 15;
-  margin: 0 auto;               
+  margin: 0 auto;              
 }
 
 /* Logo image */
@@ -114,10 +114,9 @@ nav {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  /* Responsive size */
-  height: clamp(2.4rem, 6vw, 3.4rem);       
-  padding: 0 clamp(0.6em, 4vw, 1.2em);  
-  font-size: clamp(1rem, 3.5vw, 1.4rem); 
+height: clamp(2.6rem, 6vw, 3.4rem);
+padding: 0 clamp(0.6em, 4vw, 1.2em);
+font-size: clamp(1rem, 3.5vw, 1.4rem);
 }
 
 #menu-button:hover {
@@ -167,9 +166,9 @@ nav.open #nav-links-wrapper {
   transition: transform 0.25s ease, opacity 0.25s ease;
 
   /* Responsive size */
-  height: clamp(2.4rem, 6vw, 3.4rem);       
-  padding: 0 clamp(0.6em, 4vw, 1.2em);  
-  font-size: clamp(1rem, 3.5vw, 1.4rem); 
+height: clamp(2.6rem, 6vw, 3.4rem);
+padding: 0 clamp(0.6em, 4vw, 1.2em);
+font-size: clamp(1rem, 3.5vw, 1.4rem);
 }
 
 
@@ -427,36 +426,45 @@ strong {
 ========================= */
 #start-overlay {
   position: absolute;
-  bottom: 8%;
+  bottom: 5em;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 20; 
+  z-index: 1; 
   pointer-events: auto;
 }
 
-/* Main overlay text */
+
+
 .start-text {
-  font-size: 0.8rem;
+  font-size: clamp(0.5rem, 2.5vw, 0.8rem);
   font-family: 'KiRegular';
   color: #000;
-  margin-bottom: 0.5rem;
-  opacity: 0; 
-  transition: opacity 1s ease-in-out;
-}
-
-/* Text-only button */
-#start-button {
-  font-size: 0.8rem;
-  font-family: 'KiRegular';
-  color: #FF1612;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+ margin: 0;
+  opacity: 0; /* start hidden */
+  animation: fadeInOut 2s ease-in-out infinite; 
+    bottom: 5em;
+
 }
-#start-button:hover {
-  color: #555; /* subtle hover effect */
+
+/* Fade in/out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 
@@ -497,6 +505,30 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   height: 1.5rem;
   display: block;
 }
+
+
+
+
+/* =========================
+   SHOW BUTTON ON MOBILE
+========================= */
+@media (max-width: 700px) {
+  #help-button {
+    display: flex;
+    position: fixed;       /* stick to nav */
+    left: clamp(1rem, 2vw, 1.5rem);
+    top: clamp(1.5rem, 2vw, 1.5rem);
+    z-index: 25;
+  }
+}
+
+#start-overlay {
+  bottom: 15vh;
+}
+
+
+
+
 
 
 
@@ -553,7 +585,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     transform: translateY(100%); /* start hidden */
     padding: 0;         /* remove padding from panel itself */
     box-sizing: border-box;
-    overflow: hidden;   /* hide overflow for panel itself */
+    overflow: hidden;  
     background: #93FFAC;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
     transition: transform 0.5s ease;
@@ -592,15 +624,24 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     object-fit: contain;
   }
 
+  /* ------------------------
+   Fixed top margin
+------------------------ */
+#side-panel .panel-top-margin {
+  height: 3.5rem;   /* stays fixed at top */
+  flex-shrink: 0; /* doesn't collapse */
+}
+
   /* -------------------------
      Scrollable content inside panel
   ------------------------- */
-  #side-panel .panel-content {
-    flex: 1;                  /* take remaining height */
-    overflow-y: auto;         /* vertical scroll */
-    padding: 3rem 1.5rem 1.5rem; /* keep padding fixed inside scroll */
-    box-sizing: border-box;
-  }
+#side-panel .panel-content {
+  flex: 1;             /* fills remaining height */
+  overflow-y: auto;    /* scroll inside panel */
+  padding: 0 1.5rem 1.5rem; /* optional side + bottom padding */
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+}
 
   /* -------------------------
      Hide social buttons
@@ -609,3 +650,4 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     display: none;
   }
 }
+
