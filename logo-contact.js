@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
+
 const container = document.getElementById('logo-container-3d');
 const scene = new THREE.Scene();
 scene.background = null;
