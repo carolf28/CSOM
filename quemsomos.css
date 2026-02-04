@@ -20,13 +20,13 @@
 }
 
 .quemsomos-main {
-  opacity: 0; /* start hidden */
+  opacity: 0;
 }
 
 body.quemsomos {
   min-height: 100vh;
   margin: 0;
-  background-color: #f7f7f7; 
+  background-color: #f7f7f7;
   position: relative;
   overflow-y: auto;
 }
@@ -41,6 +41,7 @@ body.quemsomos::before {
   z-index: -1;
 }
 
+/* MAIN PAGE TITLE (DESKTOP) */
 body.quemsomos .page-title {
   position: fixed;
   top: clamp(1.5rem, 2vw, 1.5rem);
@@ -62,16 +63,17 @@ body.quemsomos .page-title {
   z-index: 1;
 }
 
+/* MAIN CONTENT LAYOUT */
 .quemsomos-main {
-  padding: 
-    clamp(13rem, 10vw, 12rem)  
-    clamp(1.5rem, 4vw, 6rem)     
-    clamp(3rem, 5vw, 6rem);    
+  padding:
+    clamp(9rem, 10vw, 12rem)
+    clamp(1.5rem, 4vw, 6rem)
+    clamp(3rem, 5vw, 6rem);
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(10rem, 5vw, 12rem);
+  gap: clamp(3rem, 5vw, 12rem);
 }
 
 .quemsomos-container {
@@ -80,8 +82,6 @@ body.quemsomos .page-title {
   gap: 3rem;
   align-items: start;
 }
-
-
 
 .quemsomos-image {
   position: relative;
@@ -105,12 +105,11 @@ body.quemsomos .page-title {
 
 .quemsomos-content p {
   font-family: 'KiRegular';
-font-size: clamp(0.9rem, 4vw, 1.3rem);
+  font-size: clamp(0.9rem, 4vw, 1.3rem);
   line-height: 1.7;
-  margin-top: 0;
-  margin-bottom: 1.2rem;
+  margin: 0 0 1.2rem 0;
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal; /* FIXED: avoids ugly hyphens */
   opacity: 0.9;
   color: #000;
 }
@@ -122,15 +121,10 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
   color: #000;
 }
 
-
-
-
-/*CONTACTOS*/
-
-
+/* CONTACTOS */
 .contact-section {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   max-width: 1400px;
   padding: 4rem;
@@ -155,15 +149,12 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
   margin: 0;
 }
 
-
 .contact-title {
   font-family: 'KiBold';
   font-size: 1.8rem;
   line-height: 1.5;
   color: #fff;
-  margin-bottom: 0rem;
-    margin-top: 0rem;
-
+  margin: 0;
 }
 
 .contact-email {
@@ -171,8 +162,7 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
   font-size: 1.2rem;
   color: #E8FD94;
   text-decoration: underline;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .contact-links {
@@ -186,30 +176,25 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
   text-decoration: none;
 }
 
-
 .contact-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* this will center everything horizontally */
+  align-items: center;
 }
-
 
 .contact-form-title {
   font-family: 'KiBold';
   font-size: 1.8rem;
-  line-height: 1.5;
   color: #fff;
-  margin-bottom: 0rem;
-  margin-top: 0rem;
+  margin: 0;
 }
 
 .contact-form-subtitle {
   font-family: 'KiRegular';
   font-size: 1.2rem;
   color: #fff;
-  margin-top: 0;
-    margin-bottom: 0rem;
+  margin: 0;
 }
 
 .contact-form {
@@ -220,7 +205,7 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
 
 .contact-form input,
 .contact-form textarea {
-  padding: 1rem 1rem;
+  padding: 1rem;
   font-family: 'KiRegular';
   font-size: 1rem;
   border-radius: 8px;
@@ -236,19 +221,18 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
 
 .contact-form button {
   width: 8rem;
-  padding: 1rem 1rem;
+  padding: 1rem;
   font-family: 'KiRegular';
   font-size: 1.2rem;
   background-color: #E8FD94;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   transition: transform 0.2s ease;
   grid-column: span 2;
   text-transform: uppercase;
 }
-
 
 #thankyou-message {
   display: none;
@@ -256,33 +240,24 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
   margin-top: 1rem;
 }
 
+/* CONTACT MOBILE */
 @media (max-width: 900px) {
   .contact-section {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .contact-left {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    order: 1;
-  }
-
+  .contact-left,
   .contact-right {
     width: 100%;
-    order: 2;
+    text-align: center;
+    align-items: center;
   }
 
   .contact-form {
     grid-template-columns: 1fr;
     width: 100%;
     gap: 1rem;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
   }
 
   .contact-form textarea,
@@ -309,39 +284,51 @@ font-size: clamp(0.9rem, 4vw, 1.3rem);
   }
 }
 
+/* MOBILE TITLE FIX (below logo) */
 @media (max-width: 700px) {
   body.quemsomos .page-title {
-    position: absolute;         /* positioned relative to nearest positioned ancestor (body) */
-    top: calc(8rem);            /* increased space from top / logo */
+    position: absolute;
+    top: 8rem;
     left: 50%;
     transform: translateX(-50%);
-    width: fit-content;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 1;
     background-color: #D3D7FF;
     max-width: 100%;
-  }
-}
-/* Mobile <700px: logo stays left, title below logo */
-@media (max-width: 700px) {
-  /* Logo */
-  #logo-container {
-    margin: 0;                       
-    left: 1.5rem; 
-   width: clamp(110px, 20vw, 150px); /* slightly smaller */                  
+    text-align: center;
+    display: flex; /* keep it visible for JS to toggle */
   }
 
+  #logo-container {
+    margin: 0;
+    left: 1.5rem;
+    width: clamp(110px, 20vw, 150px);
+  }
 }
-/* Mobile <1000px: stack columns */
+
+
+.mobile-page-title {
+  display: block !important;  
+  position: relative;       
+  text-align: center;
+  justify-content: center;
+  pointer-events: auto;
+  font-family: 'KiRegular';
+  font-size: clamp(1.3rem, 4vw, 1.5rem);
+  background-color: #D3D7FF;
+  width: fit-content;
+  padding: 0.3em 0.6em;
+  border-radius: 8px;
+  text-transform: uppercase;
+    margin: 0 auto; /* <-- this centers the box */
+}
+
+
 @media (max-width: 1000px) {
   .quemsomos-container {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-    .quemsomos-image {
-    margin-bottom: 1.5rem; /* space above and below */
+
+  .quemsomos-image {
+    margin-bottom: 1.5rem;
   }
 }
