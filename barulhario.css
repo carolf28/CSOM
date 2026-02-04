@@ -93,6 +93,7 @@ body.barulhario .page-title {
   display: flex;
   flex-direction: column;
     gap: clamp(4rem, 8vw, 12rem); /* bigger minimum, max stays 12rem */
+      overflow-x: hidden;
 }
 
 /* Barulhário letters */
