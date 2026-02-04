@@ -269,19 +269,19 @@ function onResize() {
   // NEW BREAKPOINT (under 350)
   if (width < 380) {
     camera.position.z = 9.5;   
-    pivot.position.x = 0.2;
+    pivot.position.x = 0.05;
   }
   else if (width < 400) {
     camera.position.z = 9.35;
-    pivot.position.x = 0.1;
+    pivot.position.x = 0.0;
   } 
   else if (width < 600) {
     camera.position.z = 8.2;
-    pivot.position.x = 0.2;
+    pivot.position.x = 0.1;
   } 
   else if (width < 1000) {
     camera.position.z = 6.5;
-    pivot.position.x = 0.5;
+    pivot.position.x = 0.0;
   } 
   else {
     camera.position.z = 5;

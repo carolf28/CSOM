@@ -115,8 +115,8 @@ nav {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
 /* Responsive button size */
-height: clamp(2.8rem, 6vw, 3.4rem);        /* min 3rem for easier tapping */
-padding: 0 clamp(1.1em, 4vw, 1.3em);    /* increase min padding */
+height: clamp(3rem, 6vw, 3.4rem);        /* min 3rem for easier tapping */
+padding: 0 clamp(1.05em, 4vw, 1.3em);   /* increase min padding */
 font-size: clamp(1.3rem, 3.5vw, 1.4rem); /* increase min font size */
 }
 
@@ -167,8 +167,8 @@ nav.open #nav-links-wrapper {
   transition: transform 0.25s ease, opacity 0.25s ease;
 
 /* Responsive button size */
-height: clamp(2.8rem, 6vw, 3.4rem);        /* min 3rem for easier tapping */
-padding: 0 clamp(1.1em, 4vw, 1.3em);    /* increase min padding */
+height: clamp(3rem, 6vw, 3.4rem);        /* min 3rem for easier tapping */
+padding: 0 clamp(1.05em, 4vw, 1.3em);    /* increase min padding */
 font-size: clamp(1.3rem, 3.5vw, 1.4rem); /* increase min font size */
 }
 
@@ -432,8 +432,9 @@ strong {
   text-align: center;
   z-index: 1; 
   pointer-events: auto;
-    background-color: #D3D7FF;
+
     bottom: 12%;
+    width: 100%;
 }
 
 
@@ -448,7 +449,14 @@ strong {
   padding: 0;
  margin: 0;
     bottom: 5em;
+
 }
+
+.start-text span {
+  background-color: #D3D7FF;
+}
+
+
 
 
 
@@ -459,17 +467,17 @@ strong {
 
 #social-buttons {
   position: fixed;
-  bottom: 1.5rem; 
-  right: 1.5rem;  
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  right: clamp(1rem, 2vw, 1.5rem);
   display: flex;
   flex-direction: column; 
-  gap: 1rem;
+  gap: clamp(0.8rem, 1vw, 1rem);
   z-index: 20; 
 }
 
 .social-btn {
-  width: 3.4rem;
-  height: 3.4rem;
+  width: clamp(3rem, 6vw, 3.4rem);
+height: clamp(3rem, 6vw, 3.4rem);
   border-radius: 50%; 
   background-color: #ff93e2; 
   display: flex;
@@ -486,10 +494,11 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 
 .social-btn img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: clamp(1.3rem, 2vw, 1.5rem);
+  height: clamp(1.3rem, 2vw, 1.5rem);
   display: block;
 }
+
 
 
 
@@ -498,17 +507,37 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
    SHOW BUTTON ON MOBILE
 ========================= */
 @media (max-width: 700px) {
-  #help-button {
+ #help-button {
     display: flex;
     position: fixed;      
     left: clamp(1rem, 2vw, 1.5rem);
     top: clamp(1.5rem, 2vw, 1.5rem);
     z-index: 25;
+    width: auto;
+  height: 2.8rem;
+  border-radius: 50px; 
+background:none;
+  cursor: pointer;
+  font-family: 'KiRegular';
+  text-transform: uppercase;
+  white-space: nowrap;
+border: none;
+    justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fb75d8;
+
+ height: clamp(3rem, 6vw, 3.4rem);        /* min 3rem for easier tapping */
+padding: 0 clamp(1.05em, 4vw, 1.3em);    /* increase min padding */
+font-size: clamp(1.3rem, 3.5vw, 1.4rem); /* increase min font size */
+letter-spacing: 0.1rem;
   }
 
-  #start-overlay {
-    bottom: 20vh;
-}
+  #help-button span {
+    padding-top: 0.1em;
+  }
+
+
 }
 
 
@@ -521,9 +550,13 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 
 /* =========================
-   RESPONSIVE SIDE BAR & PANEL
+   RESPONSIVE ADJUSTMENTS
 ========================= */
 @media (max-width: 700px) {
+
+    #start-overlay {
+    bottom: 20vh;
+}
 
   /* -------------------------
      Side bar at bottom
@@ -534,7 +567,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     top: auto;
     left: 0;
     width: 100%;
-    height: clamp(3.2rem, 5vw, 3.2rem); 
+    height: clamp(3.1rem, 5vw, 3.2rem); 
     flex-direction: row;
     justify-content: center;
     align-items: center;
