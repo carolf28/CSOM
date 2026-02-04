@@ -168,7 +168,7 @@ nav.open #nav-links-wrapper {
 
 /* Responsive button size */
 height: clamp(3rem, 6vw, 3.4rem);        /* min 3rem for easier tapping */
-padding: 0 clamp(1.05em, 4vw, 1.3em);    /* increase min padding */
+padding: 0 clamp(1.05em, 4vw, 1.3em);   /* increase min padding */
 font-size: clamp(1.3rem, 3.5vw, 1.4rem); /* increase min font size */
 }
 
@@ -233,7 +233,10 @@ font-family: 'KiRegular';
   width: 25vw;
   height: 100vh;
   background: #93FFAC;
-  padding: 2rem 1.5rem 4rem;
+ /*responsive clamp */
+  padding: clamp(1.5rem, 3vw, 2rem) 
+           clamp(1rem, 2vw, 1.5rem)
+           clamp(3rem, 4vw, 4rem);
   transform: translateX(-100%);
   transition: transform 0.5s ease;
   z-index: 30;
@@ -262,9 +265,9 @@ font-family: 'KiRegular';
    PANEL HEADER
 ========================= */
 #side-panel h2 {
-  font-size: 1.75rem;
-  margin-top: 0.1rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  margin-top: clamp(0.1rem, 1vw, 0.3rem);
+  margin-bottom: clamp(0.1rem, 1vw, 1.5rem);
  font-family: 'KiBold';
 }
 
@@ -274,14 +277,15 @@ font-family: 'KiRegular';
 ========================= */
 #close-panel {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: clamp(1rem, 2vw, 1rem);
+  right: clamp(1rem, 2vw, 1rem);
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  width: 1.6rem;
-  height: 1.6rem;
+  /* Responsive width/height */
+  width: clamp(1.5rem, 3vw, 1.6rem);
+  height: clamp(1.5rem, 3vw, 1.6rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -300,14 +304,15 @@ font-family: 'KiRegular';
 .events-list {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  /* Responsive top margin */
+  margin-top: clamp(0rem, 3vw, 2rem);
 }
 
 /* =========================
    EVENT CARD
 ========================= */
 .event-card {
-  padding-bottom: 3rem;
+  padding-bottom: clamp(1.5rem, 4vw, 3rem);
   margin-bottom: 3rem;
   position: relative;
 }
@@ -334,8 +339,9 @@ font-family: 'KiRegular';
 ========================= */
 .event-title {
   font-family: 'KiBold';
-  font-size: 1.1rem;
- margin-bottom: 1.2rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  margin-bottom: clamp(1rem, 2.5vw, 1.2rem);
+ line-height: 1.5;
 }
 
 /* =========================
@@ -614,6 +620,8 @@ letter-spacing: 0.1rem;
     flex-direction: column;
   }
 
+
+
   /* -------------------------
      Open state
   ------------------------- */
@@ -621,21 +629,7 @@ letter-spacing: 0.1rem;
     transform: translateY(0);
   }
 
-  /* -------------------------
-     Close button fixed
-  ------------------------- */
-  #close-panel {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 50;
-  }
+  
 
   #close-panel img {
     width: 100%;
@@ -647,7 +641,7 @@ letter-spacing: 0.1rem;
    Fixed top margin
 ------------------------ */
 #side-panel .panel-top-margin {
-  height: 3rem;   
+  height: 3.4rem;   
   flex-shrink: 0; 
 }
 
@@ -657,7 +651,7 @@ letter-spacing: 0.1rem;
 #side-panel .panel-content {
   flex: 1;           
   overflow-y: auto;   
-  padding: 0 1.5rem 1.5rem;
+padding: 0 clamp(2rem, 2vw, 2.5rem);
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch; 
 }
