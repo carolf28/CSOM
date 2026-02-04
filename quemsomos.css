@@ -42,8 +42,8 @@ body.quemsomos::before {
 }
 
 body.quemsomos .page-title {
-  position: absolute;
-    top: clamp(1.5rem, 2vw, 1.5rem);
+  position: fixed;
+  top: clamp(1.5rem, 2vw, 1.5rem);
   left: clamp(1rem, 2vw, 1.5rem);
   height: 2.4rem;
   padding: 0 0.5em;
@@ -52,19 +52,20 @@ body.quemsomos .page-title {
   justify-content: center;
   align-items: center;
   font-family: 'KiRegular';
-  font-size: 1.4rem;
+  font-size: clamp(1.3rem, 3.5vw, 1.4rem);
   line-height: normal;
   padding-top: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
   border-radius: 8px;
+  z-index: 1;
 }
 
 .quemsomos-main {
   padding: 
-    clamp(13rem, 10vw, 13rem)  
-    clamp(2rem, 4vw, 6rem)     
+    clamp(13rem, 10vw, 12rem)  
+    clamp(1.5rem, 4vw, 6rem)     
     clamp(3rem, 5vw, 6rem);    
   max-width: 1400px;
   margin: 0 auto;
@@ -80,17 +81,7 @@ body.quemsomos .page-title {
   align-items: start;
 }
 
-.quemsomos-page-title {
-  font-family: 'KiRegular';
-  font-size: 2.8rem;
-  text-transform: uppercase;
-  color: #000;
-  padding: 0.4rem 0.6rem;
-  display: inline-block;
-  border-radius: 0.6rem;
-  margin-bottom: 3rem;
-  background-color: #85fca1;
-}
+
 
 .quemsomos-image {
   position: relative;
@@ -114,9 +105,12 @@ body.quemsomos .page-title {
 
 .quemsomos-content p {
   font-family: 'KiRegular';
-  font-size: 1.2rem;
+font-size: clamp(0.9rem, 4vw, 1.3rem);
   line-height: 1.7;
+  margin-top: 0;
   margin-bottom: 1.2rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
   opacity: 0.9;
   color: #000;
 }
@@ -127,6 +121,9 @@ body.quemsomos .page-title {
   font-weight: bold;
   color: #000;
 }
+
+
+
 
 /*CONTACTOS*/
 
@@ -309,5 +306,42 @@ body.quemsomos .page-title {
 
   .contact-form button {
     width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  body.quemsomos .page-title {
+    position: absolute;         /* positioned relative to nearest positioned ancestor (body) */
+    top: calc(8rem);            /* increased space from top / logo */
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    background-color: #D3D7FF;
+    max-width: 100%;
+  }
+}
+/* Mobile <700px: logo stays left, title below logo */
+@media (max-width: 700px) {
+  /* Logo */
+  #logo-container {
+    margin: 0;                       
+    left: 1.5rem; 
+   width: clamp(110px, 20vw, 150px); /* slightly smaller */                  
+  }
+
+}
+/* Mobile <1000px: stack columns */
+@media (max-width: 1000px) {
+  .quemsomos-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+    .quemsomos-image {
+    margin-bottom: 1.5rem; /* space above and below */
   }
 }

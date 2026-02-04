@@ -66,3 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
     quemsomos.style.animation = `fadeSlideUp 0.8s ease forwards`;
   }
 });
+
+
+if (window.innerWidth < 1000) {
+  const container = document.querySelector('.quemsomos-content');
+  const intro = container.querySelector('.about-intro');
+  const history = container.querySelector('.about-history');
+  const image = document.querySelector('.quemsomos-image');
+
+  // Move image between intro and history
+  intro.after(image);
+}
