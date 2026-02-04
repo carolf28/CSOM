@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // SLIDERS
+  /* ============================
+     SLIDERS
+  ============================ */
   const sliders = document.querySelectorAll(".barulhario-slider");
-  
+
   sliders.forEach((slider) => {
     const slides = slider.querySelectorAll("img");
     const prevBtn = slider.parentElement.querySelector(".left-arrow");
@@ -26,22 +28,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showSlide(currentIndex);
 
-    nextBtn.addEventListener("click", nextSlide);
-    prevBtn.addEventListener("click", prevSlide);
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
   });
 
-  // FADE ANIMATION FOR ALL SECTIONS
+  /* ============================
+     FADE ANIMATION FOR SECTIONS
+  ============================ */
   const fadeItems = document.querySelectorAll(
     ".barulhario-item, .barulhario-sobre, .barulhario-window"
   );
 
   fadeItems.forEach((item, index) => {
-    // make sure initial state is hidden
     item.style.opacity = 0;
     item.style.transform = "translateY(20px)";
     item.style.animationFillMode = "forwards";
-
-    // apply staggered fadeSlideUp
     item.style.animation = `fadeSlideUp 0.6s ease forwards ${index * 0.15}s`;
   });
+
+
 });

@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // =========================
+  // SLIDERS
+  // =========================
   const sliders = document.querySelectorAll(".oficina-slider");
   const items = document.querySelectorAll(".oficina-item");
 
-  // Slide show logic (your existing code)
   sliders.forEach((slider) => {
     const slides = slider.querySelectorAll("img");
     const prevBtn = slider.parentElement.querySelector(".left-arrow");
@@ -32,8 +34,45 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", prevSlide);
   });
 
-  // Animate oficina items
+  // =========================
+  // FADE ANIMATION FOR ITEMS
+  // =========================
   items.forEach((item, index) => {
+    item.style.opacity = 0;
+    item.style.transform = "translateY(20px)";
+    item.style.animationFillMode = "forwards";
     item.style.animation = `fadeSlideUp 0.6s ease forwards ${index * 0.15}s`;
+  });
+
+  // =========================
+  // MOBILE PAGE TITLE
+  // =========================
+  function createMobileTitle() {
+    const desktopTitle = document.querySelector(".page-title");
+    const main = document.querySelector(".oficina-main");
+    if (!desktopTitle || !main) return;
+
+
+    const mobileTitle = document.createElement("div");
+    mobileTitle.classList.add("mobile-page-title");
+    mobileTitle.innerHTML = `<span>${desktopTitle.textContent}</span>`;
+
+
+    main.insertBefore(mobileTitle, main.firstChild);
+  }
+
+
+  if (window.innerWidth <= 700) {
+    createMobileTitle();
+  }
+
+  // Update on resize
+  window.addEventListener("resize", () => {
+    const mobileTitleExists = document.querySelector(".mobile-page-title");
+    if (window.innerWidth <= 700 && !mobileTitleExists) {
+      createMobileTitle();
+    } else if (window.innerWidth > 700 && mobileTitleExists) {
+      mobileTitleExists.remove();
+    }
   });
 });

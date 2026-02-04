@@ -101,3 +101,27 @@ main.criaçoescsom {
     max-width: 90%; /* smaller on mobile */
   }
 }
+
+@media (max-width: 700px) {
+  body.criaçoescsom .page-title {
+    display: none; /* hide desktop title on mobile */
+  }
+}
+
+.mobile-page-title {
+  display: block !important;
+  position: relative;       /* in flow */
+  text-align: center;
+  justify-content: center;
+  pointer-events: auto;
+  font-family: 'KiRegular';
+  font-size: clamp(1.3rem, 4vw, 1.5rem);
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  width: fit-content;
+  padding: 0.3em 0.6em;
+  border-radius: 8px;
+  text-transform: uppercase;
+  margin: 0 auto 2rem; /* centers box and adds space below */
+}

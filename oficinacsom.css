@@ -44,7 +44,7 @@ body.oficina {
 
 
 body.oficina .page-title {
-  position: absolute; 
+  position: fixed; 
   top: 1.5rem;
   left: 1.5rem;
 
@@ -64,7 +64,7 @@ body.oficina .page-title {
 
   text-transform: uppercase;
   white-space: nowrap;
-
+ z-index: 1;
   pointer-events: none;
     border-radius: 8px; 
 }
@@ -323,3 +323,31 @@ body.oficina .page-title span {
 }
 
 
+/* =========================
+   MOBILE PAGE TITLE
+========================= */
+@media (max-width: 700px) {
+  body.oficina .page-title {
+    display: none; /* hide the desktop title */
+  }
+
+  .mobile-page-title {
+    display: block !important;
+    position: relative;         
+    text-align: center;
+    justify-content: center;
+    pointer-events: auto;
+    font-family: 'KiRegular', sans-serif;
+    font-size: clamp(1.3rem, 4vw, 1.5rem);
+
+    background-color: #85fca1;
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+    width: fit-content;
+    padding: 0.3em 0.6em;
+    border-radius: 8px;
+    text-transform: uppercase;
+    margin: 0 auto 2rem; 
+  }
+}
