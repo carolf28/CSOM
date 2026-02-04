@@ -45,7 +45,7 @@ body.quemsomos::before {
 body.quemsomos .page-title {
   position: fixed;
   top: clamp(1.5rem, 2vw, 1.5rem);
-  left: clamp(1rem, 2vw, 1.5rem);
+  left: clamp(1.5rem, 2vw, 1.5rem);
   height: 2.4rem;
   padding: 0 0.5em;
   background-color: #85fca1;
@@ -73,7 +73,7 @@ body.quemsomos .page-title {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 5vw, 12rem);
+    gap: clamp(4rem, 8vw, 12rem); /* bigger minimum, max stays 12rem */
 }
 
 .quemsomos-container {
@@ -348,6 +348,8 @@ body.quemsomos .page-title {
   font-family: 'KiRegular';
   font-size: clamp(1.3rem, 4vw, 1.5rem);
   background-color: #D3D7FF;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   width: fit-content;
   padding: 0.3em 0.6em;
   border-radius: 8px;

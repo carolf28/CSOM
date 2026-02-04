@@ -80,7 +80,7 @@ const handleTitlePlacement = () => {
       const span = clone.querySelector("span");
       if (span) {
         span.style.display = "inline-block"; // needed for vertical padding
-        span.style.paddingTop = "0.2em"; // adjust as needed
+        span.style.paddingTop = "0.1em"; // adjust as needed
       }
 
       quemsomos.prepend(clone); // insert inside main container

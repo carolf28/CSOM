@@ -26,8 +26,8 @@ body.criaçoescsom {
 
 body.criaçoescsom .page-title {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: clamp(1.5rem, 2vw, 1.5rem);
+  left: clamp(1.5rem, 2vw, 1.5rem);
   height: 2.4rem;
   padding: 0 0.5em;
   background-color: rgba(255, 255, 255, 0.25);
@@ -61,12 +61,15 @@ body.criaçoescsom .page-title span {
 }
 
 main.criaçoescsom {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  display: block;
-  padding-top: 12rem;
-  box-sizing: border-box;
+  padding:
+    clamp(9rem, 10vw, 12rem)
+    clamp(1.5rem, 4vw, 6rem)
+    clamp(3rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+    gap: clamp(4rem, 8vw, 12rem); /* bigger minimum, max stays 12rem */
 }
 
 .content-container {
