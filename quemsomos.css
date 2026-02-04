@@ -352,8 +352,9 @@ body.quemsomos .page-title {
   padding: 0.3em 0.6em;
   border-radius: 8px;
   text-transform: uppercase;
-    margin: 0 auto; /* <-- this centers the box */
+    margin: 0 auto; 
 }
+
 
 
 @media (max-width: 1000px) {

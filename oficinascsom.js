@@ -47,32 +47,37 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // MOBILE PAGE TITLE
   // =========================
-  function createMobileTitle() {
-    const desktopTitle = document.querySelector(".page-title");
-    const main = document.querySelector(".oficina-main");
-    if (!desktopTitle || !main) return;
+function createMobileTitle() {
+  const desktopTitle = document.querySelector(".page-title");
+  const main = document.querySelector(".oficina-main");
+  if (!desktopTitle || !main) return;
 
+  const mobileTitle = document.createElement("div");
+  mobileTitle.classList.add("mobile-page-title");
+  mobileTitle.innerHTML = `<span>${desktopTitle.textContent}</span>`;
 
-    const mobileTitle = document.createElement("div");
-    mobileTitle.classList.add("mobile-page-title");
-    mobileTitle.innerHTML = `<span>${desktopTitle.textContent}</span>`;
-
-
-    main.insertBefore(mobileTitle, main.firstChild);
+  // Add padding to the span inside mobile title
+  const span = mobileTitle.querySelector("span");
+  if (span) {
+    span.style.display = "inline-block"; // needed for vertical padding
+    span.style.paddingTop = "0.2em"; // adjust as needed
   }
 
+  main.insertBefore(mobileTitle, main.firstChild);
+}
 
-  if (window.innerWidth <= 700) {
+// Only create mobile title on small screens
+if (window.innerWidth <= 700) {
+  createMobileTitle();
+}
+
+// Update on resize
+window.addEventListener("resize", () => {
+  const mobileTitleExists = document.querySelector(".mobile-page-title");
+  if (window.innerWidth <= 700 && !mobileTitleExists) {
     createMobileTitle();
+  } else if (window.innerWidth > 700 && mobileTitleExists) {
+    mobileTitleExists.remove();
   }
-
-  // Update on resize
-  window.addEventListener("resize", () => {
-    const mobileTitleExists = document.querySelector(".mobile-page-title");
-    if (window.innerWidth <= 700 && !mobileTitleExists) {
-      createMobileTitle();
-    } else if (window.innerWidth > 700 && mobileTitleExists) {
-      mobileTitleExists.remove();
-    }
-  });
+});
 });
