@@ -381,5 +381,13 @@ body.oficina .page-title span {
   .oficina-sobre {
     grid-template-columns: 1fr; 
   }
+
+
+    .sobre-title {
+    background-color: transparent; 
+    box-shadow: none;            
+    padding: 0;                 
+    border-radius: 0;          
+  }
 }
 

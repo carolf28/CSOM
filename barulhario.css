@@ -474,13 +474,21 @@ body.barulhario .page-title {
 
 
 @media (max-width: 900px) {
-  /* Make hero shorter */
+
+     .sobre-title {
+    background-color: transparent; 
+    box-shadow: none;            
+    padding: 0;                 
+    border-radius: 0;          
+  }
+
+
+
   .barulhario-window {
-    height: 70vh; /* instead of 100vh */
+    height: 70vh; 
     padding: clamp(0.5rem, 2vw, 1rem);
   }
 
-  /* Adjust window grid images */
   .barulhario-window-grid img {
     filter: blur(1.5px) saturate(0.5);
   }
