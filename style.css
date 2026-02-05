@@ -204,7 +204,7 @@ font-size: clamp(1.3rem, 3.5vw, 1.4rem);
   position: fixed;
   top: 0;
   left: 0;
-  width: clamp(2.5rem, 3.4vw, 3.4rem);
+  width: clamp(3rem, 3.4vw, 3.4rem);
   height: 100vh;
   background-color: #93FFAC;
   cursor: pointer;
