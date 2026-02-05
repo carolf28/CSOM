@@ -236,7 +236,7 @@ font-family: 'KiRegular';
   background: #93FFAC;
  /*responsive clamp */
   padding: clamp(1.5rem, 3vw, 2rem) 
-           clamp(1rem, 2vw, 1.5rem)
+           clamp(1rem, 2vw, 3rem)
            clamp(3rem, 4vw, 4rem);
   transform: translateX(-100%);
   transition: transform 0.5s ease;
@@ -314,7 +314,6 @@ font-family: 'KiRegular';
 ========================= */
 .event-card {
   padding-bottom: clamp(1.5rem, 4vw, 3rem);
-  margin-bottom: 3rem;
   position: relative;
 }
 

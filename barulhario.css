@@ -85,15 +85,16 @@ body.barulhario .page-title {
 
 .barulhario-main {
   padding:
-    clamp(9rem, 10vw, 12rem)
-    clamp(1.5rem, 4vw, 6rem)
-    clamp(3rem, 5vw, 6rem);
+    clamp(9rem, 12vw, 13rem)
+    clamp(1.5rem, 6vw, 6rem)
+    clamp(3rem, 7vw, 6rem);
+    
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-    gap: clamp(4rem, 8vw, 12rem); /* bigger minimum, max stays 12rem */
-      overflow-x: hidden;
+  gap: clamp(3rem, 10vw, 12rem);
+  overflow-x: hidden;
 }
 
 /* Barulhário letters */
@@ -106,7 +107,7 @@ body.barulhario .page-title {
 .barulhario-sobre {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: clamp(1.5rem, 3vw, 3rem);
   align-items: flex-start;
   width: 100%;
 }
@@ -122,14 +123,14 @@ body.barulhario .page-title {
   align-items: center;
 
   font-family: 'KiBold';
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   line-height: 1.2;       
   text-transform: uppercase;
   white-space: normal;     
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   pointer-events: none;
   border-radius: 8px;
-
+  gap: clamp(0.5rem, 2vw, 1.5rem);
   width: fit-content;
   max-width: 100%; 
 }
@@ -142,8 +143,8 @@ body.barulhario .page-title {
 
 .sobre-description {
   font-family: 'KiRegular';
-  font-size: 1.2rem;
-  line-height: 1.5;
+font-size: clamp(1rem, 3.5vw, 1.3rem);
+  line-height: 1.7;
   opacity: 0.9;
   margin: 0;
 }
@@ -182,7 +183,7 @@ body.barulhario .page-title {
   justify-content: flex-start; 
   align-items: center;         
   
-  padding: clamp(1rem, 2vw, 2rem);  
+  padding: clamp(0rem, 2vw, 2rem);  
   position: relative;
 }
 
@@ -203,7 +204,7 @@ body.barulhario .page-title {
   color: #000;
   text-align: center;
   font-family: 'KiRegular';
-  font-size: clamp(1rem, 2vw, 1.2rem);
+font-size: clamp(1rem, 3.5vw, 1.3rem);
   line-height: 1.3;
   display: flex;
   flex-direction: column;
@@ -213,7 +214,7 @@ body.barulhario .page-title {
 .barulhario-text p {
   margin: 0.2em 0;
   font-family: 'KiRegular';
-  font-size: 1.2rem;
+    font-size: clamp(1rem, 3.5vw, 1.3rem);
   line-height: 1.5;
 }
 
@@ -341,23 +342,23 @@ body.barulhario .page-title {
 
 .barulhario-title h1,
 .barulhario-title h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.7rem, 2vw, 1.8rem);
   font-weight: 400;
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
 
 .barulhario-description {
-  font-size: 1.1rem;
-  line-height: 1.5;
+font-size: clamp(1rem, 3.5vw, 1.3rem);
+  line-height: 1.7;
   margin-bottom: 1rem;
   opacity: 0.9;
   font-family: 'KiRegular';
 }
 
 .barulhario-credits {
-  font-size: 1.1rem;
-  line-height: 1.4;
+font-size: clamp(1rem, 3.5vw, 1.3rem);
+  line-height: 1.7;
   opacity: 0.5;
   font-family: 'KiRegular';
 }
@@ -405,8 +406,13 @@ body.barulhario .page-title {
 }
 
 
-.left-arrow { left: 1rem; }
-.right-arrow { right: 1rem; }
+.left-arrow {
+  left: clamp(0.3rem, 1vw, 1rem);
+}
+
+.right-arrow {
+  right: clamp(0.3rem, 1vw, 1rem);
+}
 
 
 .barulhario-arrow svg {
@@ -436,3 +442,19 @@ body.barulhario .page-title {
   }
 }
 
+/* =========================
+  MOBILE (MATCH OF OFICINAS BEHAVIOR)
+========================= */
+@media (max-width: 900px) {
+
+
+  .barulhario-item {
+    grid-template-columns: 1fr;
+    gap: clamp(0.5rem, 2vw, 1.5rem); 
+  }
+
+  /* sobre */
+  .barulhario-sobre {
+    grid-template-columns: 1fr;
+  }
+}

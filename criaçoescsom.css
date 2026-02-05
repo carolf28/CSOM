@@ -62,14 +62,15 @@ body.criaçoescsom .page-title span {
 
 main.criaçoescsom {
   padding:
-    clamp(9rem, 10vw, 12rem)
-    clamp(1.5rem, 4vw, 6rem)
-    clamp(3rem, 5vw, 6rem);
+    clamp(9rem, 12vw, 13rem)
+    clamp(1.5rem, 6vw, 6rem)
+    clamp(3rem, 7vw, 6rem);
+    
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-    gap: clamp(4rem, 8vw, 12rem); /* bigger minimum, max stays 12rem */
+  gap: clamp(3rem, 10vw, 12rem);
 }
 
 .content-container {
@@ -118,7 +119,7 @@ main.criaçoescsom {
   justify-content: center;
   pointer-events: auto;
   font-family: 'KiRegular';
-  font-size: clamp(1.3rem, 4vw, 1.5rem);
+  font-size: clamp(1.6rem, 2.5vw, 1.8rem);
   background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -128,3 +129,4 @@ main.criaçoescsom {
   text-transform: uppercase;
   margin: 0 auto 2rem; /* centers box and adds space below */
 }
+
