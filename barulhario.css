@@ -469,3 +469,28 @@ body.barulhario .page-title {
     grid-template-columns: 1fr;
   }
 }
+
+
+@media (max-width: 900px) {
+  /* Make hero shorter */
+  .barulhario-window {
+    height: 70vh; /* instead of 100vh */
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  /* Adjust window grid images */
+  .barulhario-window-grid img {
+    filter: blur(1.5px) saturate(0.5);
+  }
+
+  /* Optionally scale down image sizes and tweak positions */
+  .barulhario-window-grid img:nth-child(1) { width: 80px; top: 12%; left: 1%; }
+  .barulhario-window-grid img:nth-child(2) { width: 70px; top: 55%; left: 2%; }
+  .barulhario-window-grid img:nth-child(3) { width: 100px; top: 18%; left: 40%; }
+  .barulhario-window-grid img:nth-child(4) { width: 60px; top: 70%; left: 55%; }
+  .barulhario-window-grid img:nth-child(5) { width: 90px; top: 12%; left: 80%; }
+  .barulhario-window-grid img:nth-child(6) { width: 80px; top: 50%; left: 68%; }
+  .barulhario-window-grid img:nth-child(7) { width: 70px; top: 35%; left: 22%; }
+  .barulhario-window-grid img:nth-child(8) { width: 80px; top: 40%; left: 82%; }
+  .barulhario-window-grid img:nth-child(9) { width: 65px; top: 68%; left: 30%; }
+}
