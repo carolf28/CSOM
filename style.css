@@ -204,7 +204,7 @@ font-size: clamp(1.3rem, 3.5vw, 1.4rem);
   position: fixed;
   top: 0;
   left: 0;
-  width: clamp(2.5rem, 3.5vw, 3rem);
+  width: clamp(2.5rem, 3.4vw, 3.4rem);
   height: 100vh;
   background-color: #93FFAC;
   cursor: pointer;
@@ -223,7 +223,7 @@ font-size: clamp(1.3rem, 3.5vw, 1.4rem);
   align-items: center;
 }
 .side-label {
-font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+font-size: clamp(0.9rem, 2.5vw, 1.3rem);
 font-family: 'KiRegular';
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -578,7 +578,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 
   /* -------------------------
-     SIDE BAR → moves to bottom
+     SIDE BAR - moved to bottom
   ------------------------- */
   #side-bar {
     position: fixed;
@@ -673,7 +673,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
 
-  /* Hide social buttons */
+  /* Hiden social buttons */
   .social-btn {
     display: none;
   }

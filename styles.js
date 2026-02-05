@@ -4,23 +4,22 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.getElementById("mobile-loading-screen");
 
-  // Only show on mobile and if the element exists
+
   if (!loadingScreen) return;
   if (window.innerWidth > 700) {
-    loadingScreen.style.display = "none"; // ensure hidden on desktop
+    loadingScreen.style.display = "none"; 
     return;
   }
 
-  // Make it visible immediately
   loadingScreen.style.display = "flex";
 
-  // Wait 3s, then slide up + fade out
+
   setTimeout(() => {
     loadingScreen.style.transition = "transform 0.6s ease, opacity 0.6s ease";
     loadingScreen.style.transform = "translateY(-100%)";
     loadingScreen.style.opacity = "0";
 
-    // Remove from DOM after animation finishes
+
     setTimeout(() => loadingScreen.remove(), 700);
   }, 3000);
 });

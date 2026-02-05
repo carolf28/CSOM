@@ -76,14 +76,14 @@ const handleTitlePlacement = () => {
       clone.classList.add("mobile-page-title");
       clone.classList.remove("page-title"); 
 
-      // Add padding to the span inside clone
+      // Added padding to the span inside clone
       const span = clone.querySelector("span");
       if (span) {
-        span.style.display = "inline-block"; // needed for vertical padding
-        span.style.paddingTop = "0.1em"; // adjust as needed
+        span.style.display = "inline-block"; 
+        span.style.paddingTop = "0.1em"; 
       }
 
-      quemsomos.prepend(clone); // insert inside main container
+      quemsomos.prepend(clone); 
     }
   } else {
     // Show desktop title
