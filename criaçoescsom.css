@@ -13,6 +13,17 @@ body.criaçoescsom {
   margin: 0;
 }
 
+/* logo animation */
+#logo-container {
+  transform: translateY(0);
+}
+
+/*JS handles easing */
+#logo-container.hidden {}
+#logo-container.visible {}
+
+
+
 #bg-video {
   position: fixed;
   top: 0;

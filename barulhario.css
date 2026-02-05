@@ -32,6 +32,17 @@
   animation-fill-mode: forwards; /* keeps the final state */
 }
 
+/* logo animation */
+#logo-container {
+  transform: translateY(0);
+}
+
+/*JS handles easing */
+#logo-container.hidden {}
+#logo-container.visible {}
+
+
+
 /* =========================
   BODY
 ========================= */

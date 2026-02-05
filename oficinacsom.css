@@ -29,6 +29,17 @@
   animation-fill-mode: forwards; 
 }
 
+/* logo animation */
+#logo-container {
+  transform: translateY(0);
+}
+
+/*JS handles easing */
+#logo-container.hidden {}
+#logo-container.visible {}
+
+
+
 
 
 /* =========================
