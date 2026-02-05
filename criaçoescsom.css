@@ -73,7 +73,7 @@ body.criaçoescsom .page-title span {
 
 main.criaçoescsom {
   padding:
-    clamp(9rem, 12vw, 13rem)
+    clamp(9rem, 16vw, 16rem)
     clamp(1.5rem, 6vw, 6rem)
     clamp(3rem, 7vw, 6rem);
     
@@ -81,7 +81,8 @@ main.criaçoescsom {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 10vw, 12rem);
+  gap: clamp(3rem, 12vw, 12rem);
+
 }
 
 .content-container {

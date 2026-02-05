@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const span = clone.querySelector("span");
         if (span) {
           span.style.display = "inline-block"; 
-          span.style.paddingTop = "0.1em";      
+          span.style.paddingTop = "0.2em";      
         }
 
         mainContent.prepend(clone);

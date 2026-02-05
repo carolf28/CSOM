@@ -96,7 +96,7 @@ body.barulhario .page-title {
 
 .barulhario-main {
   padding:
-    clamp(9rem, 12vw, 13rem)
+    clamp(9rem, 12vw, 12rem)
     clamp(1.5rem, 6vw, 6rem)
     clamp(3rem, 7vw, 6rem);
     
@@ -104,9 +104,11 @@ body.barulhario .page-title {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 10vw, 12rem);
+  gap: clamp(3rem, 10vw, 8rem);
   overflow-x: hidden;
 }
+
+
 
 /* Barulhário letters */
 .barulhario-title-container {
