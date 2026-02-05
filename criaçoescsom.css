@@ -13,6 +13,24 @@ body.criaçoescsom {
   margin: 0;
 }
 
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.image-grid img {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards; 
+}
+
 /* logo animation */
 #logo-container {
   transform: translateY(0);
@@ -112,7 +130,39 @@ main.criaçoescsom {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   display: block;
+  z-index: 10;
 }
+
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+}
+
+.image-legend {
+  display: inline-block;
+  margin-top: 0.5rem;  
+  font-family: 'KiRegular';
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+
+  opacity: 0;                   
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.image-wrapper:hover .image-legend {
+  opacity: 1;
+  transform: translateY(-2px);  
+}
+
 
 @media (max-width: 900px) {
   .content-container {

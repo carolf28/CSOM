@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // =========================
+  // MOBILE PAGE TITLE
+  // =========================
   const originalTitle = document.querySelector(".page-title");
   const mainContent = document.querySelector("main.criaçoescsom");
 
@@ -8,16 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let mobileTitle = document.querySelector(".mobile-page-title");
 
     if (window.innerWidth <= 700) {
-      // Hide desktop title
       originalTitle.style.display = "none";
 
-      // Create mobile title if it doesn't exist
       if (!mobileTitle) {
         const clone = originalTitle.cloneNode(true);
         clone.classList.add("mobile-page-title");
         clone.classList.remove("page-title");
 
-        // Add padding to the span inside
         const span = clone.querySelector("span");
         if (span) {
           span.style.display = "inline-block"; 
@@ -27,14 +27,43 @@ document.addEventListener("DOMContentLoaded", () => {
         mainContent.prepend(clone);
       }
     } else {
-      // Show desktop title
       originalTitle.style.display = "inline-flex";
-
-      // Remove mobile title if it exists
       if (mobileTitle) mobileTitle.remove();
     }
   }
 
   handleTitlePlacement();
   window.addEventListener("resize", handleTitlePlacement);
+
+  // =========================
+  // FADE SLIDE UP FOR MAIN CONTENT
+  // =========================
+  if (mainContent) {
+    const children = Array.from(mainContent.children);
+
+    children.forEach((child, index) => {
+      // Apply initial state
+      child.style.opacity = 0;
+      child.style.transform = "translateY(20px)";
+      child.style.animationFillMode = "forwards";
+
+      // Trigger animation with staggered delay
+      child.style.animation = `fadeSlideUp 0.6s ease forwards ${index * 0.15}s`;
+    });
+  }
+
+  // =========================
+  // FADE SLIDE UP 
+  // =========================
+  const images = mainContent?.querySelectorAll(".image-grid img");
+  if (images) {
+    images.forEach((img, index) => {
+      img.style.opacity = 0;
+      img.style.transform = "translateY(20px)";
+      img.style.animationFillMode = "forwards";
+      img.style.animation = `fadeSlideUp 0.6s ease forwards ${index * 0.15}s`;
+    });
+  }
 });
+ 
+
