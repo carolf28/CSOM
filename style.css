@@ -369,7 +369,7 @@ font-family: 'KiRegular';
 .event-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit:fill;
   display: block;
 }
 
@@ -572,7 +572,6 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 ========================= */
 @media (max-width: 700px) {
 
-  /* Positioning of start overlay */
   #start-overlay {
     bottom: 20vh;
   }
@@ -690,4 +689,58 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 }
 
+
+
+
+
+
+/* -------------------------
+     MOBILE LOADING SCREEN
+------------------------- */
+
+/* Base styles */
+#mobile-loading-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(247, 247, 247, 0.75);
+  backdrop-filter: blur(10px);          
+  -webkit-backdrop-filter: blur(10px);  
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999999;
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Slide up + fade out */
+#mobile-loading-screen.slide-up {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
+#mobile-loading-screen.hidden {
+  display: none;
+}
+
+
+.mobile-loading-box {
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  max-width: 300px;
+  line-height: 1.7;
+  font-size: 1rem;
+  font-family: 'KiRegular';
+  color: #333;
+  font-weight: 500;
+}
 

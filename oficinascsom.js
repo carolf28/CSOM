@@ -59,7 +59,7 @@ function createMobileTitle() {
   // Add padding to the span inside mobile title
   const span = mobileTitle.querySelector("span");
   if (span) {
-    span.style.display = "inline-block"; // needed for vertical padding
+    span.style.display = "inline-block"; 
     span.style.paddingTop = "0.1em"; // adjust as needed
   }
 

@@ -145,9 +145,9 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
 .contact-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 2vw, 3rem);       /* consistent gap scaling */
+  gap: clamp(2rem, 2vw, 3rem);      
   max-width: 1400px;
-  padding: clamp(2rem, 4vw, 4rem);   /* consistent padding scaling */
+  padding: clamp(2rem, 4vw, 4rem); 
   min-height: 90vh;
   background-color: #adb3f7;
   border-radius: 1.2rem;
@@ -159,7 +159,7 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
 .contact-right {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.8rem, 1.5vw, 1rem);  /* consistent spacing between elements */
+  gap: clamp(0.8rem, 1.5vw, 1rem);  
 }
 
 .contact-left {
@@ -263,7 +263,7 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
   transition: transform 0.2s ease;
   grid-column: span 2;
   text-transform: uppercase;
-  width: 8rem; /* keep fixed size consistent */
+  width: 8rem; 
 }
 
 #thankyou-message {
@@ -337,7 +337,7 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
     background-color: #D3D7FF;
     max-width: 100%;
     text-align: center;
-    display: flex; /* keep it visible for JS to toggle */
+    display: flex; /* visible for JS to toggle */
   }
 
   #logo-container {

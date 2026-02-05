@@ -1,17 +1,40 @@
 // -----------------------------
+// Mobile Loading Screen
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const loadingScreen = document.getElementById("mobile-loading-screen");
+
+  // Only show on mobile and if the element exists
+  if (!loadingScreen || window.innerWidth > 700) return;
+
+  // Make it visible immediately
+  loadingScreen.style.display = "flex";
+
+  // Wait 3s, then slide up + fade out
+  setTimeout(() => {
+    loadingScreen.style.transition = "transform 0.6s ease, opacity 0.6s ease";
+    loadingScreen.style.transform = "translateY(-100%)";
+    loadingScreen.style.opacity = "0";
+
+    // Remove from DOM after animation finishes
+    setTimeout(() => loadingScreen.remove(), 700);
+  }, 3000);
+});
+
+
+// -----------------------------
 // Panel / Sidebar Logic
 // -----------------------------
 
 const bar = document.getElementById('side-bar');
 const panel = document.getElementById('side-panel');
-const panelContent = panel?.querySelector('.panel-content'); // optional chaining in case panel doesn't exist
+const panelContent = panel?.querySelector('.panel-content');
 const closeBtn = document.getElementById('close-panel');
 
 function openPanel() {
   if (!panel) return;
   panel.classList.add('open');
 
-  // Reset scroll
   if (panelContent) panelContent.scrollTop = 0;
   panel.scrollTop = 0;
 }
@@ -21,32 +44,28 @@ function closePanel() {
   panel.classList.remove('open');
 }
 
-// Open panel when sidebar clicked
 bar?.addEventListener('click', (e) => {
   openPanel();
   e.stopPropagation();
 });
 
-// Close panel when X button clicked
 closeBtn?.addEventListener('click', closePanel);
 
-// Close panel when clicking outside
 document.addEventListener('click', (e) => {
   if (panel && bar && !panel.contains(e.target) && !bar.contains(e.target)) {
     closePanel();
   }
 });
 
-// Optional: close panel on ESC key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePanel();
 });
+
 
 // -----------------------------
 // Smooth Scroll Logic
 // -----------------------------
 
-// Same-page smooth scroll for links inside the panel
 if (panel) {
   panel.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -60,12 +79,10 @@ if (panel) {
   });
 }
 
-// Smooth scroll when coming from another page
 window.addEventListener('DOMContentLoaded', () => {
   if (window.location.hash) {
     const target = document.querySelector(window.location.hash);
     if (target) {
-      // small delay to allow layout to render properly
       setTimeout(() => {
         target.scrollIntoView({ behavior: 'smooth' });
       }, 50);
@@ -74,23 +91,23 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// -----------------------------
+// Hide Logo on Scroll (Desktop Only)
+// -----------------------------
 
 const logo = document.getElementById('logo-container');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
-  // Only run on desktop (width > 900px)
   if (window.innerWidth <= 700) return;
   if (!logo) return;
 
   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll > lastScroll && currentScroll > 50) {
-    // Scrolling down — slide logo up
     logo.style.transition = 'transform 0.5s cubic-bezier(0.55, 0, 0.1, 1)';
     logo.style.transform = 'translateY(-200%)';
   } else {
-    // Scrolling up — slide logo down with playful bounce
     logo.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
     logo.style.transform = 'translateY(0)';
   }
