@@ -124,7 +124,7 @@ body.quemsomos .page-title {
 
 .quemsomos-content p {
   font-family: 'KiRegular';
-font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   line-height: 1.7;
   margin: 0 0 1.2rem 0;
   overflow-wrap: break-word;
@@ -192,7 +192,7 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
 .contact-email,
 .contact-links {
   font-family: 'KiRegular';
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   margin: 0;
 }
 
@@ -218,13 +218,14 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
 .contact-form-title {
   font-family: 'KiBold';
   font-size: clamp(1.6rem, 2.5vw, 1.8rem);
+  line-height: 1.5;
   color: #fff;
   margin: 0;
 }
 
 .contact-form-subtitle {
   font-family: 'KiRegular';
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   color: #fff;
   margin: 0;
 }
@@ -254,7 +255,7 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
 .contact-form button {
   padding: clamp(0.8rem, 1.2vw, 1rem);
   font-family: 'KiRegular';
- font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   background-color: #E8FD94;
   border: none;
   border-radius: 50px;
@@ -284,7 +285,7 @@ font-size: clamp(1rem, 3.5vw, 1.3rem);
     grid-template-columns: 1fr;
     gap: clamp(1.5rem, 3vw, 2rem);
     padding: clamp(1rem, 5vw, 2rem);
-    padding-top: clamp(2rem, 5vw, 4rem);
+    padding-top: clamp(2.5rem, 5vw, 4rem);
   }
 
   .contact-left,
