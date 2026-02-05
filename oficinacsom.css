@@ -367,6 +367,7 @@ body.oficina .page-title span {
     border-radius: 8px;
     text-transform: uppercase;
     margin: 0 auto; 
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 }
 

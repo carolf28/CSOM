@@ -131,13 +131,12 @@ main.criaçoescsom {
   pointer-events: auto;
   font-family: 'KiRegular';
   font-size: clamp(1.6rem, 2.5vw, 1.8rem);
-  background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+
   width: fit-content;
   padding: 0.3em 0.6em;
   border-radius: 8px;
   text-transform: uppercase;
-  margin: 0 auto 2rem; /* centers box and adds space below */
+  margin: 0 auto 2rem; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 

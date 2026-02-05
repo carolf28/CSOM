@@ -5,7 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.getElementById("mobile-loading-screen");
 
   // Only show on mobile and if the element exists
-  if (!loadingScreen || window.innerWidth > 700) return;
+  if (!loadingScreen) return;
+  if (window.innerWidth > 700) {
+    loadingScreen.style.display = "none"; // ensure hidden on desktop
+    return;
+  }
 
   // Make it visible immediately
   loadingScreen.style.display = "flex";
@@ -20,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => loadingScreen.remove(), 700);
   }, 3000);
 });
-
 
 // -----------------------------
 // Panel / Sidebar Logic
