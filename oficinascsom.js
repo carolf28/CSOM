@@ -56,11 +56,11 @@ function createMobileTitle() {
   mobileTitle.classList.add("mobile-page-title");
   mobileTitle.innerHTML = `<span>${desktopTitle.textContent}</span>`;
 
-  // Add padding to the span inside mobile title
+  // Added padding to the span inside mobile title
   const span = mobileTitle.querySelector("span");
   if (span) {
     span.style.display = "inline-block"; 
-    span.style.paddingTop = "0.1em"; // adjust as needed
+    span.style.paddingTop = "0.1em"; // adjusted padding for better spacing
   }
 
   main.insertBefore(mobileTitle, main.firstChild);

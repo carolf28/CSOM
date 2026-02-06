@@ -54,7 +54,7 @@ loader.load(
     logo.traverse((child) => {
       if (child.isMesh && child.material) {
 
-        // add more brightness in reflections
+        // brightness in reflections
         child.material.envMapIntensity = 2.0;
 
         if (child.material.roughness !== undefined) child.material.roughness = 0.22;
@@ -91,7 +91,7 @@ let mouse = { x: 0, y: 0 };
 
 window.addEventListener('mousemove', (e) => {
   const rect = container.getBoundingClientRect();
-  // Normalized mouse coordinates from -0.5 to 0.5
+  // Normalized mouse coordinates 
   mouse.x = ((e.clientX - rect.left) / rect.width - 0.5);
   mouse.y = ((e.clientY - rect.top) / rect.height - 0.5);
 });

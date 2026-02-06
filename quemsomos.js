@@ -89,7 +89,7 @@ const handleTitlePlacement = () => {
     // Show desktop title
     originalTitle.style.display = "flex";
 
-    // Remove mobile title if exists
+    // Removed mobile title if exists
     if (mobileTitle) mobileTitle.remove();
   }
 };

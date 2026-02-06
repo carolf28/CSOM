@@ -116,7 +116,7 @@ const originalScale = 0.5;
 const startScale = originalScale * 0.8; 
 
 if (synth) {
-  synth.scale.setScalar(startScale); // start slightly smaller
+  synth.scale.setScalar(startScale); 
 
   let introStart = performance.now();
   const introDuration = 1300; //  seconds

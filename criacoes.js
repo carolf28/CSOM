@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const children = Array.from(mainContent.children);
 
     children.forEach((child, index) => {
-      // Apply initial state
+    
       child.style.opacity = 0;
       child.style.transform = "translateY(20px)";
       child.style.animationFillMode = "forwards";
