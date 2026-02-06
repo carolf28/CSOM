@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { initSounds, playStripe, stopStripe, unlockAudio, listener } from './sounds.js';
 
+// Unlock audio context on first user gesture
 function unlockAudioContext() {
   if (!listener) return;
   const ctx = listener.context;
@@ -12,17 +13,27 @@ function unlockAudioContext() {
   }
 }
 
-// Any user gesture
+// Ensure audio context is resumed anytime needed (e.g., returning to page)
+function ensureAudioUnlocked() {
+  if (!listener) return;
+  const ctx = listener.context;
+  if (ctx.state === 'suspended') {
+    ctx.resume().then(() => console.log('🔊 AudioContext resumed'));
+  }
+}
+
+// Attach unlock to first user gesture
 ['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
   window.addEventListener(evt, unlockAudioContext, { once: true });
 });
 
-// resume AudioContext when returning to page
+// Resume when returning to the tab
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible' && listener?.context?.state === 'suspended') {
-    listener.context.resume().then(() => console.log('🔊 AudioContext resumed on visibilitychange'));
+  if (document.visibilityState === 'visible') {
+    ensureAudioUnlocked();
   }
 });
+
 
 // ===============================
 // Scene & Camera
