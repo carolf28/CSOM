@@ -102,18 +102,27 @@
     <h3 class="contact-form-title">Queres falar connosco?<br>Envia-nos uma mensagem.</h3>
     <p class="contact-form-subtitle">Vamos responder assim que possível.</p>
 
-    <form class="contact-form"
-          action="https://formsubmit.co/f8b73816f4101ab77a4d71ad714525c1"
-          method="POST">
-      <input type="hidden" name="_redirect" value="thanks.html">
-      <input type="hidden" name="_subject" value="Nova mensagem do site CSOM!">
+<form class="contact-form"
+      action="https://formspree.io/f/xbdarvqp"
+      method="POST">
+  
+  <!-- Optional hidden fields -->
+  <input type="hidden" name="_redirect" value="thanks.html">
+  <input type="hidden" name="_subject" value="Nova mensagem do site CSOM!">
 
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
+  <!-- form fields -->
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Message" rows="5" required></textarea>
 
-      <button type="submit">Send</button>
-    </form>
+
+  <button type="submit">Send</button>
+</form>
+
+
+<div id="thankyou-message" style="display: none;">
+  Obrigada!
+</div>
 
     <div id="thankyou-message">
       Obrigada!
