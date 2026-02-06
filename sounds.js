@@ -4,6 +4,21 @@ export let listener;
 const stripeSounds = {};
 
 // ===============================
+// GLOBAL USER GESTURE TO UNLOCK AUDIO (Chrome Mobile Fix)
+// ===============================
+function unlockAudioContextOnGesture() {
+  if (!listener) return;
+  const ctx = listener.context;
+  if (ctx.state === 'suspended') {
+    ctx.resume().then(() => console.log('🔓 AudioContext unlocked via gesture'));
+  }
+}
+
+['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
+  window.addEventListener(evt, unlockAudioContextOnGesture, { once: true });
+});
+
+// ===============================
 // AUDIO INIT
 // ===============================
 export function initSounds(camera) {
@@ -32,7 +47,7 @@ export function initSounds(camera) {
 }
 
 // ===============================
-// UNLOCK AUDIO CONTEXT
+// UNLOCK AUDIO CONTEXT MANUALLY
 // ===============================
 export function unlockAudio() {
   if (!listener) return;
