@@ -17,6 +17,13 @@ function unlockAudioContext() {
   window.addEventListener(evt, unlockAudioContext, { once: true });
 });
 
+// resume AudioContext when returning to page
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && listener?.context?.state === 'suspended') {
+    listener.context.resume().then(() => console.log('🔊 AudioContext resumed on visibilitychange'));
+  }
+});
+
 // ===============================
 // Scene & Camera
 // ===============================
