@@ -143,7 +143,7 @@ body.barulhario .page-title {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   pointer-events: none;
   border-radius: 8px;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
   width: fit-content;
   max-width: 100%; 
 }
@@ -359,6 +359,7 @@ body.barulhario .page-title {
   font-weight: 400;
   margin-bottom: 1rem;
   text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .barulhario-description {
@@ -479,7 +480,11 @@ body.barulhario .page-title {
     background-color: transparent; 
     box-shadow: none;            
     padding: 0;                 
-    border-radius: 0;          
+    border-radius: 0;        
+        display: flex;               
+    align-items: center;        
+    justify-content: flex-start;  
+    height: 100%;     
   }
 
 
@@ -493,7 +498,7 @@ body.barulhario .page-title {
     filter: blur(1.5px) saturate(0.5);
   }
 
-  /* Optionally scale down image sizes and tweak positions */
+
   .barulhario-window-grid img:nth-child(1) { width: 80px; top: 12%; left: 1%; }
   .barulhario-window-grid img:nth-child(2) { width: 70px; top: 55%; left: 2%; }
   .barulhario-window-grid img:nth-child(3) { width: 100px; top: 18%; left: 40%; }
