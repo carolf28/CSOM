@@ -494,10 +494,6 @@ body.barulhario .page-title {
     padding: clamp(0.5rem, 2vw, 1rem);
   }
 
-  .barulhario-window-grid img {
-    filter: blur(1.5px) saturate(0.5);
-  }
-
 
   .barulhario-window-grid img:nth-child(1) { width: 80px; top: 12%; left: 1%; }
   .barulhario-window-grid img:nth-child(2) { width: 70px; top: 55%; left: 2%; }
@@ -508,4 +504,30 @@ body.barulhario .page-title {
   .barulhario-window-grid img:nth-child(7) { width: 70px; top: 35%; left: 22%; }
   .barulhario-window-grid img:nth-child(8) { width: 80px; top: 40%; left: 82%; }
   .barulhario-window-grid img:nth-child(9) { width: 65px; top: 68%; left: 30%; }
+}
+
+
+
+
+
+
+/* =========================
+   MOBILE OPTIMIZATIONS
+========================= */
+@media (max-width: 900px) {
+
+  /* Remove heavy blur & glow effects */
+  .barulhario-window-grid img {
+
+    width: 60px !important; 
+    will-change: transform, opacity;
+  }
+
+  .barulhario-window::before {
+    filter: blur(30px) !important;
+        width: 350px;
+        height: 350px;
+  }
+
+
 }

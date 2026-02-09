@@ -13,7 +13,7 @@ function unlockAudioContext() {
   }
 }
 
-// Ensure audio context is resumed anytime needed (e.g., returning to page)
+// Ensure audio context is resumed anytime needed
 function ensureAudioUnlocked() {
   if (!listener) return;
   const ctx = listener.context;
@@ -22,12 +22,12 @@ function ensureAudioUnlocked() {
   }
 }
 
-// Attach unlock to first user gesture
+//  unlock to first user gesture
 ['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
   window.addEventListener(evt, unlockAudioContext, { once: true });
 });
 
-// Resume when returning to the tab
+// resume when returning to the tab
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
     ensureAudioUnlocked();
