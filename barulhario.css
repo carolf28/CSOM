@@ -518,7 +518,6 @@ body.barulhario .page-title {
 
   /* Remove heavy blur & glow effects */
   .barulhario-window-grid img {
-
     width: 60px !important; 
     will-change: transform, opacity;
   }
@@ -527,6 +526,7 @@ body.barulhario .page-title {
     filter: blur(30px) !important;
         width: 350px;
         height: 350px;
+        opacity: 0.7;
   }
 
 
