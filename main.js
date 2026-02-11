@@ -4,35 +4,49 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { initSounds, playStripe, stopStripe, unlockAudio, listener } from './sounds.js';
 
-// Unlock audio context on first user gesture
+// Unlock audio context on first user gesture (menu, loading screen, etc.)
 function unlockAudioContext() {
   if (!listener) return;
   const ctx = listener.context;
   if (ctx.state === 'suspended') {
-    ctx.resume().then(() => console.log('🔓 AudioContext unlocked'));
+    ctx.resume().then(() => console.log('AudioContext unlocked'));
   }
 }
 
-// Ensure audio context is resumed anytime needed
+// Ensure audio context is resumed anytime needed (on tab focus)
 function ensureAudioUnlocked() {
   if (!listener) return;
   const ctx = listener.context;
   if (ctx.state === 'suspended') {
-    ctx.resume().then(() => console.log('🔊 AudioContext resumed'));
+    ctx.resume().then(() => console.log('AudioContext resumed'));
   }
 }
 
-//  unlock to first user gesture
+// Unlock AudioContext if suspended 
+function unlockAudioOnSynthTap() {
+  if (!listener) return;
+  const ctx = listener.context;
+  if (ctx.state === 'suspended') {
+    ctx.resume().then(() => console.log('AudioContext unlocked by synth tap'));
+  }
+}
+
+// ===============================
+// Unlock on first gesture anywhere (menu, canvas, loading screen, etc.)
 ['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
   window.addEventListener(evt, unlockAudioContext, { once: true });
 });
 
-// resume when returning to the tab
+// Resume when returning to the tab
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
     ensureAudioUnlocked();
   }
 });
+
+
+
+
 
 
 // ===============================
@@ -170,7 +184,7 @@ stripeNames.forEach((name) => {
   stripe.userData.clickable = true;
 
   // ------------------------------------------------------------
-  // 📱 Add invisible larger hitbox ONLY on small screens (<500px)
+  // Add invisible larger hitbox on small screens 
   // ------------------------------------------------------------
   if (window.innerWidth < 700) {
     const hitBox = new THREE.Mesh(
@@ -180,7 +194,8 @@ stripeNames.forEach((name) => {
     stripe.add(hitBox);
     hitBox.userData.parentStripe = stripe;
   }
-  // ------------------------------------------------------------
+
+  
 
   // Save original emissive colors
   stripe.traverse((child) => {
@@ -194,6 +209,7 @@ stripeNames.forEach((name) => {
 
   // Press
   stripe.userData.onPress = () => {
+    unlockAudioOnSynthTap();
     unlockAudio();
     playStripe(name);
 
