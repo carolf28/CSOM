@@ -135,6 +135,40 @@ font-size: clamp(1.3rem, 3.5vw, 1.4rem);
   transform: scale(1.05);
 }
 
+
+
+
+
+.menu-btn-group {
+  display: flex;
+  gap: clamp(0.5rem, 1vw, 0.8rem);
+  align-items: center; 
+}
+
+.menu-btn-group button {
+  border-radius: 50%;
+background: none;
+  cursor: pointer;
+    background: none;
+  font-family: 'KiRegular';
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: clamp(3rem, 6vw, 3.4rem); 
+  height: clamp(3rem, 6vw, 3.4rem);
+  font-size: clamp(1.3rem, 3.5vw, 1.4rem); 
+  border: none;
+  color: #8e97f9;
+}
+
+.menu-btn-group button:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+
 /* =========================
    NAV LINKS WRAPPER
 ========================= */
@@ -187,7 +221,7 @@ font-size: clamp(1.3rem, 3.5vw, 1.4rem);
 
  
   #nav-links-wrapper .nav-btn,
-  #menu-button {
+  #menu-button, #lang-btn {
     padding-top: clamp(0em, 0.6vw, 0.1em);
   }
  
@@ -510,59 +544,6 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   width: clamp(1.3rem, 2vw, 1.5rem);
   height: clamp(1.3rem, 2vw, 1.5rem);
   display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   HELP BUTTON — MOBILE ONLY
-========================= */
-@media (max-width: 700px) {
-  #help-button {
-    display: flex;
-    position: fixed;
-    left: clamp(1rem, 2vw, 1.5rem);
-    top: clamp(1.5rem, 2vw, 1.5rem);
-    z-index: 25;
-
-    width: auto;
-    height: clamp(3rem, 6vw, 3.4rem);
-    padding: 0 clamp(1.05em, 4vw, 1.3em);
-
-    border: none;
-    border-radius: 50px;
-    background: none;
-    cursor: pointer;
-
-    font-family: 'KiRegular';
-    font-size: clamp(1.3rem, 3.5vw, 1.4rem);
-    text-transform: uppercase;
-    white-space: nowrap;
-    letter-spacing: 0.1rem;
-    text-decoration: none;
-    color: #fb75d8;
-
-    justify-content: center;
-    align-items: center;
-  }
-
-  #help-button span {
-    padding-top: 0.1em;
-  }
 }
 
 

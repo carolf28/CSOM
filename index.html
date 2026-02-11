@@ -21,7 +21,7 @@
 
 <div id="mobile-loading-screen" style="display:none;">
   <div class="mobile-loading-box">
-    <p>Se estás no telemóvel,<br>tira o modo silêncio ou usa 🎧</p>
+    <p data-i18n="mobile_loading_message">Se estás no telemóvel,<br>tira o modo silêncio ou usa 🎧</p>
   </div>
 </div>
 
@@ -36,24 +36,24 @@
 
   <!-- Menu -->
   <div class="menu-wrapper">
+  <div class="menu-btn-group">
+    <button id="lang-btn">EN</button>
     <div id="menu-button">Menu</div>
+  </div>
     <div id="nav-links-wrapper">
-       <a href="index.html" class="nav-btn">Index</a>
-        <a href="quemsomos.html" class="nav-btn">Quem Somos</a>
-        <a href="barulhario.html" class="nav-btn">Barulhário</a>
-        <a href="oficinascsom.html" class="nav-btn">Oficinas Csom</a>
-        <a href="criacoescsom.html" class="nav-btn">Criações Csom</a>
-        <a href="/quemsomos.html#contacto" class="nav-btn">Contacto</a>
+    <a href="quemsomos.html" class="nav-btn" data-i18n="nav_quemsomos">Quem Somos</a>
+    <a href="barulhario.html" class="nav-btn" data-i18n="nav_barulhario">Barulhário</a>
+    <a href="oficinascsom.html" class="nav-btn" data-i18n="nav_oficinascsom">Oficinas Csom</a>
+    <a href="criacoescsom.html" class="nav-btn" data-i18n="nav_criacoescsom">Criações Csom</a>
+    <a href="/quemsomos.html#contacto" class="nav-btn" data-i18n="nav_contacto">Contacto</a>
     </div>
   </div>
-
-   <!--<button id="help-button"><span>PT/EN</span></button> -->
 </nav>
 
-  <!-- Side bar trigger -->
+<!-- Side bar trigger -->
 <div id="side-bar">
   <div class="side-label-wrapper">
-    <span class="side-label">PRÓXIMOS EVENTOS</span>
+    <span class="side-label" data-i18n="sidebar_upcoming_events">PRÓXIMOS EVENTOS</span>
   </div>
 </div>
 
@@ -71,113 +71,108 @@
 
 
   <div class="events-list">
-      <h2>Próximos Eventos</h2>
+  <h2 data-i18n="events_upcoming_title">Próximos Eventos</h2>
 
-        <article class="event-card">
-      <h3 class="event-title">CSOM apresenta: Party é esta? ✴︎ 7 de Fevereiro ✴︎ 23h ✴︎ Damas </h3>
+  <article class="event-card">
+    <h3 class="event-title" data-i18n="event1_title">
+      CSOM apresenta: CParty é esta? ✴︎ 7 de Fevereiro ✴︎ 23h ✴︎ Damas
+    </h3>
 
-      <div class="event-image">
-        <img src="events/event2.webp" alt="Event-image">
-      </div>
+    <div class="event-image">
+      <img src="events/event2.webp" alt="Event-image">
+    </div>
 
-      <div class="event-meta">
-        <span class="event-date">07/02/2026</span>
-        <span class="event-location">Damas, Lisboa</span>
-      </div>
+    <div class="event-meta">
+      <span class="event-date" data-i18n="event1_date">07/02/2026</span>
+      <span class="event-location" data-i18n="event1_location">Damas, Lisboa</span>
+    </div>
 
-      <p class="event-description">
-    Começamos o ano com um evento muito especial nas Damas: o lançamento do nosso novo site e uma festa benefit para darmos continuidade ao projecto e a novas ideias sónicas.
-      </p>
+    <p class="event-description" data-i18n="event1_desc1">
+      Começamos o ano com um evento muito especial nas Damas: o lançamento do nosso novo site e uma festa benefit para darmos continuidade ao projecto e a novas ideias sónicas.
+    </p>
 
-        <p>
-       À noite, a partir das 23h, será o lançamento do site, com uma breve conversa connosco e com a carolf, que o fez com muito amor.
-        </p>
+    <p data-i18n="event1_desc2">
+      À noite, a partir das 23h, será o lançamento do site, com uma breve conversa connosco e com a carolf, que o fez com muito amor.
+    </p>
 
-      <p>
-       Depois temos um concerto do CSOM com participantes de todas as oficinas *´¨`*•.¸¸.• e a estreia oficial do duo kebra noize
-      </p>
+    <p data-i18n="event1_desc3">
+      Depois temos um concerto do CSOM com participantes de todas as oficinas *´¨`*•.¸¸.• e a estreia oficial do duo kebra noize
+    </p>
 
-      <p>
+    <p data-i18n="event1_desc4">
       A pista de dança vai estar fogosa com DJ Nervoso e um b2b com a team do CSOM aka Miguel Limão & Serpente Flor, até às 4h.
-        </p>
+    </p>
 
-
-  <p class="event-highlight">
-     <strong>CSOM – CParty</strong>  
-    Aparece! 👀
-  </p>
-    </article>
+    <p class="event-highlight" data-i18n="event1_highlight">
+      <strong>CSOM – CParty</strong> Aparece! 👀
+    </p>
+  </article>
       
 
-    <article class="event-card">
-      <h3 class="event-title">Oficina CSOM ✴︎ Constrói um Sampler
-      7 de Fevereiro (sábado) 13-18h ✴︎ Damas</h3>
+  <article class="event-card">
+    <h3 class="event-title" data-i18n="event2_title">
+      Oficina CSOM ✴︎ Constrói um Sampler 7 de Fevereiro (sábado) 13-18h ✴︎ Damas
+    </h3>
 
-      <div class="event-image">
-        <img src="events/event1.webp" alt="Event-image">
-      </div>
+    <div class="event-image">
+      <img src="events/event1.webp" alt="Event-image">
+    </div>
 
-      <div class="event-meta">
-        <span class="event-date">07/02/2026</span>
-        <span class="event-location">Damas, Lisboa</span>
-      </div>
+    <div class="event-meta">
+      <span class="event-date" data-i18n="event2_date">07/02/2026</span>
+      <span class="event-location" data-i18n="event2_location">Damas, Lisboa</span>
+    </div>
 
-      <p class="event-description">
-A partir de um módulo com um circuito integrado e um microfone, iremos soldar vários componentes e construir um Sampler uoꙨou. 
-Tem duas saídas mini-jack IN/OUT, que podes ligar a outra fonte de áudio e directamente a uma coluna. 
-Tem uma memória não volátil, que significa que se o desligares e voltares a ligar, o sample continuará lá gravado. 
-É alimentado com uma pilha de 9 volts.
-      </p>
+    <p class="event-description" data-i18n="event2_desc1">
+      A partir de um módulo com um circuito integrado e um microfone, iremos soldar vários componentes e construir um Sampler uoꙨou. 
+      Tem duas saídas mini-jack IN/OUT, que podes ligar a outra fonte de áudio e directamente a uma coluna. 
+      Tem uma memória não volátil, que significa que se o desligares e voltares a ligar, o sample continuará lá gravado. 
+      É alimentado com uma pilha de 9 volts.
+    </p>
 
-        <p>
-    Nesta oficina vais construir o teu próprio sampler uoꙨou.
-  </p>
+    <p data-i18n="event2_desc2">
+      Nesta oficina vais construir o teu próprio sampler uoꙨou.
+    </p>
 
-  <ul>
-    <li>✴︎ Gravar a partir do microfone ou input de áudio (máx. 10 seg.)</li>
-    <li>✴︎ Alterar o pitch do sample até uma duração de 20s</li>
-    <li>✴︎ Reproduzir o sample em loop</li>
-  </ul>
+    <ul data-i18n="event2_list">
+      <li>✴︎ Gravar a partir do microfone ou input de áudio (máx. 10 seg.)</li>
+      <li>✴︎ Alterar o pitch do sample até uma duração de 20s</li>
+      <li>✴︎ Reproduzir o sample em loop</li>
+    </ul>
 
-  <p>
-    Todos os materiais e kits estão incluídos.  
-    Apenas tens de trazer a caixa onde queres construir o teu sampler.
-  </p>
+    <p data-i18n="event2_desc3">
+      Todos os materiais e kits estão incluídos. Apenas tens de trazer a caixa onde queres construir o teu sampler.
+    </p>
 
-  <p>
-    É recomendável que tenhas alguma experiência em soldar,  
-    mas ninguém será excluída se não tiver 🙂
-  </p>
+    <p data-i18n="event2_desc4">
+      É recomendável que tenhas alguma experiência em soldar, mas ninguém será excluída se não tiver 🙂
+    </p>
 
-  <p>
-    <strong>↪ Mais info e inscrições:</strong>
-    <a href="mailto:csom@riseup.net">csom@riseup.net</a>
-  </p>
+    <p data-i18n="event2_info">
+      <strong>↪ Mais info e inscrições:</strong> <a href="mailto:csom@riseup.net">csom@riseup.net</a>
+    </p>
 
-  <p class="event-info">
-    <strong>Idade:</strong> 16+<br>
-    <strong>Duração:</strong> 5 horas<br>
-    <strong>Horário:</strong> 13h–18h+<br>
-    <strong>Máx. participantes:</strong> 10<br>
-    <strong>Valor:</strong> 45 sons
-  </p>
+    <p class="event-info" data-i18n="event2_extra">
+      <strong>Idade:</strong> 16+<br>
+      <strong>Duração:</strong> 5 horas<br>
+      <strong>Horário:</strong> 13h–18h+<br>
+      <strong>Máx. participantes:</strong> 10<br>
+      <strong>Valor:</strong> 45 sons
+    </p>
 
-  <p class="event-highlight">
-    Esta oficina integra o primeiro evento do <strong>CSOM – CParty</strong>.  
-    Mais novidades nos próximos dias 👀
-  </p>
-
-
-
-
-  </div>
+    <p class="event-highlight" data-i18n="event2_highlight">
+      Esta oficina integra o primeiro evento do <strong>CSOM – CParty</strong>. Mais novidades nos próximos dias 👀
+    </p>
+  </article>
+</div>
   </div>
 </div>
 
-    <!-- Botão Synth -->
   <div id="start-overlay">
-  <p class="start-text"><span>[clica na fitas de cobre]</span></p>
-  </div> 
+  <p class="start-text">
+    <span data-i18n="start_button_text">[clica nas fitas de cobre]</span>
+  </p>
+</div>
 
   <!-- Social Buttons -->
 <div id="social-buttons">
@@ -193,6 +188,11 @@ Tem uma memória não volátil, que significa que se o desligares e voltares a l
   <script type="module" src="main.js"></script>
   <script src="styles.js"></script>
     <script src="menu.js"></script>
+    <script type="module">
+  import { initLanguage } from './translations.js';
+
+  initLanguage("#lang-btn");
+</script>
 
 </body>
 </html>

@@ -95,6 +95,11 @@ body.criaçoescsom .page-title span {
   -webkit-backdrop-filter: blur(15px);
 }
 
+.menu-btn-group button {
+  color:rgba(255, 255, 255, 0.25);
+}
+
+
 main.criaçoescsom {
   padding:
     clamp(9rem, 16vw, 16rem)

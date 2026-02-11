@@ -28,14 +28,16 @@
   </div>
 
     <div class="menu-wrapper">
-      <div id="menu-button">Menu</div>
+  <div class="menu-btn-group">
+    <button id="lang-btn">EN</button>
+    <div id="menu-button">Menu</div>
+  </div>
       <div id="nav-links-wrapper">
-       <a href="index.html" class="nav-btn">Index</a>
-        <a href="quemsomos.html" class="nav-btn">Quem Somos</a>
-        <a href="barulhario.html" class="nav-btn">Barulhário</a>
-        <a href="oficinascsom.html" class="nav-btn">Oficinas Csom</a>
-        <a href="criacoescsom.html" class="nav-btn">Criações Csom</a>
-        <a href="#contacto" class="nav-btn">Contacto</a>
+    <a href="quemsomos.html" class="nav-btn" data-i18n="nav_quemsomos">Quem Somos</a>
+    <a href="barulhario.html" class="nav-btn" data-i18n="nav_barulhario">Barulhário</a>
+    <a href="oficinascsom.html" class="nav-btn" data-i18n="nav_oficinascsom">Oficinas Csom</a>
+    <a href="criacoescsom.html" class="nav-btn" data-i18n="nav_criacoescsom">Criações Csom</a>
+    <a href="/quemsomos.html#contacto" class="nav-btn" data-i18n="nav_contacto">Contacto</a>
       </div>
     </div>
   </nav>
@@ -149,5 +151,10 @@
 <script src="menu.js"></script>
 <script src="quemsomos.js"></script>
 <script type="module" src="logo-contact.js"></script>
+    <script type="module">
+  import { initLanguage } from './translations.js';
+
+  initLanguage("#lang-btn");
+</script>
 </body>
 
