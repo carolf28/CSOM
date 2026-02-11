@@ -85,7 +85,36 @@ const translations = {
     mixer_credits: "25 May 2025<br>Atelier Formigueiro, Almada",
     mixer_description: "In this workshop, we will learn to build a 4-channel passive mixer. A passive mixer does not require a power supply and allows you to combine multiple audio signals into a single output. Using resistors and potentiometers, we will solder and build a portable mixer that you can take anywhere.",
 
- 
+     // BARULHARIO PAGE
+
+    barulhario_line1: "collective listening",
+    barulhario_line2: "collecting sounds",
+    barulhario_line3: "sound experimentation",
+    barulhario_line4: "self-built musical instruments",
+    barulhario_line5: "DIY school",
+
+    barulhario_title: "What is Barulhário?",
+    barulhario_description: "Barulhário is part of CSOM as an educational program focused on sound for children and teenagers. Collective listening, sound experimentation, self-built musical instruments, and much more.",
+
+    barulhario_instrumentos_title: "Sound Instrument Building",
+    barulhario_instrumentos_credits: "26 October 2025<br>Municipality of Tarrafal de Santiago, Cape Verde",
+    barulhario_instrumentos_description: "In October, we held a workshop to build a collective sound instrument in collaboration with the Municipality of Tarrafal (Santiago, Cape Verde). We talked about some concepts of sound and electronics and learned how to solder cables and piezo microphones. Then we assembled everything onto a metal plate using bottle caps, springs, and other objects. It was sabiiii dimas!",
+
+    barulhario_desenho_title: "Sound Drawing",
+    barulhario_desenho_credits: "11 October 2025<br>Lisboa Soa Festival",
+    barulhario_desenho_description: "In this Barulhário workshop, we explored sound and electricity, assembling our first electronic circuit on a breadboard. At the end, all the circuits come together to create a collective sound drawing.",
+
+    barulhario_alfabeto_title: "Sound Exploration - Sonic Alphabet",
+    barulhario_alfabeto_credits: "27 September 2025<br>Bairro dos Museus Festival, Cascais",
+    barulhario_alfabeto_description: "Through a game of interpretation and association, we will draw and create a collective alphabet of sounds and images to tell a drawn and musical story.",
+     
+    
+    // Criassons PAGE
+    creations_title: "CSOM Creations",
+    mixer_legend: "4-CHANNEL MIXER"
+
+
+
   }
 };
 
