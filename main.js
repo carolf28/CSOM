@@ -286,7 +286,7 @@ function onResize() {
 
   // NEW BREAKPOINT (under 350)
   if (width < 380) {
-    camera.position.z = 9.4;   
+    camera.position.z = 9.5;   
     pivot.position.x = 0.0;
   }
   else if (width < 400) {

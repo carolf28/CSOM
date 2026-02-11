@@ -61,7 +61,20 @@ const translations = {
 
     // OFICINAS PAGE
 
+    workshops_title: "CSOM Workshops",
+    workshops_about_title: "About the CSOM workshops",
+    workshops_about_desc: "CSOM workshops are spaces for learning, sharing, and experimentation. Open to everyone, whether you have experience in electronics or not.",
+
+    workshop_build_title: "Build Your Own Electro-Acoustic Box",
+    workshop_build_credits: "September 14, 2025<br>Escola do Povo at Festival Clarão, Sintra",
+    workshop_build_desc: "In this workshop, we’ll learn to solder and build an electro-acoustic box using piezo microphones and springs. It has a mini-jack audio output so you can connect it directly to a speaker or effects pedals.",
+
+    workshop_photosynth_title: "Build a PHOTOSYNTH",
+    workshop_photosynth_credits: "August 23, 2025<br>Casa das Artes Bissaya Barreto, Coimbra",
+    workshop_photosynth_desc: "In this workshop, we’ll learn to build a PHOTOSYNTH 𓆙𓆙𓆙 — a synthesizer that works with photosensitive cells. These cells convert light intensity into an electrical signal that controls the frequency and modulation of the generated sound. You can play it with your hand by moving closer or farther to let in more or less light. You can also use a flashlight or other light source to create different sounds.",
+
     
+  
 
   }
 };
