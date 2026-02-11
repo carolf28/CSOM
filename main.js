@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { initSounds, playStripe, stopStripe, unlockAudio, listener } from './sounds.js';
 
-// Unlock audio context on first user gesture (menu, loading screen, etc.)
+// Unlock audio context on first user gesture 
 function unlockAudioContext() {
   if (!listener) return;
   const ctx = listener.context;
@@ -13,7 +13,7 @@ function unlockAudioContext() {
   }
 }
 
-// Ensure audio context is resumed anytime needed (on tab focus)
+// Ensure audio context is resumed anytime needed
 function ensureAudioUnlocked() {
   if (!listener) return;
   const ctx = listener.context;
@@ -32,7 +32,7 @@ function unlockAudioOnSynthTap() {
 }
 
 // ===============================
-// Unlock on first gesture anywhere (menu, canvas, loading screen, etc.)
+// Unlock on first gesture anywhere 
 ['pointerdown', 'touchstart', 'mousedown'].forEach(evt => {
   window.addEventListener(evt, unlockAudioContext, { once: true });
 });

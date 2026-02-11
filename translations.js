@@ -73,9 +73,19 @@ const translations = {
     workshop_photosynth_credits: "August 23, 2025<br>Casa das Artes Bissaya Barreto, Coimbra",
     workshop_photosynth_desc: "In this workshop, we’ll learn to build a PHOTOSYNTH 𓆙𓆙𓆙 — a synthesizer that works with photosensitive cells. These cells convert light intensity into an electrical signal that controls the frequency and modulation of the generated sound. You can play it with your hand by moving closer or farther to let in more or less light. You can also use a flashlight or other light source to create different sounds.",
 
-    
-  
+    toke_title: "SYNTH TOKE",
+    toke_credits: "6 August 2025<br>Armazém Pedreira, Porto",
+    toke_description: "TOKE is a synth played by connecting two or more copper strips, with your body acting as the electrical conductor. The more skin contact you have with TOKE, the stronger the sound becomes. Using copper tape, we will design different circuits and explore various tones and volumes. You can also experiment with friends, forming a resistance chain where bodies conduct sound. With a CMOS chip, capacitors, and copper tape, we will solder and build the TOKE. It is powered by a 9-Volt battery and has a mini-jack output so you can plug it directly into a speaker or effects pedals.",
 
+    toke_july_title: "SYNTH TOKE",
+    toke_july_credits: "6 July 2025<br>Atelier Formigueiro, Almada",
+    toke_july_description: "TOKE is a synth played by connecting two or more copper strips, with your body acting as the electrical conductor. The more skin contact you have with TOKE, the stronger the sound becomes. Using copper tape, we design different circuits and explore various tones and volumes. You can also experiment with friends and form a resistance chain where bodies conduct sound.",
+
+    mixer_title: "Build Your Own Mixer",
+    mixer_credits: "25 May 2025<br>Atelier Formigueiro, Almada",
+    mixer_description: "In this workshop, we will learn to build a 4-channel passive mixer. A passive mixer does not require a power supply and allows you to combine multiple audio signals into a single output. Using resistors and potentiometers, we will solder and build a portable mixer that you can take anywhere.",
+
+ 
   }
 };
 
