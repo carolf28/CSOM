@@ -40,16 +40,62 @@ const translations = {
     event2_extra: "<strong>Age:</strong> 16+<br><strong>Duration:</strong> 5 hours<br><strong>Schedule:</strong> 1–6PM<br><strong>Max participants:</strong> 10<br><strong>Fee:</strong> 45 sons",
     event2_highlight: "This workshop is part of the first event of <strong>CSOM – CParty</strong>. More news coming soon 👀",
 
-    start_button_text: "[click the copper stripes]"
+    start_button_text: "[click the copper stripes]",
+
+    // ABOUT PAGE
+    page_title_about: "About Us",
+    csom_team_caption: "© Photo by Vera Marmelo",
+
+    about_intro: "<strong>CSOM</strong> is a sound and electronics project that promotes autonomous and inclusive pedagogies, sharing tools, and demystifying knowledge. Through workshops and various gatherings, we aim to create spaces for listening, experimentation, and collective learning.",
+    history_intro: "Since the beginning of 2025, we have organized a series of workshops and moments of sound experimentation. We held some activities in our studio in Almada, as well as in spaces, cultural associations, and festivals in Lisbon, Sintra, Coimbra, Porto, and Cape Verde.",
+    history_barulhario: "In September we inaugurated BARULHÁRIO, which integrates CSOM activities as an educational proposal for sound exploration for children and teenagers.",
+    history_team: "The CSOM team consists of: <br> <strong>Mariana Pinho</strong> <br> <strong>Miguel Limão</strong>",
+    
+    contact_title: "Contact",
+    contact_form_title: "Want to get in touch?<br>Send us a message.",
+    contact_form_subtitle: "We will respond as soon as possible.",
+    form_name: "Name",
+    form_email: "Email",
+    form_message: "Message",
+    form_submit: "Send",
+
+    // OFICINAS PAGE
+
+    
 
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ---------------------
 // LANGUAGE SWITCHING
 // ---------------------
 let currentLang = "pt"; 
 const originalText = {};
+const originalPlaceholder = {};
 
 // ---------------------
 // Initialize language and store PT text
@@ -62,6 +108,14 @@ export function initLanguage(buttonSelector = "#lang-btn") {
     const key = el.getAttribute("data-i18n");
     if (key) {
       originalText[key] = el.innerHTML;
+    }
+  });
+
+  // Store PT placeholders
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (key) {
+      originalPlaceholder[key] = el.placeholder;
     }
   });
 
@@ -88,14 +142,27 @@ export function initLanguage(buttonSelector = "#lang-btn") {
 // Apply current language to all elements
 // ---------------------
 function applyLanguage() {
+  // Translate innerHTML elements
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (!key) return;
 
     if (currentLang === "en" && translations.en[key]) {
-      el.innerHTML = translations.en[key]; // use innerHTML to keep <br>
+      el.innerHTML = translations.en[key]; // keep <br> if present
     } else {
-      el.innerHTML = originalText[key]; // restore PT text
+      el.innerHTML = originalText[key]; // restore PT
+    }
+  });
+
+  // Translate placeholders
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (!key) return;
+
+    if (currentLang === "en" && translations.en[key]) {
+      el.placeholder = translations.en[key];
+    } else {
+      el.placeholder = originalPlaceholder[key]; // restore PT
     }
   });
 }

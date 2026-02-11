@@ -45,7 +45,7 @@
 
 
 <div class="page-title">
-  <span>Quem Somos</span>
+  <span data-i18n="page_title_about">Quem Somos</span>
 </div>
 
 <main class="quemsomos-main">
@@ -54,7 +54,7 @@
     <!-- LEFT: Image -->
 <div class="quemsomos-image">
   <img src="images/csom-team.jpg" alt="CSOM Team">
-  <div class="image-caption">© Fotografia por Vera Marmelo</div>
+  <div class="image-caption" data-i18n="csom_team_caption">© Fotografia por Vera Marmelo</div>
 </div>
 
 
@@ -62,7 +62,7 @@
     <div class="quemsomos-content">
       
       <section class="about-intro">
-        <p>
+        <p data-i18n="about_intro">
           <strong>CSOM</strong> é um projeto de som e eletrónica, que promove pedagogias autónomas e inclusivas, 
           a partilha de ferramentas e a descomplexificação de saberes. 
           A partir de oficinas e diversos encontros, pretendemos criar espaços de escuta, 
@@ -71,16 +71,16 @@
       </section>
 
       <section class="about-history">
-        <p>
+        <p data-i18n="history_intro">
           Desde o início de 2025, temos organizado uma série de oficinas e momentos de experimentação sonora. 
           Fizemos algumas actividades no nosso atelier em Almada, e também em espaços, associações culturais 
           e festivais em Lisboa, Sintra, Coimbra, Porto e Cabo Verde.
         </p>
-        <p>
+        <p data-i18n="history_barulhario">
           Em Setembro inaugurámos o BARULHÁRIO, que integra as actividades de CSOM como uma proposta educativa 
           de exploração sonora para crianças e adolescentes.
         </p>
-        <p>
+        <p data-i18n="history_team">
           A equipa de CSOM é constituída por: <br> 
           <strong>Mariana Pinho</strong> <br>
            <strong>Miguel Limão</strong>
@@ -96,15 +96,20 @@
 
   <!-- LEFT COLUMN -->
   <div class="contact-left">
-        <!-- CONTACT INFO -->
-  <h2 class="contact-title">Contactos</h2> 
-    <p class="contact-email">csom@riseup.net</p>
-    <div class="contact-links">
-      <a href="https://instagram.com/csom____" target="_blank" class="contact-instagram">@csom____</a>
-    </div>
-    <!-- FORM -->
-    <h3 class="contact-form-title">Queres falar connosco?<br>Envia-nos uma mensagem.</h3>
-    <p class="contact-form-subtitle">Vamos responder assim que possível.</p>
+  <!-- CONTACT INFO -->
+<h2 class="contact-title" data-i18n="contact_title">Contactos</h2> 
+<p class="contact-email">csom@riseup.net</p> 
+<div class="contact-links">
+  <a href="https://instagram.com/csom____" target="_blank" class="contact-instagram">@csom____</a>
+</div>
+
+<!-- FORM -->
+<h3 class="contact-form-title" data-i18n="contact_form_title">
+  Queres falar connosco?<br>Envia-nos uma mensagem.
+</h3>
+<p class="contact-form-subtitle" data-i18n="contact_form_subtitle">
+  Vamos responder assim que possível.
+</p>
 
 <form class="contact-form"
       action="https://formspree.io/f/xbdarvqp"
@@ -115,12 +120,11 @@
   <input type="hidden" name="_subject" value="Nova mensagem do site CSOM!">
 
   <!-- form fields -->
-  <input type="text" name="name" placeholder="Name" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="message" placeholder="Message" rows="5" required></textarea>
+  <input type="text" name="name" placeholder="Nome" data-i18n-placeholder="form_name" required>
+  <input type="email" name="email" placeholder="Email" data-i18n-placeholder="form_email" required>
+  <textarea name="message" placeholder="Mensagem" data-i18n-placeholder="form_message" rows="5" required></textarea>
 
-
-  <button type="submit">Send</button>
+  <button type="submit" data-i18n="form_submit">Enviar</button>
 </form>
 
 
