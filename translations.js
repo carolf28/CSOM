@@ -61,13 +61,18 @@ const translations = {
 
     // OFICINAS PAGE
 
+    workshop_sampler_title: "Build a Sampler",
+    workshop_sampler_credits: "February 7, 2026<br>Damas, Lisbon",
+    workshop_sampler_desc: "Using a module with an integrated circuit and a microphone, we will solder several components and build a UOꙨOU Sampler. It has two mini-jack IN/OUT outputs that you can connect to another audio source or directly to a speaker. It has non-volatile memory, which means that if you turn it off and on again, the sample will remain stored. It is powered by a 9-volt battery.",
+
+
     workshops_title: "CSOM Workshops",
     workshops_about_title: "About the CSOM workshops",
     workshops_about_desc: "CSOM workshops are spaces for learning, sharing, and experimentation. Open to everyone, whether you have experience in electronics or not.",
 
     workshop_build_title: "Build Your Own Electro-Acoustic Box",
     workshop_build_credits: "September 14, 2025<br>Escola do Povo at Festival Clarão, Sintra",
-    workshop_build_desc: "In this workshop, we’ll learn to solder and build an electro-acoustic box using piezo microphones and springs. It has a mini-jack audio output so you can connect it directly to a speaker or effects pedals.",
+    workshop_build_desc: "In this workshop we will learn how to solder and build an electro-acoustic box made with piezo microphones and springs. It has a mini-jack audio output so you can connect it directly to a speaker or to effects pedals.",
 
     workshop_photosynth_title: "Build a PHOTOSYNTH",
     workshop_photosynth_credits: "August 23, 2025<br>Casa das Artes Bissaya Barreto, Coimbra",
