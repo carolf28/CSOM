@@ -225,8 +225,13 @@ font-size: clamp(1.3rem, 3.5vw, 1.4rem);
     padding-top: clamp(0em, 0.6vw, 0.1em);
   }
 
-  
 
+@media (min-width: 2560px) {
+    #nav-links-wrapper .nav-btn,
+  #menu-button, #lang-btn {
+    padding-top: none;
+  }
+}
 
  
 
