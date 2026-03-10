@@ -28,17 +28,13 @@ const translations = {
     event1_highlight: "<strong>CSOM – CParty</strong> Show up! 👀",
 
     // Event 2
-    event2_title: "CSOM Workshop ✴︎ Build a Sampler February 7 (Saturday) 1–6PM ✴︎ Damas",
-    event2_date: "02/07/2026",
-    event2_location: "Damas, Lisbon",
-    event2_desc1: "Using a module with an integrated circuit and a microphone, we will solder various components and build a Sampler uoꙨou. It has two mini-jack IN/OUT outputs, which you can connect to another audio source or directly to a speaker. It has non-volatile memory, which means if you turn it off and on again, the sample will remain recorded. Powered by a 9V battery.",
-    event2_desc2: "In this workshop, you will build your own Sampler uoꙨou.",
-    event2_list: "<li>✴︎ Record from the microphone or audio input (max 10 sec.)</li><li>✴︎ Change the pitch of the sample up to 20s</li><li>✴︎ Play the sample in loop</li>",
-    event2_desc3: "All materials and kits are included. You only need to bring the box where you want to build your sampler.",
-    event2_desc4: "It’s recommended to have some soldering experience, but no one will be excluded if they don’t 🙂",
-    event2_info: "<strong>↪ More info and registration:</strong> <a href='mailto:csom@riseup.net'>csom@riseup.net</a>",
-    event2_extra: "<strong>Age:</strong> 16+<br><strong>Duration:</strong> 5 hours<br><strong>Schedule:</strong> 1–6PM<br><strong>Max participants:</strong> 10<br><strong>Fee:</strong> 45 sons",
-    event2_highlight: "This workshop is part of the first event of <strong>CSOM – CParty</strong>. More news coming soon 👀",
+event1_title: "CSOM Synthesizer Building Workshop ⁂ March 18 ⁂ Mexico City (CDMX) - Clubhouse 88",
+event1_date: "03/18/2026",
+event1_location: "Clubhouse 88, CDMX",
+event1_desc1: "TOKE is a synthesizer played by connecting two or more copper wires, where your body acts as the conductor of electricity. The greater the contact between your skin and the TOKE, the more intense the sound will be. With copper wire, we will draw different circuits and experiment with different tones and sound volumes. You can also experiment with friends and form a resistance chain where bodies conduct the sound.",
+event1_desc2: "Note: Bring the box where you want to build your TOKE (for example, a plastic or wooden box).",
+event1_desc3: "Age: 14+<br>Duration: 4 hours.<br>Schedule: 14:00–18:00<br>Maximum participants: 8<br>Price: $800",
+event1_highlight: "<strong>Registrations and more information via message</strong> <a href=\"https://instagram.com/csom____\" target=\"_blank\">@csom____</a> | <a href=\"mailto:csom@riseup.net\">csom@riseup.net</a>",
 
     start_button_text: "[click the copper stripes]",
 
