@@ -31,7 +31,7 @@ const translations = {
     event1_highlight: "<strong>Registrations here:</strong> <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSddyya5fWwwrbS2lksdJYMXnjgoH0iWb2EisnzFboNWEqZCBw/viewform\" target=\"_blank\">here</a>",
 
     // Event 2
-    event2_title: "CSOM Workshop — BARULHÁRIO: Noise Painting ✴︎ April 4 ✴︎ 3PM ✴︎ PORTA33 (Funchal)",
+    event2_title: "CSOM Workshop — BARULHÁRIO: Noise Painting [SOLD OUT] ✴︎ April 4 ✴︎ 3PM ✴︎ PORTA33 (Funchal)",
     event2_date: "04/04/2026",
     event2_location: "Funchal, Madeira",
     event2_desc1: "In this workshop, painting transforms into noise! We will begin by talking about sound and electricity, and learn how to assemble an electronic circuit on a breadboard. Then, inspired by Ana Silva’s exhibition, we will turn our brushstrokes into a collective sound painting.",
