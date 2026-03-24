@@ -16,25 +16,38 @@ const translations = {
     // INDEX HTML
     sidebar_upcoming_events: "UPCOMING EVENTS",
 
+
+
+
     // Event 1
     events_upcoming_title: "Upcoming Events",
-    event1_title: "CSOM presents: CParty é esta? ✴︎ February 7 ✴︎ 11PM ✴︎ Damas",
-    event1_date: "02/07/2026",
-    event1_location: "Damas, Lisbon",
-    event1_desc1: "We start the year with a very special event at Damas: the launch of our new website and a benefit party to continue the project and new sonic ideas.",
-    event1_desc2: "At night, starting at 11PM, the website launch will take place with a brief chat with us and carolf, who made it with love.",
-    event1_desc3: "Then we have a CSOM concert with participants from all workshops and the official debut of the duo Kebra Noize.",
-    event1_desc4: "The dance floor will be on fire with DJ Nervoso and a b2b with the CSOM team aka Miguel Limão & Serpente Flor, until 4AM.",
-    event1_highlight: "<strong>CSOM – CParty</strong> Show up! 👀",
+    event0_title: "CSOM @ PORTA33 – April 3 and 4 in Funchal",
+    event1_title: "CSOM Workshop — Build a Synth! [SOLD OUT] ✴︎ April 3 ✴︎ 2PM ✴︎ PORTA33 (Funchal)",
+    event1_date: "04/03/2026",
+    event1_location: "Funchal, Madeira",
+    event1_desc1: "In this workshop, we will learn how to solder and build a PHOTOSYNTH, a synthesizer that works with photosensitive cells. These cells transform light intensity into an electrical signal that controls the frequency and modulation of the generated sound. You can modulate the sound with a knob or with your hand, by moving closer or further away to let in more or less light. You can also use a flashlight or another light source to create different sounds.",
+    event1_desc2: "<strong>Details</strong><br><strong>Location:</strong> PORTA33 – Rua do Quebra Costas 33, Funchal<br><strong>Schedule:</strong> Friday, April 3, from 2PM to 7PM<br>",
+    event1_desc3: "<strong>Contribution:</strong> €25 (All materials included. You just need to bring the box where you want to build your Photosynth.)<br><strong>Target audience:</strong> teenagers (15+) and adults<br><strong>Maximum capacity:</strong> 10 participants.<br>",
+    event1_highlight: "<strong>Registrations here:</strong> <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSddyya5fWwwrbS2lksdJYMXnjgoH0iWb2EisnzFboNWEqZCBw/viewform\" target=\"_blank\">here</a>",
 
     // Event 2
-event1_title: "CSOM Synthesizer Building Workshop ⁂ March 18 ⁂ Mexico City (CDMX) - Clubhouse 88",
-event1_date: "03/18/2026",
-event1_location: "Clubhouse 88, CDMX",
-event1_desc1: "TOKE is a synthesizer played by connecting two or more copper wires, where your body acts as the conductor of electricity. The greater the contact between your skin and the TOKE, the more intense the sound will be. With copper wire, we will draw different circuits and experiment with different tones and sound volumes. You can also experiment with friends and form a resistance chain where bodies conduct the sound.",
-event1_desc2: "Note: Bring the box where you want to build your TOKE (for example, a plastic or wooden box).",
-event1_desc3: "Age: 14+<br>Duration: 4 hours.<br>Schedule: 14:00–18:00<br>Maximum participants: 8<br>Price: $800",
-event1_highlight: "<strong>Registrations and more information via message</strong> <a href=\"https://instagram.com/csom____\" target=\"_blank\">@csom____</a> | <a href=\"mailto:csom@riseup.net\">csom@riseup.net</a>",
+    event2_title: "CSOM Workshop — BARULHÁRIO: Noise Painting ✴︎ April 4 ✴︎ 3PM ✴︎ PORTA33 (Funchal)",
+    event2_date: "04/04/2026",
+    event2_location: "Funchal, Madeira",
+    event2_desc1: "In this workshop, painting transforms into noise! We will begin by talking about sound and electricity, and learn how to assemble an electronic circuit on a breadboard. Then, inspired by Ana Silva’s exhibition, we will turn our brushstrokes into a collective sound painting.",
+    event2_desc2: "A creative experience where visual art and sound come together.",
+    event2_desc3: "<strong>Details</strong><br><strong>Location:</strong> PORTA33 – Rua do Quebra Costas 33, Funchal<br><strong>Schedule:</strong> Saturday, April 4, from 3PM to 5:30PM<br>",
+    event2_desc4: "<strong>Contribution:</strong> €15 (materials included)<br><strong>Target audience:</strong> children aged 7 to 12<br><strong>Maximum capacity:</strong> 10 children<br>Parents or guardians may accompany the children, but it is not required.",
+    event2_info: "<strong>Registrations:</strong> <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSddyya5fWwwrbS2lksdJYMXnjgoH0iWb2EisnzFboNWEqZCBw/viewform\" target=\"_blank\">here</a>",
+    event2_highlight: "A playful workshop exploring sound and painting 🎨🔊",
+
+    // Event 3
+    event3_title: "OSC Concert (CSOM Synth Orchestra) ✴︎ April 4 ✴︎ 6PM ✴︎ PORTA33 (Funchal) ✴︎ Free Entry",
+    event3_date: "04/04/2026",
+    event3_location: "Funchal, Madeira",
+    event3_desc1: "OSC — CSOM Synth Orchestra invites everyone who took part in the workshops to join with their sound creations in a collective concert, open to the public.",
+    event3_desc2: "<strong>Details</strong><br><strong>Location:</strong> PORTA33 – Rua do Quebra Costas 33, Funchal<br><strong>Schedule:</strong> Saturday, April 4, at 6PM<br>",
+    event3_highlight: "Collective concert open to the public 🎼",
 
     start_button_text: "[click the copper stripes]",
 
