@@ -99,6 +99,10 @@ const translations = {
     mixer_credits: "25 May 2025<br>Atelier Formigueiro, Almada",
     mixer_description: "In this workshop, we will learn to build a 4-channel passive mixer. A passive mixer does not require a power supply and allows you to combine multiple audio signals into a single output. Using resistors and potentiometers, we will solder and build a portable mixer that you can take anywhere.",
 
+    workshop_build_title_funchal: "Build a Synth!",
+    workshop_build_credits_funchal: "3 April 2026<br>Rua do Quebra Costas 33, Funchal",
+    workshop_build_desc_funchal: "In this workshop, we learn how to solder and build a PHOTOSYNTH, a synthesizer that works with photosensitive cells. These cells transform light intensity into an electrical signal, which then controls the frequency and modulation of the generated sound. You can modulate the sound with a knob or with your hand, by moving closer or further away to let in more or less light. You can also use a flashlight or another light source to create different sounds.",
+
      // BARULHARIO PAGE
 
     barulhario_line1: "collective listening",
@@ -109,6 +113,10 @@ const translations = {
 
     barulhario_title: "What is Barulhário?",
     barulhario_description: "Barulhário is part of CSOM as an educational program focused on sound for children and teenagers. Collective listening, sound experimentation, self-built musical instruments, and much more.",
+
+    barulhario_funchal_title: "Noise Painting",
+    barulhario_funchal_credits: "4 April 2026<br>Rua do Quebra Costas 33, Funchal",
+    barulhario_funchal_description: "In this workshop, painting turned into noise! We talked about sound and electricity, and learned how to assemble an electronic circuit on a breadboard. Then, inspired by Ana Silva’s exhibition, we transformed our brushstrokes into a collective sound painting.",
 
     barulhario_instrumentos_title: "Sound Instrument Building",
     barulhario_instrumentos_credits: "26 October 2025<br>Municipality of Tarrafal de Santiago, Cape Verde",
