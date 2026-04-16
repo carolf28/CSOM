@@ -19,35 +19,15 @@ const translations = {
 
 
 
-    // Event 1
+   
     events_upcoming_title: "Upcoming Events",
-    event0_title: "CSOM @ PORTA33 – April 3 and 4 in Funchal",
-    event1_title: "CSOM Workshop — Build a Synth! [SOLD OUT] ✴︎ April 3 ✴︎ 2PM ✴︎ PORTA33 (Funchal)",
-    event1_date: "04/03/2026",
-    event1_location: "Funchal, Madeira",
-    event1_desc1: "In this workshop, we will learn how to solder and build a PHOTOSYNTH, a synthesizer that works with photosensitive cells. These cells transform light intensity into an electrical signal that controls the frequency and modulation of the generated sound. You can modulate the sound with a knob or with your hand, by moving closer or further away to let in more or less light. You can also use a flashlight or another light source to create different sounds.",
-    event1_desc2: "<strong>Details</strong><br><strong>Location:</strong> PORTA33 – Rua do Quebra Costas 33, Funchal<br><strong>Schedule:</strong> Friday, April 3, from 2PM to 7PM<br>",
-    event1_desc3: "<strong>Contribution:</strong> €25 (All materials included. You just need to bring the box where you want to build your Photosynth.)<br><strong>Target audience:</strong> teenagers (15+) and adults<br><strong>Maximum capacity:</strong> 10 participants.<br>",
-    event1_highlight: "<strong>Registrations here:</strong> <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSddyya5fWwwrbS2lksdJYMXnjgoH0iWb2EisnzFboNWEqZCBw/viewform\" target=\"_blank\">here</a>",
 
-    // Event 2
-    event2_title: "CSOM Workshop — BARULHÁRIO: Noise Painting [SOLD OUT] ✴︎ April 4 ✴︎ 3PM ✴︎ PORTA33 (Funchal)",
-    event2_date: "04/04/2026",
-    event2_location: "Funchal, Madeira",
-    event2_desc1: "In this workshop, painting transforms into noise! We will begin by talking about sound and electricity, and learn how to assemble an electronic circuit on a breadboard. Then, inspired by Ana Silva’s exhibition, we will turn our brushstrokes into a collective sound painting.",
-    event2_desc2: "A creative experience where visual art and sound come together.",
-    event2_desc3: "<strong>Details</strong><br><strong>Location:</strong> PORTA33 – Rua do Quebra Costas 33, Funchal<br><strong>Schedule:</strong> Saturday, April 4, from 3PM to 5:30PM<br>",
-    event2_desc4: "<strong>Contribution:</strong> €15 (materials included)<br><strong>Target audience:</strong> children aged 7 to 12<br><strong>Maximum capacity:</strong> 10 children<br>Parents or guardians may accompany the children, but it is not required.",
-    event2_info: "<strong>Registrations:</strong> <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSddyya5fWwwrbS2lksdJYMXnjgoH0iWb2EisnzFboNWEqZCBw/viewform\" target=\"_blank\">here</a>",
-    event2_highlight: "A playful workshop exploring sound and painting 🎨🔊",
-
-    // Event 3
-    event3_title: "OSC Concert (CSOM Synth Orchestra) ✴︎ April 4 ✴︎ 6PM ✴︎ PORTA33 (Funchal) ✴︎ Free Entry",
-    event3_date: "04/04/2026",
-    event3_location: "Funchal, Madeira",
-    event3_desc1: "OSC — CSOM Synth Orchestra invites everyone who took part in the workshops to join with their sound creations in a collective concert, open to the public.",
-    event3_desc2: "<strong>Details</strong><br><strong>Location:</strong> PORTA33 – Rua do Quebra Costas 33, Funchal<br><strong>Schedule:</strong> Saturday, April 4, at 6PM<br>",
-    event3_highlight: "Collective concert open to the public 🎼",
+     // Event 1
+     event1_title: "CSOM Workshop ✴︎ 9 May ✴︎ 2nd Popular Technology Festival of Setúbal",
+event1_date: "09/05/2026",
+event1_location: "Setúbal, Portugal",
+event1_desc1: "Repair, Share, Resist: The 2nd Popular Technology Festival of Setúbal takes place on May 9 and 10, between União Setubalense and Mercado do Livramento, to explore alternatives to the dominance of big tech companies and imagine more sustainable and democratic digital futures.<br><br>The program includes repair cafés, free software workshops, Linux installation sessions, science and engineering talks, as well as open data workshops, collective mapping, and Wikimedia projects.<br><br>The festival also promotes discussions on the social and political impacts of technology, addressing topics such as agroecology, tech cooperatives, digital surveillance, and power dynamics in technological development.<br><br>More than an event, it is a space of co-creation and resistance, where hackers, makers, programmers, free software enthusiasts, and digital rights advocates come together with feminist movements, climate justice collectives, and other social initiatives to build shared paths toward a sustainable, collective, and free technological future.",
+event1_highlight: "<strong>Access the program</strong> <a href=\"https://odet.pt/festival/2026/\" target=\"_blank\">here</a>",
 
     start_button_text: "[click the copper stripes]",
 
