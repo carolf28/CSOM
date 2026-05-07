@@ -22,6 +22,13 @@ const translations = {
    
     events_upcoming_title: "Upcoming Events",
 
+    // Event setubal
+event9_title: "Oficina CSOM – H(Á CAB)OS (=^-ω-^=) ✴︎ 9 May (Saturday) 2–5pm ✴︎ União Setubalense",
+event9_date: "09/05/2026",
+event9_location: "Setúbal, Portugal",
+event9_desc1: "Come make your own cables! In this workshop we’ll learn how to solder and make cables with different connectors — jack, mini-jack, and USB.<br><br>We’ll have colorful cables so you can spice up your setup. If you have cables at home that you want to remake, modify, or recycle, bring them along!<br><br>FREE (^o^)",
+event9_highlight: "<strong>Sign up</strong> <a href=\"mailto:odet.setubal@proton.me\" target=\"_blank\">here</a>",
+
      // Event 1
      event1_title: "CSOM Workshop ✴︎ 9 May ✴︎ 2nd Popular Technology Festival of Setúbal",
 event1_date: "09/05/2026",
